@@ -14,6 +14,7 @@ URL: https://jabenninghoff.github.io/siracon2022,
 BugReports: https://github.com/jabenninghoff/siracon2022/issues
 Suggests: 
     devtools,
+    dplyr,
     rdev (>= 1.3.7),
     testthat (>= 3.0.0)
 Remotes: 
