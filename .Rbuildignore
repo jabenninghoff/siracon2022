@@ -1,2 +1,9 @@
-^siracon2022\.Rproj$
+^renv$
+^renv\.lock$
+^\.github$
+^\.lintr$
 ^\.Rproj\.user$
+^LICENSE\.md$
+^README\.Rmd$
+^siracon2022\.Rproj$
+^TODO\.md$
