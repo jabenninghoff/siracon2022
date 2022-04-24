@@ -16,7 +16,9 @@ Suggests:
     devtools,
     dplyr,
     rdev (>= 1.3.7),
+    spelling,
     testthat (>= 3.0.0)
 Remotes: 
     jabenninghoff/rdev
 Config/testthat/edition: 3
+Language: en-US
