@@ -1,0 +1,87 @@
+---
+title: "SiRAcon 2022 Setup Log"
+date: '2022-04-24'
+output:
+  html_notebook:
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+---
+
+Notes on setting up this GitHub repository, including R command history.
+
+# Initial Setup
+
+Create the GitHub repository from the RStudio console, with no project open: *"Project: (none)"*
+
+```r
+create_github_repo(
+  "siracon2022",
+  repo_desc = 'Notebooks for my SiRAcon 2022 presentation, "Making R work for you (with automation!)"'
+)
+```
+
+On macOS, the automation will open the repository in GitHub Desktop, RStudio, and open the repository settings on github.com in the default browser.
+
+# Package Setup
+
+Set up the package as an [R Analysis Package](https://jabenninghoff.github.io/rdev/articles/analysis-package-layout.html). First run `rdev::use_rdev_package()` to add the common package conventions I use.
+
+The remaining commands are run from the RStudio console with the new project open: *"siracon2022"*
+
+```r
+gert::git_branch_create("package-setup")
+gert::git_add(".")
+gert::git_commit("rdev::create_github_repo()")
+gert::git_push()
+rdev::use_rdev_package()
+```
+
+After `rdev::use_rdev_package()` is run, the R Session will automatically restart after `renv::init()` completes.
+
+To complete setup, commands are run to:
+
+1. Change the package to the R Analysis Package format
+2. Add spell checks
+3. Delete test-package.R (which is no longer needed)
+4. Check dependencies, tests, and continuous integration
+5. Open key files for editing in RStudio
+
+```r
+gert::git_add(".")
+gert::git_commit("rdev::use_rdev_package()")
+gert::git_push()
+# 1
+use_analysis_package()
+gert::git_add(".")
+gert::git_commit("rdev::use_analysis_package()")
+gert::git_push()
+# 2
+use_spelling()
+gert::git_add(".")
+gert::git_commit("rdev::use_spelling()")
+gert::git_push()
+# 3
+fs::file_delete("tests/testthat/test-package.R")
+gert::git_add(".")
+gert::git_commit("remove obsolete test-package.R")
+gert::git_push()
+# 4
+check_renv()
+test()
+ci()
+# 5
+file.edit("TODO.md", "NEWS.md", "README.Rmd", "DESCRIPTION", ".gitignore")
+```
+
+# Manual Updates
+
+Final package setup is done manually. A summary of git commits is listed in the table below.
+
+Commit                           Summary
+-------------------------------- ------------------------------------------------------------------
+Update .gitignore                Add line breaks (not automated yet)
+Fix spell_check_notebooks() test Fix a bug in tests/testthat/test-spelling.R (also fixed in [rdev](https://jabenninghoff.github.io/rdev/))
+renv::update()                   Save updated packages after running `rdev::check_renv` and `renv::snapshot`
+Update DESCRIPTION               Update Title and Description. Also add fs, purrr from README.Rmd to Suggests.
