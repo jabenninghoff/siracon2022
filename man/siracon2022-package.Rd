@@ -4,9 +4,9 @@
 \name{siracon2022-package}
 \alias{siracon2022}
 \alias{siracon2022-package}
-\title{siracon2022: What the Package Does (One Line, Title Case)}
+\title{siracon2022: SiRAcon 2022 Notebooks}
 \description{
-What the package does (one paragraph).
+Notebooks for my SiRAcon 2022 presentation, "Making R work for you (with automation!)".
 }
 \seealso{
 Useful links:
