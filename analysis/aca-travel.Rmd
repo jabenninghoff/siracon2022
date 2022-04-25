@@ -1,0 +1,46 @@
+---
+title: "ACA Travel Analysis"
+date: '2022-04-24'
+output:
+  html_notebook:
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+---
+
+Analysis of flights between MSP and LIT when I was working as a Security Architect for the implementation of Medicaid modernization for the Affordable Care Act in Arkansas in 2013 and 2014.
+
+Used as an example notebook for my SiRAcon 2022 presentation, "Making R work for you
+(with automation!)".
+
+# Questions/TODO
+
+- [ ] Questions/TODO list here
+
+```{r setup, message = FALSE, warning = FALSE}
+library(anyflights)
+library(dplyr)
+library(ggplot2)
+library(jbplot)
+```
+
+# anyflights
+
+Create air travel data packages using [anyflights](https://anyflights.netlify.app).
+
+# Import
+
+Import data (typically from external CSV).
+
+# Tidy/Transform
+
+Clean and Tidy data.
+
+# Explore
+
+Graph and model data to ask and answer questions.
+
+# Communicate
+
+Communicate results.

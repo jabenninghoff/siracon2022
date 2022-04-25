@@ -13,14 +13,18 @@ URL: https://jabenninghoff.github.io/siracon2022,
     https://github.com/jabenninghoff/siracon2022
 BugReports: https://github.com/jabenninghoff/siracon2022/issues
 Suggests: 
+    anyflights,
     devtools,
     dplyr,
     fs,
+    ggplot2,
+    jbplot,
     purrr,
     rdev (>= 1.3.7),
     spelling,
     testthat (>= 3.0.0)
 Remotes: 
+    jabenninghoff/jbplot,
     jabenninghoff/rdev
 Config/testthat/edition: 3
 Language: en-US
