@@ -1,0 +1,9 @@
+pandoc: '2.18'
+pkgdown: 2.0.3
+pkgdown_sha: ~
+articles: {}
+last_built: 2022-04-25T01:07Z
+urls:
+  reference: https://jabenninghoff.github.io/siracon2022/reference
+  article: https://jabenninghoff.github.io/siracon2022/articles
+
