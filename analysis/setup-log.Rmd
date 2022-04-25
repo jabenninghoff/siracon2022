@@ -79,9 +79,21 @@ file.edit("TODO.md", "NEWS.md", "README.Rmd", "DESCRIPTION", ".gitignore")
 
 Final package setup is done manually. A summary of git commits is listed in the table below.
 
-Commit                           Summary
--------------------------------- ------------------------------------------------------------------
-Update .gitignore                Add line breaks (not automated yet)
-Fix spell_check_notebooks() test Fix a bug in tests/testthat/test-spelling.R (also fixed in [rdev](https://jabenninghoff.github.io/rdev/))
-renv::update()                   Save updated packages after running `rdev::check_renv` and `renv::snapshot`
-Update DESCRIPTION               Update Title and Description. Also add fs, purrr from README.Rmd to Suggests.
+Commit                              Summary
+----------------------------------- ----------------------------------------------------------------
+Update .gitignore                   Add line breaks (not automated yet)
+Fix spell_check_notebooks() test    Fix a bug in tests/testthat/test-spelling.R (also fixed in [rdev](https://jabenninghoff.github.io/rdev/))
+renv::update()                      Save updated packages after running `rdev::check_renv` and `renv::snapshot`
+Update DESCRIPTION                  Update Title and Description. Also add fs, purrr from README.Rmd to Suggests.
+Add SiRAcon 2022 Setup Log Notebook Added SiRAcon 2022 Setup Log Notebook
+renv::update()                      Update rdev package (with new bug fixes)
+Add siracon2022 0.1.0 release notes Add release notes for initial development release
+Final setup-log updates             Add final updates to setup-log.Rmd before release
+
+Since `stage_release()` calls `build_analysis_site()`, which currently requires at least one notebook in the analysis directory, we add the first notebook before running the release automation scripts:
+
+```r
+stage_release()
+# validate that all pull request checks (GitHub Actions) pass
+merge_release()
+```
