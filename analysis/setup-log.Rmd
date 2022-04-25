@@ -22,11 +22,14 @@ create_github_repo(
 )
 ```
 
-On macOS, the automation will open the repository in GitHub Desktop, RStudio, and open the repository settings on github.com in the default browser.
+On macOS, the automation will open the repository in GitHub Desktop, RStudio, and open the
+repository settings on github.com in the default browser.
 
 # Package Setup
 
-Set up the package as an [R Analysis Package](https://jabenninghoff.github.io/rdev/articles/analysis-package-layout.html). First run `rdev::use_rdev_package()` to add the common package conventions I use.
+Set up the package as an
+[R Analysis Package](https://jabenninghoff.github.io/rdev/articles/analysis-package-layout.html).
+First run `rdev::use_rdev_package()` to add the common package conventions I use.
 
 The remaining commands are run from the RStudio console with the new project open: *"siracon2022"*
 
@@ -38,7 +41,8 @@ gert::git_push()
 rdev::use_rdev_package()
 ```
 
-After `rdev::use_rdev_package()` is run, the R Session will automatically restart after `renv::init()` completes.
+After `rdev::use_rdev_package()` is run, the R Session will automatically restart after
+`renv::init()` completes.
 
 To complete setup, commands are run to:
 
@@ -79,21 +83,60 @@ file.edit("TODO.md", "NEWS.md", "README.Rmd", "DESCRIPTION", ".gitignore")
 
 Final package setup is done manually. A summary of git commits is listed in the table below.
 
+----------------------------------------------------------------------------------------------------
 Commit                              Summary
 ----------------------------------- ----------------------------------------------------------------
 Update .gitignore                   Add line breaks (not automated yet)
-Fix spell_check_notebooks() test    Fix a bug in tests/testthat/test-spelling.R (also fixed in [rdev](https://jabenninghoff.github.io/rdev/))
-renv::update()                      Save updated packages after running `rdev::check_renv` and `renv::snapshot`
-Update DESCRIPTION                  Update Title and Description. Also add fs, purrr from README.Rmd to Suggests.
+
+Fix spell_check_notebooks() test    Fix a bug in tests/testthat/test-spelling.R (also fixed in
+                                    [rdev](https://github.com/jabenninghoff/rdev/commit/9f816c378c692b699a4f6ae8fbe9ca38e1c4b838))
+
+renv::update()                      Save updated packages after running `rdev::check_renv` and
+                                    `renv::snapshot`
+
+Update DESCRIPTION                  Update Title and Description. Also add fs, purrr from README.Rmd
+                                    to Suggests (also fixed in
+                                    [rdev](https://github.com/jabenninghoff/rdev/commit/105329a1f4a2752131caf7965e7857f48deeef17)).
+
 Add SiRAcon 2022 Setup Log Notebook Added SiRAcon 2022 Setup Log Notebook
+
 renv::update()                      Update rdev package (with new bug fixes)
+
 Add siracon2022 0.1.0 release notes Add release notes for initial development release
+
 Final setup-log updates             Add final updates to setup-log.Rmd before release
 
-Since `stage_release()` calls `build_analysis_site()`, which currently requires at least one notebook in the analysis directory, we add the first notebook before running the release automation scripts:
+Switch from HEAD to default branch  renv works better with the RemoteRef in renv.lock set to the
+                                    default branch. To fix this, I ran
+                                    `renv::install(c("r-lib/lintr","jabenninghoff/rdev"))`.
+----------------------------------------------------------------------------------------------------
+
+Since `stage_release()` calls `build_analysis_site()`, which currently requires at least one
+notebook in the analysis directory, we add the first notebook before running the release automation
+scripts:
 
 ```r
+get_release()
 stage_release()
 # validate that all pull request checks (GitHub Actions) pass
 merge_release()
 ```
+
+The automation scripts automatically create the release and GitHub pages site, including the
+following commits:
+
+- GitHub release 0.1.0
+- build_analysis_site() for release 0.1.0
+
+The site can now be accessed at <https://jabenninghoff.github.io/siracon2022/> !
+
+# Continue Development
+
+From here, we continue development and release as needed. The first step is to create a new branch:
+
+```r
+new_branch("analysis-updates")
+```
+
+Feel free to browse the [commit history](https://github.com/jabenninghoff/siracon2022/commits/main)
+to see progress towards the 1.0 release prior to SiRAcon.
