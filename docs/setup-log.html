@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+<meta name="date" content="2022-04-24" />
+
+<title>SiRAcon 2022 Setup Log</title>
+
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">siracon2022 notebooks</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="news/index.html">Changelog</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="setup-log.html">SiRAcon 2022 Setup Log</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/jabenninghoff/siracon2022/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+<li role="separator" class="divider"></li>
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">SiRAcon 2022 Setup Log</h1>
+<h4 class="date">2022-04-24</h4>
+
+</div>
+
+
+<p>Notes on setting up this GitHub repository, including R command
+history.</p>
+<div id="initial-setup" class="section level1">
+<h1>Initial Setup</h1>
+<p>Create the GitHub repository from the RStudio console, with no
+project open: <em>“Project: (none)”</em></p>
+<pre class="r"><code>create_github_repo(
+  &quot;siracon2022&quot;,
+  repo_desc = &#39;Notebooks for my SiRAcon 2022 presentation, &quot;Making R work for you (with automation!)&quot;&#39;
+)</code></pre>
+<p>On macOS, the automation will open the repository in GitHub Desktop,
+RStudio, and open the repository settings on github.com in the default
+browser.</p>
+</div>
+<div id="package-setup" class="section level1">
+<h1>Package Setup</h1>
+<p>Set up the package as an <a
+href="https://jabenninghoff.github.io/rdev/articles/analysis-package-layout.html">R
+Analysis Package</a>. First run <code>rdev::use_rdev_package()</code> to
+add the common package conventions I use.</p>
+<p>The remaining commands are run from the RStudio console with the new
+project open: <em>“siracon2022”</em></p>
+<pre class="r"><code>gert::git_branch_create(&quot;package-setup&quot;)
+gert::git_add(&quot;.&quot;)
+gert::git_commit(&quot;rdev::create_github_repo()&quot;)
+gert::git_push()
+rdev::use_rdev_package()</code></pre>
+<p>After <code>rdev::use_rdev_package()</code> is run, the R Session
+will automatically restart after <code>renv::init()</code>
+completes.</p>
+<p>To complete setup, commands are run to:</p>
+<ol style="list-style-type: decimal">
+<li>Change the package to the R Analysis Package format</li>
+<li>Add spell checks</li>
+<li>Delete test-package.R (which is no longer needed)</li>
+<li>Check dependencies, tests, and continuous integration</li>
+<li>Open key files for editing in RStudio</li>
+</ol>
+<pre class="r"><code>gert::git_add(&quot;.&quot;)
+gert::git_commit(&quot;rdev::use_rdev_package()&quot;)
+gert::git_push()
+# 1
+use_analysis_package()
+gert::git_add(&quot;.&quot;)
+gert::git_commit(&quot;rdev::use_analysis_package()&quot;)
+gert::git_push()
+# 2
+use_spelling()
+gert::git_add(&quot;.&quot;)
+gert::git_commit(&quot;rdev::use_spelling()&quot;)
+gert::git_push()
+# 3
+fs::file_delete(&quot;tests/testthat/test-package.R&quot;)
+gert::git_add(&quot;.&quot;)
+gert::git_commit(&quot;remove obsolete test-package.R&quot;)
+gert::git_push()
+# 4
+check_renv()
+test()
+ci()
+# 5
+file.edit(&quot;TODO.md&quot;, &quot;NEWS.md&quot;, &quot;README.Rmd&quot;, &quot;DESCRIPTION&quot;, &quot;.gitignore&quot;)</code></pre>
+</div>
+<div id="manual-updates" class="section level1">
+<h1>Manual Updates</h1>
+<p>Final package setup is done manually. A summary of git commits is
+listed in the table below.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Commit</th>
+<th align="left">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Update .gitignore</td>
+<td align="left">Add line breaks (not automated yet)</td>
+</tr>
+<tr class="even">
+<td align="left">Fix spell_check_notebooks() test</td>
+<td align="left">Fix a bug in tests/testthat/test-spelling.R (also fixed
+in <a href="https://jabenninghoff.github.io/rdev/">rdev</a>)</td>
+</tr>
+<tr class="odd">
+<td align="left">renv::update()</td>
+<td align="left">Save updated packages after running
+<code>rdev::check_renv</code> and <code>renv::snapshot</code></td>
+</tr>
+<tr class="even">
+<td align="left">Update DESCRIPTION</td>
+<td align="left">Update Title and Description. Also add fs, purrr from
+README.Rmd to Suggests.</td>
+</tr>
+<tr class="odd">
+<td align="left">Add SiRAcon 2022 Setup Log Notebook</td>
+<td align="left">Added SiRAcon 2022 Setup Log Notebook</td>
+</tr>
+<tr class="even">
+<td align="left">renv::update()</td>
+<td align="left">Update rdev package (with new bug fixes)</td>
+</tr>
+<tr class="odd">
+<td align="left">Add siracon2022 0.1.0 release notes</td>
+<td align="left">Add release notes for initial development release</td>
+</tr>
+<tr class="even">
+<td align="left">Final setup-log updates</td>
+<td align="left">Add final updates to setup-log.Rmd before release</td>
+</tr>
+</tbody>
+</table>
+<p>Since <code>stage_release()</code> calls
+<code>build_analysis_site()</code>, which currently requires at least
+one notebook in the analysis directory, we add the first notebook before
+running the release automation scripts:</p>
+<pre class="r"><code>stage_release()
+# validate that all pull request checks (GitHub Actions) pass
+merge_release()</code></pre>
+</div>
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiBTaVJBY29uIDIwMjIgU2V0dXAgTG9nCmRhdGU6ICcyMDIyLTA0LTI0JwpvdXRwdXQ6CiAgaHRtbF9kb2N1bWVudDoKICAgIHRvYzogeWVzCiAgICB0b2NfZmxvYXQ6CiAgICAgIGNvbGxhcHNlZDogbm8KICAgICAgc21vb3RoX3Njcm9sbDogbm8KLS0tCgpOb3RlcyBvbiBzZXR0aW5nIHVwIHRoaXMgR2l0SHViIHJlcG9zaXRvcnksIGluY2x1ZGluZyBSIGNvbW1hbmQgaGlzdG9yeS4KCiMgSW5pdGlhbCBTZXR1cAoKQ3JlYXRlIHRoZSBHaXRIdWIgcmVwb3NpdG9yeSBmcm9tIHRoZSBSU3R1ZGlvIGNvbnNvbGUsIHdpdGggbm8gcHJvamVjdCBvcGVuOiAqIlByb2plY3Q6IChub25lKSIqCgpgYGByCmNyZWF0ZV9naXRodWJfcmVwbygKICAic2lyYWNvbjIwMjIiLAogIHJlcG9fZGVzYyA9ICdOb3RlYm9va3MgZm9yIG15IFNpUkFjb24gMjAyMiBwcmVzZW50YXRpb24sICJNYWtpbmcgUiB3b3JrIGZvciB5b3UgKHdpdGggYXV0b21hdGlvbiEpIicKKQpgYGAKCk9uIG1hY09TLCB0aGUgYXV0b21hdGlvbiB3aWxsIG9wZW4gdGhlIHJlcG9zaXRvcnkgaW4gR2l0SHViIERlc2t0b3AsIFJTdHVkaW8sIGFuZCBvcGVuIHRoZSByZXBvc2l0b3J5IHNldHRpbmdzIG9uIGdpdGh1Yi5jb20gaW4gdGhlIGRlZmF1bHQgYnJvd3Nlci4KCiMgUGFja2FnZSBTZXR1cAoKU2V0IHVwIHRoZSBwYWNrYWdlIGFzIGFuIFtSIEFuYWx5c2lzIFBhY2thZ2VdKGh0dHBzOi8vamFiZW5uaW5naG9mZi5naXRodWIuaW8vcmRldi9hcnRpY2xlcy9hbmFseXNpcy1wYWNrYWdlLWxheW91dC5odG1sKS4gRmlyc3QgcnVuIGByZGV2Ojp1c2VfcmRldl9wYWNrYWdlKClgIHRvIGFkZCB0aGUgY29tbW9uIHBhY2thZ2UgY29udmVudGlvbnMgSSB1c2UuCgpUaGUgcmVtYWluaW5nIGNvbW1hbmRzIGFyZSBydW4gZnJvbSB0aGUgUlN0dWRpbyBjb25zb2xlIHdpdGggdGhlIG5ldyBwcm9qZWN0IG9wZW46ICoic2lyYWNvbjIwMjIiKgoKYGBgcgpnZXJ0OjpnaXRfYnJhbmNoX2NyZWF0ZSgicGFja2FnZS1zZXR1cCIpCmdlcnQ6OmdpdF9hZGQoIi4iKQpnZXJ0OjpnaXRfY29tbWl0KCJyZGV2OjpjcmVhdGVfZ2l0aHViX3JlcG8oKSIpCmdlcnQ6OmdpdF9wdXNoKCkKcmRldjo6dXNlX3JkZXZfcGFja2FnZSgpCmBgYAoKQWZ0ZXIgYHJkZXY6OnVzZV9yZGV2X3BhY2thZ2UoKWAgaXMgcnVuLCB0aGUgUiBTZXNzaW9uIHdpbGwgYXV0b21hdGljYWxseSByZXN0YXJ0IGFmdGVyIGByZW52Ojppbml0KClgIGNvbXBsZXRlcy4KClRvIGNvbXBsZXRlIHNldHVwLCBjb21tYW5kcyBhcmUgcnVuIHRvOgoKMS4gQ2hhbmdlIHRoZSBwYWNrYWdlIHRvIHRoZSBSIEFuYWx5c2lzIFBhY2thZ2UgZm9ybWF0CjIuIEFkZCBzcGVsbCBjaGVja3MKMy4gRGVsZXRlIHRlc3QtcGFja2FnZS5SICh3aGljaCBpcyBubyBsb25nZXIgbmVlZGVkKQo0LiBDaGVjayBkZXBlbmRlbmNpZXMsIHRlc3RzLCBhbmQgY29udGludW91cyBpbnRlZ3JhdGlvbgo1LiBPcGVuIGtleSBmaWxlcyBmb3IgZWRpdGluZyBpbiBSU3R1ZGlvCgpgYGByCmdlcnQ6OmdpdF9hZGQoIi4iKQpnZXJ0OjpnaXRfY29tbWl0KCJyZGV2Ojp1c2VfcmRldl9wYWNrYWdlKCkiKQpnZXJ0OjpnaXRfcHVzaCgpCiMgMQp1c2VfYW5hbHlzaXNfcGFja2FnZSgpCmdlcnQ6OmdpdF9hZGQoIi4iKQpnZXJ0OjpnaXRfY29tbWl0KCJyZGV2Ojp1c2VfYW5hbHlzaXNfcGFja2FnZSgpIikKZ2VydDo6Z2l0X3B1c2goKQojIDIKdXNlX3NwZWxsaW5nKCkKZ2VydDo6Z2l0X2FkZCgiLiIpCmdlcnQ6OmdpdF9jb21taXQoInJkZXY6OnVzZV9zcGVsbGluZygpIikKZ2VydDo6Z2l0X3B1c2goKQojIDMKZnM6OmZpbGVfZGVsZXRlKCJ0ZXN0cy90ZXN0dGhhdC90ZXN0LXBhY2thZ2UuUiIpCmdlcnQ6OmdpdF9hZGQoIi4iKQpnZXJ0OjpnaXRfY29tbWl0KCJyZW1vdmUgb2Jzb2xldGUgdGVzdC1wYWNrYWdlLlIiKQpnZXJ0OjpnaXRfcHVzaCgpCiMgNApjaGVja19yZW52KCkKdGVzdCgpCmNpKCkKIyA1CmZpbGUuZWRpdCgiVE9ETy5tZCIsICJORVdTLm1kIiwgIlJFQURNRS5SbWQiLCAiREVTQ1JJUFRJT04iLCAiLmdpdGlnbm9yZSIpCmBgYAoKIyBNYW51YWwgVXBkYXRlcwoKRmluYWwgcGFja2FnZSBzZXR1cCBpcyBkb25lIG1hbnVhbGx5LiBBIHN1bW1hcnkgb2YgZ2l0IGNvbW1pdHMgaXMgbGlzdGVkIGluIHRoZSB0YWJsZSBiZWxvdy4KCkNvbW1pdCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFN1bW1hcnkKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpVcGRhdGUgLmdpdGlnbm9yZSAgICAgICAgICAgICAgICAgICBBZGQgbGluZSBicmVha3MgKG5vdCBhdXRvbWF0ZWQgeWV0KQpGaXggc3BlbGxfY2hlY2tfbm90ZWJvb2tzKCkgdGVzdCAgICBGaXggYSBidWcgaW4gdGVzdHMvdGVzdHRoYXQvdGVzdC1zcGVsbGluZy5SIChhbHNvIGZpeGVkIGluIFtyZGV2XShodHRwczovL2phYmVubmluZ2hvZmYuZ2l0aHViLmlvL3JkZXYvKSkKcmVudjo6dXBkYXRlKCkgICAgICAgICAgICAgICAgICAgICAgU2F2ZSB1cGRhdGVkIHBhY2thZ2VzIGFmdGVyIHJ1bm5pbmcgYHJkZXY6OmNoZWNrX3JlbnZgIGFuZCBgcmVudjo6c25hcHNob3RgClVwZGF0ZSBERVNDUklQVElPTiAgICAgICAgICAgICAgICAgIFVwZGF0ZSBUaXRsZSBhbmQgRGVzY3JpcHRpb24uIEFsc28gYWRkIGZzLCBwdXJyciBmcm9tIFJFQURNRS5SbWQgdG8gU3VnZ2VzdHMuCkFkZCBTaVJBY29uIDIwMjIgU2V0dXAgTG9nIE5vdGVib29rIEFkZGVkIFNpUkFjb24gMjAyMiBTZXR1cCBMb2cgTm90ZWJvb2sKcmVudjo6dXBkYXRlKCkgICAgICAgICAgICAgICAgICAgICAgVXBkYXRlIHJkZXYgcGFja2FnZSAod2l0aCBuZXcgYnVnIGZpeGVzKQpBZGQgc2lyYWNvbjIwMjIgMC4xLjAgcmVsZWFzZSBub3RlcyBBZGQgcmVsZWFzZSBub3RlcyBmb3IgaW5pdGlhbCBkZXZlbG9wbWVudCByZWxlYXNlCkZpbmFsIHNldHVwLWxvZyB1cGRhdGVzICAgICAgICAgICAgIEFkZCBmaW5hbCB1cGRhdGVzIHRvIHNldHVwLWxvZy5SbWQgYmVmb3JlIHJlbGVhc2UKClNpbmNlIGBzdGFnZV9yZWxlYXNlKClgIGNhbGxzIGBidWlsZF9hbmFseXNpc19zaXRlKClgLCB3aGljaCBjdXJyZW50bHkgcmVxdWlyZXMgYXQgbGVhc3Qgb25lIG5vdGVib29rIGluIHRoZSBhbmFseXNpcyBkaXJlY3RvcnksIHdlIGFkZCB0aGUgZmlyc3Qgbm90ZWJvb2sgYmVmb3JlIHJ1bm5pbmcgdGhlIHJlbGVhc2UgYXV0b21hdGlvbiBzY3JpcHRzOgoKYGBgcgpzdGFnZV9yZWxlYXNlKCkKIyB2YWxpZGF0ZSB0aGF0IGFsbCBwdWxsIHJlcXVlc3QgY2hlY2tzIChHaXRIdWIgQWN0aW9ucykgcGFzcwptZXJnZV9yZWxlYXNlKCkKYGBgCg==</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("setup-log.Rmd");
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

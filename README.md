@@ -11,10 +11,19 @@
 
 ## Overview
 
-**What the Package Does (One Line, Title Case):** What the package does
-(one paragraph).
+**SiRAcon 2022 Notebooks:** Notebooks for my SiRAcon 2022 presentation,
+“Making R work for you (with automation!)”.
 
 Feel free to use and/or fork this project!
+
+## Notebooks
+
+Notebooks in this package:
+
+-   [SiRAcon 2022 Setup
+    Log](https://jabenninghoff.github.io/siracon2022/setup-log.html)
+    (2022-04-24): Notes on setting up this GitHub repository, including
+    R command history.
 
 ## Installation
 
@@ -37,11 +46,3 @@ renv::install("jabenninghoff/siracon2022")
 
 -   Changelog: See “Changelog” or `NEWS.md`.
 -   Planned: [TODO](TODO.md)
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-# basic example code
-```

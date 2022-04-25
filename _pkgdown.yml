@@ -1,0 +1,27 @@
+url: https://jabenninghoff.github.io/siracon2022
+navbar:
+  structure:
+    left:
+    - intro
+    - reference
+    - articles
+    - tutorials
+    - news
+    - analysis
+    right: github
+  components:
+    reference:
+      text: Reference
+      href: reference/index.html
+    news:
+      text: Changelog
+      href: news/index.html
+    analysis:
+      text: Analysis
+      menu:
+      - text: SiRAcon 2022 Setup Log
+        href: setup-log.html
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/jabenninghoff/siracon2022/
+      aria-label: github
