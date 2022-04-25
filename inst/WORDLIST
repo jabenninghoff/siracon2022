@@ -1,6 +1,7 @@
 ACA
 CMD
 Changelog
+DevOps
 MSP
 ORCID
 README
@@ -9,6 +10,7 @@ RemoteRef
 Rmd
 SiRAcon
 anyflights
+devops
 fs
 github
 gitignore
@@ -21,3 +23,6 @@ rdev
 renv
 siracon
 testthat
+timevis
+vistime
+www
