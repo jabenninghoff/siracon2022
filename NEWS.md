@@ -4,4 +4,5 @@ Initial development release.
 
 * Initial R Analysis Package setup
 
-* Added SiRAcon 2022 Setup Log: Notes on setting up this GitHub repository, including R command history
+* Added SiRAcon 2022 Setup Log: Notes on setting up this GitHub repository, including R command
+  history
