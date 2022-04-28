@@ -16,8 +16,10 @@ Outline of my 2022 SiRAcon 2022 presentation, "Making R work for you (with autom
 - [ ] Questions/TODO list here
 
 ```{r setup, message = FALSE, warning = FALSE}
-library(readr)
+library(gert)
+library(purrr)
 library(dplyr)
+library(lubridate)
 library(ggplot2)
 library(jbplot)
 ```
@@ -47,3 +49,57 @@ Create a timeline of my journey using [vistime](https://shosaco.github.io/vistim
 
 Use GitHub data to show how the DORA metrics changed over time as I developed and used
 [rdev](https://jabenninghoff.github.io/rdev/).
+
+## git log
+
+Idea: use `gert::git_log()` tables across all my public and personal (private) R repositories over time to create an
+annotated timeline and visualization of my work, and implementation of the DORA technical practices.
+
+Import git logs from my repositories:
+
+```{r git_logs}
+my_gitlogs <- map_dfr(
+  c("jbplot", "rdev", "rstudio-training", "rtraining", "siracon2022", "software-resilience", "workshop7"),
+  ~ mutate(git_log(repo = paste0("../../", .x), max = .Machine$integer.max), repo = .x, .before = "commit")
+) |>
+  arrange(time)
+```
+
+Filter logs by repository, adding cutoff dates when active development ended for timeline visualization.
+
+```{r filtered_gitlogs}
+filtered_gitlogs <- my_gitlogs |>
+  filter(!(repo == "rstudio-training" & time > ymd_h("2020-12-29 0"))) |>
+  filter(!(repo == "software-resilience" & time > ymd_h("2021-02-22 0"))) |>
+  filter(!(repo == "rtraining" & time > ymd_h("2021-10-08 0"))) |>
+  filter(!(repo == "workshop7" & time > ymd_h("2021-12-07 0"))) |>
+  filter(!(repo == "jbplot" & time > ymd_h("2022-02-07 0"))) |>
+  mutate(repo = factor(repo, levels = c(
+    "rstudio-training", "software-resilience", "rtraining", "rdev", "workshop7", "jbplot", "siracon2022"
+  )))
+```
+
+Plot monthly commits by repository.
+
+```{r plot_gitlogs}
+filtered_gitlogs |>
+  mutate(time = floor_date(time, unit = "month")) |>
+  group_by(time, repo) |>
+  summarize(commits = n(), .groups = "drop") |>
+  ggplot(aes(x = time, y = commits, color = repo)) +
+  geom_point() +
+  geom_line() +
+  theme_quo()
+```
+
+## Timeline
+
+Create a timeline using groups showing the history of the repositories:
+
+* training: rstudio-training, rtraining, "Working with R"
+* development: rdev, jbplot
+* notebooks: software-resilience, workshop7, siracon2022
+
+## Releases
+
+Plot releases over time: total GitHub releases per period (for all repositories) to show changes in release frequency.
