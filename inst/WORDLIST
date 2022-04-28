@@ -17,10 +17,13 @@ gitignore
 https
 io
 jabenninghoff
+jbplot
 macOS
 purrr
 rdev
 renv
+rstudio
+rtraining
 siracon
 testthat
 timevis
