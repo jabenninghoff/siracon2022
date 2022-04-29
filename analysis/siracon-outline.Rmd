@@ -96,9 +96,49 @@ filtered_gitlogs |>
 
 Create a timeline using groups showing the history of the repositories:
 
-* training: rstudio-training, rtraining, "Working with R"
-* development: rdev, jbplot
-* notebooks: software-resilience, workshop7, siracon2022
+- training: rstudio-training, rtraining, "Working with R"
+- development: rdev, jbplot
+- notebooks: software-resilience, workshop7, siracon2022
+
+Key dates:
+
+2020-09-08: Starting out, rstudio-training, renv
+
+- Version Control
+  - Stored project files, notebook (Rmd and html) in private git repository
+  - Use renv to store package dependencies in source control
+- Trunk-based Development
+  - Direct commits to master (not recommended)
+
+2020-09-30: (Aside) First bug discovered, https://github.com/rstudio/renv/issues/547 !
+
+2020-10-06: setup-r script
+
+- Version Control
+  - Automate setup of local R development environment
+
+2020-12-02: Adoption of styler and lintr
+
+- Code Maintainability
+  - Consistent formatting (styler)
+  - Consistent code (lintr)
+- Continuous Testing
+  - Static code analysis (lintr)
+
+2020-12-27: Migration to rtraining package
+
+- Continuous Integration
+  - Build Package
+- Continuous Testing
+  - R CMD Check
+- Version Control
+  - .Rprofile
+
+2020-12-29: build-site script
+
+- Deployment Automation
+  - build-site: shell script to publish notebooks using `rmarkdown::render_site()`
+  - MVP for publishing notebooks using GitHub Pages
 
 ## Releases
 
