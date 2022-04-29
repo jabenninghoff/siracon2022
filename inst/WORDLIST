@@ -8,6 +8,7 @@ README
 RStudio
 RemoteRef
 Rmd
+Rprofile
 SiRAcon
 anyflights
 devops
@@ -18,6 +19,7 @@ https
 io
 jabenninghoff
 jbplot
+lintr
 macOS
 purrr
 rdev
@@ -25,6 +27,7 @@ renv
 rstudio
 rtraining
 siracon
+styler
 testthat
 timevis
 vistime
