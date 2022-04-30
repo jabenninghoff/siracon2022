@@ -626,16 +626,16 @@
     },
     "jbplot": {
       "Package": "jbplot",
-      "Version": "1.1.4",
+      "Version": "1.1.5",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
       "RemoteUsername": "jabenninghoff",
       "RemoteRepo": "jbplot",
       "RemoteRef": "main",
-      "RemoteSha": "67d0fe30b7241418d4107d0e85abf6bca8d5fc00",
+      "RemoteSha": "370ad9c1e0f23683d7340ced4c790ffb4513b96c",
+      "RemoteHost": "api.github.com",
       "Remotes": "jabenninghoff/rdev",
-      "Hash": "638d46b92ff7217846a7a963a722c683",
+      "Hash": "644cb24bca097169f9640e21ca21c80f",
       "Requirements": [
         "ggplot2"
       ]
@@ -1046,16 +1046,16 @@
     },
     "rdev": {
       "Package": "rdev",
-      "Version": "1.3.8",
+      "Version": "1.4.1",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
       "RemoteUsername": "jabenninghoff",
       "RemoteRepo": "rdev",
       "RemoteRef": "main",
-      "RemoteSha": "d1ed61003463678bc2ca4a9b238a2db00622dbae",
+      "RemoteSha": "b923310fd773e968fe4db4570d651af062ce79c4",
+      "RemoteHost": "api.github.com",
       "Remotes": "r-lib/lintr",
-      "Hash": "eef2656357b4b315063bbe7f7b2983cd",
+      "Hash": "4d97e8bc7a71a0d8a693b018288f0145",
       "Requirements": [
         "desc",
         "devtools",
