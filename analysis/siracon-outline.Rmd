@@ -52,8 +52,9 @@ Use GitHub data to show how the DORA metrics changed over time as I developed an
 
 ## git log
 
-Idea: use `gert::git_log()` tables across all my public and personal (private) R repositories over time to create an
-annotated timeline and visualization of my work, and implementation of the DORA technical practices.
+Idea: use `gert::git_log()` tables across all my public and personal (private) R repositories over
+time to create an annotated timeline and visualization of my work, and implementation of the DORA
+technical practices.
 
 Import git logs from my repositories:
 
@@ -67,7 +68,8 @@ my_gitlogs <- map_dfr(
   arrange(time)
 ```
 
-Filter logs by repository, adding cutoff dates when active development ended for timeline visualization.
+Filter logs by repository, adding cutoff dates when active development ended for timeline
+visualization.
 
 ```{r filtered_gitlogs}
 filtered_gitlogs <- my_gitlogs |>
@@ -146,4 +148,5 @@ Key dates:
 
 ## Releases
 
-Plot releases over time: total GitHub releases per period (for all repositories) to show changes in release frequency.
+Plot releases over time: total GitHub releases per period (for all repositories) to show changes in
+release frequency.
