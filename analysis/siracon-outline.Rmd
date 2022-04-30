@@ -59,8 +59,10 @@ Import git logs from my repositories:
 
 ```{r git_logs}
 my_gitlogs <- map_dfr(
+  # nolint start: line_length_linter
   c("jbplot", "rdev", "rstudio-training", "rtraining", "siracon2022", "software-resilience", "workshop7"),
   ~ mutate(git_log(repo = paste0("../../", .x), max = .Machine$integer.max), repo = .x, .before = "commit")
+  # nolint end
 ) |>
   arrange(time)
 ```
@@ -75,7 +77,9 @@ filtered_gitlogs <- my_gitlogs |>
   filter(!(repo == "workshop7" & time > ymd_h("2021-12-07 0"))) |>
   filter(!(repo == "jbplot" & time > ymd_h("2022-02-07 0"))) |>
   mutate(repo = factor(repo, levels = c(
+    # nolint start: line_length_linter
     "rstudio-training", "software-resilience", "rtraining", "rdev", "workshop7", "jbplot", "siracon2022"
+    # nolint end
   )))
 ```
 
