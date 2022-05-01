@@ -376,16 +376,22 @@ Plot releases over time: total GitHub releases per period (for all repositories)
 release frequency.
 
 ```{r my_releases}
+# returns time in UTC: if draft, created_at, else published_at
 get_repo_releases <- function(repo, owner) {
   gh::gh("GET /repos/{owner}/{repo}/releases", owner = owner, repo = repo, .limit = Inf) |>
-    purrr::map_df(~ list(repo = repo, name = .x$name, time = .x$published_at))
+    purrr::map_df(~ list(
+      id = .x$id, name = .x$name, author = .x$author$login,
+      time = lubridate::as_datetime(ifelse(.x$draft, .x$created_at, .x$published_at)),
+      tag = .x$tag_name, draft = .x$draft, prerelease = .x$prerelease, body = .x$body
+    ))
 }
 
 # cache results
 if (!exists("my_releases")) {
   my_releases <- map_dfr(
-    c("rtraining", "rdev", "workshop7", "jbplot", "siracon2022"),
-    get_repo_releases, "jabenninghoff"
+    c("rtraining", "rdev", "workshop7", "jbplot", "siracon2022") %>% setNames(., .),
+    get_repo_releases, "jabenninghoff",
+    .id = "repo"
   ) |>
     arrange(time)
 }
