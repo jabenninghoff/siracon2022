@@ -115,6 +115,8 @@ Key dates:
   - Use renv to store package dependencies in source control
 - Trunk-based Development
   - Direct commits to master (not recommended)
+- Shifting Left on Security
+  - Start development with renv::update()
 
 2020-09-30: (Aside) First bug discovered, https://github.com/rstudio/renv/issues/547 !
 
@@ -136,7 +138,7 @@ Key dates:
 - Continuous Integration
   - Build Package
 - Continuous Testing
-  - R CMD Check
+  - R CMD check
 - Version Control
   - .Rprofile
 
@@ -146,7 +148,214 @@ Key dates:
   - build-site: shell script to publish notebooks using `rmarkdown::render_site()`
   - MVP for publishing notebooks using GitHub Pages
 
+2020-12-30: First release: rtraining 0.0.1
+
+2020-12-30: GitHub Actions
+
+- Continuous Integration, Continuous Testing
+  - R-CMD-check
+  - lintr
+
+2020-12-30: lint_all()
+
+- Continuous Integration, Continuous Testing
+  - lint all files locally
+  - first testthat tests
+  - roxygen2 documentation
+
+2020-12-30: style_all()
+
+- Continuous Integration, Code Maintainability
+  - run styler on all files locally
+
+2020-12-31: Switch GitHub Actions to lint_all()
+
+- Continuous Integration, Continuous Testing
+  - match GitHub and local CI checks
+
+2021-01-01: ci(), check_renv()
+
+- Continuous Integration, Continuous Testing
+  - run all CI checks locally
+  - eliminate toil
+  - match GitHub and local CI checks
+
+2021-01-01: Migration to rdev package
+
+- Code Maintainability
+  - Moved most functions to new rdev package
+  - Consistent tools across projects
+
+2021-01-02: Multi-platform R CMD check
+
+- Continuous Integration, Continuous Testing
+  - ensure package works on Windows and macOS
+
+2021-01-03: First version of build_analysis_site()
+
+- Deployment Automation
+  - Automatically build GitHub Pages site with functions, notebooks
+  - Still a shell script
+  - Beginning of standard deployment and release pattern:
+    - bump version
+    - write code
+    - update NEWS.md
+    - "GitHub Release"
+    - build_site
+
+2021-01-09: Analysis Package Layout
+
+- Code Maintainability
+  - Consistent package layout across projects
+  - Supported future automation for creating packages
+
+2021-01-12: Native R version of build_analysis_site()
+
+2021-01-16: Migrated build_analysis_site() from rtraining to rdev
+
+- Code Maintainability
+  - Cross-platform support
+  - Moves all automation to R Console
+- Deployment Automation
+  - Automated builds across all projects
+
+2021-09-29: Formal R Analysis Package Layout, Documented release process
+
+- Code Maintainability
+  - Consistent package layout across projects
+  - Supported future automation for creating packages
+- Deployment Automation
+  - Supported future automation for creating releases
+
+2021-12-04: Documented package creation process
+
+- Code Maintainability
+  - Consistent package layout across projects
+  - Supported future automation for creating packages
+
+2021-12-23: theme_quo(): a personalized theme to visually identify my ggplots.
+
+2022-01-01: Automate package configuration with use_analysis_package()
+
+- Code Maintainability
+  - Consistent package layout across projects
+
+2022-01-10: Create package automation (rdev 0.7.0)
+
+- `create_github_repo()`: Create new GitHub repository following rdev conventions in the active
+  user's account and create a basic package
+- `use_rdev_package()`: Add rdev templates and settings within the active package. Normally invoked
+  when first setting up a package.
+- Added `build_rdev_site()`, a wrapper for `pkgdown::build_site()` optimized for rdev workflow that
+  updates `README.md` and performs a clean build using pkgdown
+- Added 'Analysis Notebook' R markdown template for RStudio (File > New File > Rmarkdown > From
+  Template)
+- Migrated ggplot2 themes/styles (`theme_quo()`, `viridis_quo()`) to new package,
+  `jabenninghoff/jbplot`
+
+- Code Maintainability
+  - Cross-platform support
+  - Moves all automation to R Console
+- Deployment Automation
+  - Automated builds across all projects
+
+2022-01-10: Automate notebook listings in README
+
+- Deployment Automation
+
+2022-01-17: Release automation (rdev 0.8.0)
+
+- `stage_release()`: Open a GitHub pull request for a new release from NEWS.md
+- `merge_release()`: Merge a staged pull request and create a new GitHub release
+
+- Deployment Automation
+
+2022-01-19: More workflow automation
+
+- Added `new_branch()`: Create a new feature branch, and (optionally) bump the version in
+  DESCRIPTION
+
+2022-01-21 - 2022-02-06: adding test coverage
+
+- Continuous Testing
+  - Biggest challenge yet
+  - Significantly improved code quality
+  - "Unit" testing
+  - Just test
+  - Test program flow
+  - Don't test other people's code
+  - Mock external functions
+  - Fix bugs by writing a test
+  - Code coverage, and code coverage metrics
+  - Test Driven Development
+  - Tests Give You Confidence (to Refactor)
+
+(Show plot of increasing code coverage from codecov.io)
+
+2022-01-24: write_eval() is a really bad idea
+
+```r
+#' Write and evaluate an expression
+#'
+#' `write_eval(string)` is a simple wrapper that prints `string` to the console using
+#'   [`writeLines()`][base::writeLines], then executes the expression using [`parse()`][base::parse]
+#'   and [`eval()`][base::eval].
+#'
+#' @param string An expression to be printed to the console and evaluated
+#'
+#' @return The return value from the evaluated expression
+#'
+#' @examples
+#' write_eval("pi")
+#'
+#' write_eval("exp(1)")
+#' @export
+write_eval <- function(string) {
+  if (!is.character(string)) stop("not a character vector")
+  if (string == "") stop("nothing to evaluate")
+  writeLines(string)
+  eval(parse(text = string))
+}
+```
+
+2022-01-30: Manual test script for new package setup
+
+- Continuous Testing
+  - Manual tests evolve into partially or fully automated tests
+
+2022-02-02: Added `local_temppkg()` test helper function
+
+- Continuous Testing
+  - Test helpers - testing test helpers helps!
+
+2022-02-06: rdev 1.0.0 !
+
+- Release automation: Stage and create GitHub releases, including GitHub pages
+- Continuous Integration: Local continuous integration checks and dependency management
+- Package Setup: Package setup tasks, typically performed once
+
+2022-02-06 - Today: Continuous Improvement
+
+- Improve CI workflow to catch mistakes
+- Spell checks
+- Branch protection automation
+- Options
+- Dependency management
+- Product health
+
 ## Releases
 
 Plot releases over time: total GitHub releases per period (for all repositories) to show changes in
 release frequency.
+
+## Themes
+
+Reducing toil. Forming habits, which become repeated tasks, which become automation. If it's
+automated, it gets done.
+
+Functional programming (purrr) vs procedural programming. Functional programming is harder to learn,
+but safer.
+
+R dialects: base R is for functions, tidyverse R is for notebooks.
+
+"Clean" code: code should be written for future humans, including you!
