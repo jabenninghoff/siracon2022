@@ -21,6 +21,7 @@ library(gert)
 library(gh)
 library(purrr)
 library(dplyr)
+library(tidyr)
 library(lubridate)
 library(ggplot2)
 library(scales)
@@ -372,8 +373,7 @@ write_eval <- function(string) {
 
 ## Releases
 
-Plot releases over time: total GitHub releases per period (for all repositories) to show changes in
-release frequency. Don't plot releases past April 30 to remove partial months.
+Get releases from GitHub using siracon2022::gh_releases():
 
 ```{r my_releases}
 # cache results
@@ -385,16 +385,50 @@ if (!exists("my_releases")) {
   ) |>
     arrange(time)
 }
+```
 
-my_releases |>
+Filter releases past April 30 to remove partial months.
+
+```{r filtered_releases}
+filtered_releases <- my_releases |>
   mutate(time = with_tz(time, tzone = Sys.timezone())) |>
-  filter(time < ymd_h("2022-05-01 0", tz = Sys.timezone())) |>
+  filter(time < ymd_h("2022-05-01 0", tz = Sys.timezone()))
+```
+
+Plot releases over time: total GitHub releases per period (for all repositories) to show changes in
+release frequency. The dotted line marks the implementation of release automation.
+
+```{r monthly_releases}
+monthly_releases <- filtered_releases |>
   mutate(time = floor_date(time, unit = "month")) |>
   group_by(time) |>
-  summarize(releases = n(), .groups = "drop") |>
+  summarize(releases = n(), .groups = "drop")
+
+# TODO: add labels
+monthly_releases |>
   ggplot(aes(x = time, y = releases)) +
   geom_point() +
   geom_line() +
+  geom_vline(xintercept = ymd_h("2022-01-18 0", tz = Sys.timezone()), linetype = "dotted") +
+  theme_quo()
+```
+
+Also plot releases per commit, which will fall between 0 and 1.  The dotted line marks the
+implementation of release automation.
+
+```{r plot_rpc}
+# TODO: add labels
+filtered_gitlogs |>
+  mutate(time = floor_date(time, unit = "month")) |>
+  group_by(time) |>
+  summarize(commits = n()) |>
+  full_join(monthly_releases, by = "time") |>
+  replace_na(list(commits = 0, releases = 0)) |>
+  mutate(rpc = releases / commits) |>
+  ggplot(aes(x = time, y = rpc)) +
+  geom_point() +
+  geom_line() +
+  geom_vline(xintercept = ymd_h("2022-01-18 0", tz = Sys.timezone()), linetype = "dotted") +
   theme_quo()
 ```
 
