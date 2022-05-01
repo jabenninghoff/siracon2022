@@ -17,12 +17,13 @@ Outline of my 2022 SiRAcon 2022 presentation, "Making R work for you (with autom
 
 ```{r setup, message = FALSE, warning = FALSE}
 library(gert)
+library(gh)
 library(purrr)
 library(dplyr)
 library(lubridate)
 library(ggplot2)
-library(vistime)
 library(scales)
+library(vistime)
 library(jbplot)
 ```
 
@@ -60,6 +61,7 @@ Import git logs from my repositories:
 
 ```{r git_logs}
 # TODO: add data to package using methods from https://r-pkgs.org/data.html
+# TODO: open issue on gert: git_log shows rebase & merge time, while "git log" shows original time
 my_gitlogs <- map_dfr(
   c(
     "jbplot", "rdev", "rstudio-training", "rtraining", "siracon2022", "software-resilience",
@@ -372,6 +374,24 @@ write_eval <- function(string) {
 
 Plot releases over time: total GitHub releases per period (for all repositories) to show changes in
 release frequency.
+
+```{r my_releases}
+get_repo_releases <- function(repo, owner) {
+  gh::gh("GET /repos/{owner}/{repo}/releases", owner = owner, repo = repo, .limit = Inf) |>
+    purrr::map_df(~ list(repo = repo, name = .x$name, time = .x$published_at))
+}
+
+# cache results
+if (!exists("my_releases")) {
+  my_releases <- map_dfr(
+    c("rtraining", "rdev", "workshop7", "jbplot", "siracon2022"),
+    get_repo_releases, "jabenninghoff"
+  ) |>
+    arrange(time)
+}
+
+my_releases
+```
 
 ## Themes
 
