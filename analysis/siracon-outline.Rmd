@@ -375,7 +375,7 @@ write_eval <- function(string) {
 
 ## Releases
 
-Get releases from GitHub using siracon2022::gh_releases():
+Get releases from GitHub using `siracon2022::gh_releases()`:
 
 ```{r my_releases}
 # cache results
