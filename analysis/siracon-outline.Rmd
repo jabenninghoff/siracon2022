@@ -76,16 +76,17 @@ my_gitlogs <- map_dfr(
 ```
 
 Filter logs by repository, adding cutoff dates when active development ended for timeline
-visualization.
+visualization. Drop commits past April 30 to remove partial months.
 
 ```{r filtered_gitlogs}
 filtered_gitlogs <- my_gitlogs |>
-  # set filter to two days after last relevant commit
-  filter(!(repo == "rstudio-training" & time > ymd_h("2020-12-29 0"))) |>
-  filter(!(repo == "software-resilience" & time > ymd_h("2021-02-23 0"))) |>
-  filter(!(repo == "rtraining" & time > ymd_h("2021-10-09 0"))) |>
-  filter(!(repo == "workshop7" & time > ymd_h("2021-12-08 0"))) |>
-  filter(!(repo == "jbplot" & time > ymd_h("2022-02-08 0"))) |>
+  # set filter to midnight after last relevant commit, use local timezone like gert::git_log()
+  filter(!(repo == "rstudio-training" & time > ymd_h("2020-12-28 0", tz = Sys.timezone()))) |>
+  filter(!(repo == "software-resilience" & time > ymd_h("2021-02-22 0", tz = Sys.timezone()))) |>
+  filter(!(repo == "rtraining" & time > ymd_h("2021-10-08 0", tz = Sys.timezone()))) |>
+  filter(!(repo == "workshop7" & time > ymd_h("2021-12-07 0", tz = Sys.timezone()))) |>
+  filter(!(repo == "jbplot" & time > ymd_h("2022-02-07 0", tz = Sys.timezone()))) |>
+  filter(time < ymd_h("2022-05-01 0", tz = Sys.timezone())) |>
   # oldest first
   mutate(repo = factor(repo, levels = c(
     "rstudio-training", "software-resilience", "rtraining", "rdev", "workshop7", "jbplot",
@@ -374,7 +375,7 @@ write_eval <- function(string) {
 ## Releases
 
 Plot releases over time: total GitHub releases per period (for all repositories) to show changes in
-release frequency.
+release frequency. Don't plot releases past April 30 to remove partial months.
 
 ```{r my_releases}
 # cache results
@@ -387,7 +388,16 @@ if (!exists("my_releases")) {
     arrange(time)
 }
 
-my_releases
+my_releases |>
+  mutate(time = with_tz(time, tzone = Sys.timezone())) |>
+  filter(time < ymd_h("2022-05-01 0", tz = Sys.timezone())) |>
+  mutate(time = floor_date(time, unit = "month")) |>
+  group_by(time) |>
+  summarize(releases = n(), .groups = "drop") |>
+  ggplot(aes(x = time, y = releases)) +
+  geom_point() +
+  geom_line() +
+  theme_quo()
 ```
 
 ## Themes
