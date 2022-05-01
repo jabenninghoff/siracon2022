@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+<meta name="date" content="2022-04-24" />
+
+<title>SiRAcon Presentation Outline</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">siracon2022 notebooks</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="news/index.html">Changelog</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="aca-travel.html">ACA Travel Analysis</a>
+    </li>
+    <li>
+      <a href="setup-log.html">SiRAcon 2022 Setup Log</a>
+    </li>
+    <li>
+      <a href="siracon-outline.html">SiRAcon Presentation Outline</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/jabenninghoff/siracon2022/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+<li role="separator" class="divider"></li>
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">SiRAcon Presentation Outline</h1>
+<h4 class="date">2022-04-24</h4>
+
+</div>
+
+
+<p>Outline of my 2022 SiRAcon 2022 presentation, “Making R work for you
+(with automation!)”.</p>
+<div id="questionstodo" class="section level1">
+<h1>Questions/TODO</h1>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Questions/TODO list here</li>
+</ul>
+<pre class="r"><code>library(gert)
+library(purrr)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+library(jbplot)</code></pre>
+</div>
+<div id="framework" class="section level1">
+<h1>Framework</h1>
+<p>Use the <a href="assets/dora_research_program.pdf">DORA Research
+Program</a> to frame the story of how I learned R and software
+engineering by implementing the DORA DevOps technical practices:</p>
+<ul>
+<li><a
+href="https://cloud.google.com/solutions/devops/devops-tech-version-control">Version
+Control</a></li>
+<li><a
+href="https://cloud.google.com/architecture/devops/devops-tech-trunk-based-development">Trunk-based
+Development</a></li>
+<li><a
+href="https://cloud.google.com/architecture/devops/devops-tech-shifting-left-on-security">Shifting
+Left on Security</a></li>
+<li><a
+href="https://cloud.google.com/architecture/devops/devops-tech-continuous-integration">Continuous
+Integration</a></li>
+<li><a
+href="https://cloud.google.com/architecture/devops/devops-tech-test-automation">Continuous
+Testing</a></li>
+<li><a
+href="https://cloud.google.com/architecture/devops/devops-tech-deployment-automation">Deployment
+Automation</a></li>
+<li><a
+href="https://cloud.google.com/architecture/devops/devops-tech-code-maintainability">Code
+Maintainability</a> (also cover “clean” code)</li>
+</ul>
+<p><a href="https://www.devops-research.com/research.html"
+class="uri">https://www.devops-research.com/research.html</a></p>
+</div>
+<div id="timeline" class="section level1">
+<h1>Timeline</h1>
+<p>Create a timeline of my journey using <a
+href="https://shosaco.github.io/vistime/">vistime</a> or <a
+href="https://daattali.com/shiny/timevis-demo/">timevis</a>.</p>
+</div>
+<div id="data" class="section level1">
+<h1>Data</h1>
+<p>Use GitHub data to show how the DORA metrics changed over time as I
+developed and used <a
+href="https://jabenninghoff.github.io/rdev/">rdev</a>.</p>
+<div id="git-log" class="section level2">
+<h2>git log</h2>
+<p>Idea: use <code>gert::git_log()</code> tables across all my public
+and personal (private) R repositories over time to create an annotated
+timeline and visualization of my work, and implementation of the DORA
+technical practices.</p>
+<p>Import git logs from my repositories:</p>
+<pre class="r"><code>my_gitlogs &lt;- map_dfr(
+  # nolint start: line_length_linter
+  c(&quot;jbplot&quot;, &quot;rdev&quot;, &quot;rstudio-training&quot;, &quot;rtraining&quot;, &quot;siracon2022&quot;, &quot;software-resilience&quot;, &quot;workshop7&quot;),
+  ~ mutate(git_log(repo = paste0(&quot;~/GitHub/&quot;, .x), max = .Machine$integer.max), repo = .x, .before = &quot;commit&quot;)
+  # nolint end
+) |&gt;
+  arrange(time)</code></pre>
+<p>Filter logs by repository, adding cutoff dates when active
+development ended for timeline visualization.</p>
+<pre class="r"><code>filtered_gitlogs &lt;- my_gitlogs |&gt;
+  filter(!(repo == &quot;rstudio-training&quot; &amp; time &gt; ymd_h(&quot;2020-12-29 0&quot;))) |&gt;
+  filter(!(repo == &quot;software-resilience&quot; &amp; time &gt; ymd_h(&quot;2021-02-22 0&quot;))) |&gt;
+  filter(!(repo == &quot;rtraining&quot; &amp; time &gt; ymd_h(&quot;2021-10-08 0&quot;))) |&gt;
+  filter(!(repo == &quot;workshop7&quot; &amp; time &gt; ymd_h(&quot;2021-12-07 0&quot;))) |&gt;
+  filter(!(repo == &quot;jbplot&quot; &amp; time &gt; ymd_h(&quot;2022-02-07 0&quot;))) |&gt;
+  mutate(repo = factor(repo, levels = c(
+    # nolint start: line_length_linter
+    &quot;rstudio-training&quot;, &quot;software-resilience&quot;, &quot;rtraining&quot;, &quot;rdev&quot;, &quot;workshop7&quot;, &quot;jbplot&quot;, &quot;siracon2022&quot;
+    # nolint end
+  )))</code></pre>
+<p>Plot monthly commits by repository.</p>
+<pre class="r"><code>filtered_gitlogs |&gt;
+  mutate(time = floor_date(time, unit = &quot;month&quot;)) |&gt;
+  group_by(time, repo) |&gt;
+  summarize(commits = n(), .groups = &quot;drop&quot;) |&gt;
+  ggplot(aes(x = time, y = commits, color = repo)) +
+  geom_point() +
+  geom_line() +
+  theme_quo()</code></pre>
+<p><img src="siracon-outline_files/figure-html/plot_gitlogs-1.png" width="768" /></p>
+</div>
+<div id="timeline-1" class="section level2">
+<h2>Timeline</h2>
+<p>Create a timeline using groups showing the history of the
+repositories:</p>
+<ul>
+<li>training: rstudio-training, rtraining, “Working with R”</li>
+<li>development: rdev, jbplot</li>
+<li>notebooks: software-resilience, workshop7, siracon2022</li>
+</ul>
+<p>Key dates:</p>
+<p>2020-09-08: Starting out, rstudio-training, renv</p>
+<ul>
+<li>Version Control
+<ul>
+<li>Stored project files, notebook (Rmd and html) in private git
+repository</li>
+<li>Use renv to store package dependencies in source control</li>
+</ul></li>
+<li>Trunk-based Development
+<ul>
+<li>Direct commits to master (not recommended)</li>
+</ul></li>
+<li>Shifting Left on Security
+<ul>
+<li>Start development with renv::update()</li>
+</ul></li>
+</ul>
+<p>2020-09-30: (Aside) First bug discovered, <a
+href="https://github.com/rstudio/renv/issues/547"
+class="uri">https://github.com/rstudio/renv/issues/547</a> !</p>
+<p>2020-10-06: setup-r script</p>
+<ul>
+<li>Version Control
+<ul>
+<li>Automate setup of local R development environment</li>
+</ul></li>
+</ul>
+<p>2020-12-02: Adoption of styler and lintr</p>
+<ul>
+<li>Code Maintainability
+<ul>
+<li>Consistent formatting (styler)</li>
+<li>Consistent code (lintr)</li>
+</ul></li>
+<li>Continuous Testing
+<ul>
+<li>Static code analysis (lintr)</li>
+</ul></li>
+</ul>
+<p>2020-12-27: Migration to rtraining package</p>
+<ul>
+<li>Continuous Integration
+<ul>
+<li>Build Package</li>
+</ul></li>
+<li>Continuous Testing
+<ul>
+<li>R CMD check</li>
+</ul></li>
+<li>Version Control
+<ul>
+<li>.Rprofile</li>
+</ul></li>
+</ul>
+<p>2020-12-29: build-site script</p>
+<ul>
+<li>Deployment Automation
+<ul>
+<li>build-site: shell script to publish notebooks using
+<code>rmarkdown::render_site()</code></li>
+<li>MVP for publishing notebooks using GitHub Pages</li>
+</ul></li>
+</ul>
+<p>2020-12-30: First release: rtraining 0.0.1</p>
+<p>2020-12-30: GitHub Actions</p>
+<ul>
+<li>Continuous Integration, Continuous Testing
+<ul>
+<li>R-CMD-check</li>
+<li>lintr</li>
+</ul></li>
+</ul>
+<p>2020-12-30: lint_all()</p>
+<ul>
+<li>Continuous Integration, Continuous Testing
+<ul>
+<li>lint all files locally</li>
+<li>first testthat tests</li>
+<li>roxygen2 documentation</li>
+</ul></li>
+</ul>
+<p>2020-12-30: style_all()</p>
+<ul>
+<li>Continuous Integration, Code Maintainability
+<ul>
+<li>run styler on all files locally</li>
+</ul></li>
+</ul>
+<p>2020-12-31: Switch GitHub Actions to lint_all()</p>
+<ul>
+<li>Continuous Integration, Continuous Testing
+<ul>
+<li>match GitHub and local CI checks</li>
+</ul></li>
+</ul>
+<p>2021-01-01: ci(), check_renv()</p>
+<ul>
+<li>Continuous Integration, Continuous Testing
+<ul>
+<li>run all CI checks locally</li>
+<li>eliminate toil</li>
+<li>match GitHub and local CI checks</li>
+</ul></li>
+</ul>
+<p>2021-01-01: Migration to rdev package</p>
+<ul>
+<li>Code Maintainability
+<ul>
+<li>Moved most functions to new rdev package</li>
+<li>Consistent tools across projects</li>
+</ul></li>
+</ul>
+<p>2021-01-02: Multi-platform R CMD check</p>
+<ul>
+<li>Continuous Integration, Continuous Testing
+<ul>
+<li>ensure package works on Windows and macOS</li>
+</ul></li>
+</ul>
+<p>2021-01-03: First version of build_analysis_site()</p>
+<ul>
+<li>Deployment Automation
+<ul>
+<li>Automatically build GitHub Pages site with functions, notebooks</li>
+<li>Still a shell script</li>
+<li>Beginning of standard deployment and release pattern:
+<ul>
+<li>bump version</li>
+<li>write code</li>
+<li>update NEWS.md</li>
+<li>“GitHub Release”</li>
+<li>build_site</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>2021-01-09: Analysis Package Layout</p>
+<ul>
+<li>Code Maintainability
+<ul>
+<li>Consistent package layout across projects</li>
+<li>Supported future automation for creating packages</li>
+</ul></li>
+</ul>
+<p>2021-01-12: Native R version of build_analysis_site()</p>
+<p>2021-01-16: Migrated build_analysis_site() from rtraining to rdev</p>
+<ul>
+<li>Code Maintainability
+<ul>
+<li>Cross-platform support</li>
+<li>Moves all automation to R Console</li>
+</ul></li>
+<li>Deployment Automation
+<ul>
+<li>Automated builds across all projects</li>
+</ul></li>
+</ul>
+<p>2021-09-29: Formal R Analysis Package Layout, Documented release
+process</p>
+<ul>
+<li>Code Maintainability
+<ul>
+<li>Consistent package layout across projects</li>
+<li>Supported future automation for creating packages</li>
+</ul></li>
+<li>Deployment Automation
+<ul>
+<li>Supported future automation for creating releases</li>
+</ul></li>
+</ul>
+<p>2021-12-04: Documented package creation process</p>
+<ul>
+<li>Code Maintainability
+<ul>
+<li>Consistent package layout across projects</li>
+<li>Supported future automation for creating packages</li>
+</ul></li>
+</ul>
+<p>2021-12-23: theme_quo(): a personalized theme to visually identify my
+ggplots.</p>
+<p>2022-01-01: Automate package configuration with
+use_analysis_package()</p>
+<ul>
+<li>Code Maintainability
+<ul>
+<li>Consistent package layout across projects</li>
+</ul></li>
+</ul>
+<p>2022-01-10: Create package automation (rdev 0.7.0)</p>
+<ul>
+<li><p><code>create_github_repo()</code>: Create new GitHub repository
+following rdev conventions in the active user’s account and create a
+basic package</p></li>
+<li><p><code>use_rdev_package()</code>: Add rdev templates and settings
+within the active package. Normally invoked when first setting up a
+package.</p></li>
+<li><p>Added <code>build_rdev_site()</code>, a wrapper for
+<code>pkgdown::build_site()</code> optimized for rdev workflow that
+updates <code>README.md</code> and performs a clean build using
+pkgdown</p></li>
+<li><p>Added ‘Analysis Notebook’ R markdown template for RStudio (File
+&gt; New File &gt; Rmarkdown &gt; From Template)</p></li>
+<li><p>Migrated ggplot2 themes/styles (<code>theme_quo()</code>,
+<code>viridis_quo()</code>) to new package,
+<code>jabenninghoff/jbplot</code></p></li>
+<li><p>Code Maintainability</p>
+<ul>
+<li>Cross-platform support</li>
+<li>Moves all automation to R Console</li>
+</ul></li>
+<li><p>Deployment Automation</p>
+<ul>
+<li>Automated builds across all projects</li>
+</ul></li>
+</ul>
+<p>2022-01-10: Automate notebook listings in README</p>
+<ul>
+<li>Deployment Automation</li>
+</ul>
+<p>2022-01-17: Release automation (rdev 0.8.0)</p>
+<ul>
+<li><p><code>stage_release()</code>: Open a GitHub pull request for a
+new release from NEWS.md</p></li>
+<li><p><code>merge_release()</code>: Merge a staged pull request and
+create a new GitHub release</p></li>
+<li><p>Deployment Automation</p></li>
+</ul>
+<p>2022-01-19: More workflow automation</p>
+<ul>
+<li>Added <code>new_branch()</code>: Create a new feature branch, and
+(optionally) bump the version in DESCRIPTION</li>
+</ul>
+<p>2022-01-21 - 2022-02-06: adding test coverage</p>
+<ul>
+<li>Continuous Testing
+<ul>
+<li>Biggest challenge yet</li>
+<li>Significantly improved code quality</li>
+<li>“Unit” testing</li>
+<li>Just test</li>
+<li>Test program flow</li>
+<li>Don’t test other people’s code</li>
+<li>Mock external functions</li>
+<li>Fix bugs by writing a test</li>
+<li>Code coverage, and code coverage metrics</li>
+<li>Test Driven Development</li>
+<li>Tests Give You Confidence (to Refactor)</li>
+</ul></li>
+</ul>
+<p>(Show plot of increasing code coverage from codecov.io)</p>
+<p>2022-01-24: write_eval() is a really bad idea</p>
+<pre class="r"><code>#&#39; Write and evaluate an expression
+#&#39;
+#&#39; `write_eval(string)` is a simple wrapper that prints `string` to the console using
+#&#39;   [`writeLines()`][base::writeLines], then executes the expression using [`parse()`][base::parse]
+#&#39;   and [`eval()`][base::eval].
+#&#39;
+#&#39; @param string An expression to be printed to the console and evaluated
+#&#39;
+#&#39; @return The return value from the evaluated expression
+#&#39;
+#&#39; @examples
+#&#39; write_eval(&quot;pi&quot;)
+#&#39;
+#&#39; write_eval(&quot;exp(1)&quot;)
+#&#39; @export
+write_eval &lt;- function(string) {
+  if (!is.character(string)) stop(&quot;not a character vector&quot;)
+  if (string == &quot;&quot;) stop(&quot;nothing to evaluate&quot;)
+  writeLines(string)
+  eval(parse(text = string))
+}</code></pre>
+<p>2022-01-30: Manual test script for new package setup</p>
+<ul>
+<li>Continuous Testing
+<ul>
+<li>Manual tests evolve into partially or fully automated tests</li>
+</ul></li>
+</ul>
+<p>2022-02-02: Added <code>local_temppkg()</code> test helper
+function</p>
+<ul>
+<li>Continuous Testing
+<ul>
+<li>Test helpers - testing test helpers helps!</li>
+</ul></li>
+</ul>
+<p>2022-02-06: rdev 1.0.0 !</p>
+<ul>
+<li>Release automation: Stage and create GitHub releases, including
+GitHub pages</li>
+<li>Continuous Integration: Local continuous integration checks and
+dependency management</li>
+<li>Package Setup: Package setup tasks, typically performed once</li>
+</ul>
+<p>2022-02-06 - Today: Continuous Improvement</p>
+<ul>
+<li>Improve CI workflow to catch mistakes</li>
+<li>Spell checks</li>
+<li>Branch protection automation</li>
+<li>Options</li>
+<li>Dependency management</li>
+<li>Product health</li>
+</ul>
+</div>
+<div id="releases" class="section level2">
+<h2>Releases</h2>
+<p>Plot releases over time: total GitHub releases per period (for all
+repositories) to show changes in release frequency.</p>
+</div>
+<div id="themes" class="section level2">
+<h2>Themes</h2>
+<p>Reducing toil. Forming habits, which become repeated tasks, which
+become automation. If it’s automated, it gets done.</p>
+<p>Functional programming (purrr) vs procedural programming. Functional
+programming is harder to learn, but safer.</p>
+<p>R dialects: base R is for functions, tidyverse R is for
+notebooks.</p>
+<p>“Clean” code: code should be written for future humans, including
+you!</p>
+</div>
+</div>
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiBTaVJBY29uIFByZXNlbnRhdGlvbiBPdXRsaW5lCmRhdGU6ICcyMDIyLTA0LTI0JwpvdXRwdXQ6CiAgaHRtbF9kb2N1bWVudDoKICAgIHRvYzogeWVzCiAgICB0b2NfZmxvYXQ6CiAgICAgIGNvbGxhcHNlZDogbm8KICAgICAgc21vb3RoX3Njcm9sbDogbm8KLS0tCgpPdXRsaW5lIG9mIG15IDIwMjIgU2lSQWNvbiAyMDIyIHByZXNlbnRhdGlvbiwgIk1ha2luZyBSIHdvcmsgZm9yIHlvdSAod2l0aCBhdXRvbWF0aW9uISkiLgoKIyBRdWVzdGlvbnMvVE9ETwoKLSBbIF0gUXVlc3Rpb25zL1RPRE8gbGlzdCBoZXJlCgpgYGB7ciBzZXR1cCwgbWVzc2FnZSA9IEZBTFNFLCB3YXJuaW5nID0gRkFMU0V9CmxpYnJhcnkoZ2VydCkKbGlicmFyeShwdXJycikKbGlicmFyeShkcGx5cikKbGlicmFyeShsdWJyaWRhdGUpCmxpYnJhcnkoZ2dwbG90MikKbGlicmFyeShqYnBsb3QpCmBgYAoKIyBGcmFtZXdvcmsKClVzZSB0aGUgW0RPUkEgUmVzZWFyY2ggUHJvZ3JhbV0oYXNzZXRzL2RvcmFfcmVzZWFyY2hfcHJvZ3JhbS5wZGYpIHRvIGZyYW1lIHRoZSBzdG9yeSBvZiBob3cgSQpsZWFybmVkIFIgYW5kIHNvZnR3YXJlIGVuZ2luZWVyaW5nIGJ5IGltcGxlbWVudGluZyB0aGUgRE9SQSBEZXZPcHMgdGVjaG5pY2FsIHByYWN0aWNlczoKCi0gW1ZlcnNpb24gQ29udHJvbF0oaHR0cHM6Ly9jbG91ZC5nb29nbGUuY29tL3NvbHV0aW9ucy9kZXZvcHMvZGV2b3BzLXRlY2gtdmVyc2lvbi1jb250cm9sKQotIFtUcnVuay1iYXNlZCBEZXZlbG9wbWVudF0oaHR0cHM6Ly9jbG91ZC5nb29nbGUuY29tL2FyY2hpdGVjdHVyZS9kZXZvcHMvZGV2b3BzLXRlY2gtdHJ1bmstYmFzZWQtZGV2ZWxvcG1lbnQpCi0gW1NoaWZ0aW5nIExlZnQgb24gU2VjdXJpdHldKGh0dHBzOi8vY2xvdWQuZ29vZ2xlLmNvbS9hcmNoaXRlY3R1cmUvZGV2b3BzL2Rldm9wcy10ZWNoLXNoaWZ0aW5nLWxlZnQtb24tc2VjdXJpdHkpCi0gW0NvbnRpbnVvdXMgSW50ZWdyYXRpb25dKGh0dHBzOi8vY2xvdWQuZ29vZ2xlLmNvbS9hcmNoaXRlY3R1cmUvZGV2b3BzL2Rldm9wcy10ZWNoLWNvbnRpbnVvdXMtaW50ZWdyYXRpb24pCi0gW0NvbnRpbnVvdXMgVGVzdGluZ10oaHR0cHM6Ly9jbG91ZC5nb29nbGUuY29tL2FyY2hpdGVjdHVyZS9kZXZvcHMvZGV2b3BzLXRlY2gtdGVzdC1hdXRvbWF0aW9uKQotIFtEZXBsb3ltZW50IEF1dG9tYXRpb25dKGh0dHBzOi8vY2xvdWQuZ29vZ2xlLmNvbS9hcmNoaXRlY3R1cmUvZGV2b3BzL2Rldm9wcy10ZWNoLWRlcGxveW1lbnQtYXV0b21hdGlvbikKLSBbQ29kZSBNYWludGFpbmFiaWxpdHldKGh0dHBzOi8vY2xvdWQuZ29vZ2xlLmNvbS9hcmNoaXRlY3R1cmUvZGV2b3BzL2Rldm9wcy10ZWNoLWNvZGUtbWFpbnRhaW5hYmlsaXR5KQogIChhbHNvIGNvdmVyICJjbGVhbiIgY29kZSkKCjxodHRwczovL3d3dy5kZXZvcHMtcmVzZWFyY2guY29tL3Jlc2VhcmNoLmh0bWw+CgojIFRpbWVsaW5lCgpDcmVhdGUgYSB0aW1lbGluZSBvZiBteSBqb3VybmV5IHVzaW5nIFt2aXN0aW1lXShodHRwczovL3Nob3NhY28uZ2l0aHViLmlvL3Zpc3RpbWUvKSBvcgpbdGltZXZpc10oaHR0cHM6Ly9kYWF0dGFsaS5jb20vc2hpbnkvdGltZXZpcy1kZW1vLykuCgojIERhdGEKClVzZSBHaXRIdWIgZGF0YSB0byBzaG93IGhvdyB0aGUgRE9SQSBtZXRyaWNzIGNoYW5nZWQgb3ZlciB0aW1lIGFzIEkgZGV2ZWxvcGVkIGFuZCB1c2VkCltyZGV2XShodHRwczovL2phYmVubmluZ2hvZmYuZ2l0aHViLmlvL3JkZXYvKS4KCiMjIGdpdCBsb2cKCklkZWE6IHVzZSBgZ2VydDo6Z2l0X2xvZygpYCB0YWJsZXMgYWNyb3NzIGFsbCBteSBwdWJsaWMgYW5kIHBlcnNvbmFsIChwcml2YXRlKSBSIHJlcG9zaXRvcmllcyBvdmVyCnRpbWUgdG8gY3JlYXRlIGFuIGFubm90YXRlZCB0aW1lbGluZSBhbmQgdmlzdWFsaXphdGlvbiBvZiBteSB3b3JrLCBhbmQgaW1wbGVtZW50YXRpb24gb2YgdGhlIERPUkEKdGVjaG5pY2FsIHByYWN0aWNlcy4KCkltcG9ydCBnaXQgbG9ncyBmcm9tIG15IHJlcG9zaXRvcmllczoKCmBgYHtyIGdpdF9sb2dzfQpteV9naXRsb2dzIDwtIG1hcF9kZnIoCiAgIyBub2xpbnQgc3RhcnQ6IGxpbmVfbGVuZ3RoX2xpbnRlcgogIGMoImpicGxvdCIsICJyZGV2IiwgInJzdHVkaW8tdHJhaW5pbmciLCAicnRyYWluaW5nIiwgInNpcmFjb24yMDIyIiwgInNvZnR3YXJlLXJlc2lsaWVuY2UiLCAid29ya3Nob3A3IiksCiAgfiBtdXRhdGUoZ2l0X2xvZyhyZXBvID0gcGFzdGUwKCJ+L0dpdEh1Yi8iLCAueCksIG1heCA9IC5NYWNoaW5lJGludGVnZXIubWF4KSwgcmVwbyA9IC54LCAuYmVmb3JlID0gImNvbW1pdCIpCiAgIyBub2xpbnQgZW5kCikgfD4KICBhcnJhbmdlKHRpbWUpCmBgYAoKRmlsdGVyIGxvZ3MgYnkgcmVwb3NpdG9yeSwgYWRkaW5nIGN1dG9mZiBkYXRlcyB3aGVuIGFjdGl2ZSBkZXZlbG9wbWVudCBlbmRlZCBmb3IgdGltZWxpbmUKdmlzdWFsaXphdGlvbi4KCmBgYHtyIGZpbHRlcmVkX2dpdGxvZ3N9CmZpbHRlcmVkX2dpdGxvZ3MgPC0gbXlfZ2l0bG9ncyB8PgogIGZpbHRlcighKHJlcG8gPT0gInJzdHVkaW8tdHJhaW5pbmciICYgdGltZSA+IHltZF9oKCIyMDIwLTEyLTI5IDAiKSkpIHw+CiAgZmlsdGVyKCEocmVwbyA9PSAic29mdHdhcmUtcmVzaWxpZW5jZSIgJiB0aW1lID4geW1kX2goIjIwMjEtMDItMjIgMCIpKSkgfD4KICBmaWx0ZXIoIShyZXBvID09ICJydHJhaW5pbmciICYgdGltZSA+IHltZF9oKCIyMDIxLTEwLTA4IDAiKSkpIHw+CiAgZmlsdGVyKCEocmVwbyA9PSAid29ya3Nob3A3IiAmIHRpbWUgPiB5bWRfaCgiMjAyMS0xMi0wNyAwIikpKSB8PgogIGZpbHRlcighKHJlcG8gPT0gImpicGxvdCIgJiB0aW1lID4geW1kX2goIjIwMjItMDItMDcgMCIpKSkgfD4KICBtdXRhdGUocmVwbyA9IGZhY3RvcihyZXBvLCBsZXZlbHMgPSBjKAogICAgIyBub2xpbnQgc3RhcnQ6IGxpbmVfbGVuZ3RoX2xpbnRlcgogICAgInJzdHVkaW8tdHJhaW5pbmciLCAic29mdHdhcmUtcmVzaWxpZW5jZSIsICJydHJhaW5pbmciLCAicmRldiIsICJ3b3Jrc2hvcDciLCAiamJwbG90IiwgInNpcmFjb24yMDIyIgogICAgIyBub2xpbnQgZW5kCiAgKSkpCmBgYAoKUGxvdCBtb250aGx5IGNvbW1pdHMgYnkgcmVwb3NpdG9yeS4KCmBgYHtyIHBsb3RfZ2l0bG9nc30KZmlsdGVyZWRfZ2l0bG9ncyB8PgogIG11dGF0ZSh0aW1lID0gZmxvb3JfZGF0ZSh0aW1lLCB1bml0ID0gIm1vbnRoIikpIHw+CiAgZ3JvdXBfYnkodGltZSwgcmVwbykgfD4KICBzdW1tYXJpemUoY29tbWl0cyA9IG4oKSwgLmdyb3VwcyA9ICJkcm9wIikgfD4KICBnZ3Bsb3QoYWVzKHggPSB0aW1lLCB5ID0gY29tbWl0cywgY29sb3IgPSByZXBvKSkgKwogIGdlb21fcG9pbnQoKSArCiAgZ2VvbV9saW5lKCkgKwogIHRoZW1lX3F1bygpCmBgYAoKIyMgVGltZWxpbmUKCkNyZWF0ZSBhIHRpbWVsaW5lIHVzaW5nIGdyb3VwcyBzaG93aW5nIHRoZSBoaXN0b3J5IG9mIHRoZSByZXBvc2l0b3JpZXM6CgotIHRyYWluaW5nOiByc3R1ZGlvLXRyYWluaW5nLCBydHJhaW5pbmcsICJXb3JraW5nIHdpdGggUiIKLSBkZXZlbG9wbWVudDogcmRldiwgamJwbG90Ci0gbm90ZWJvb2tzOiBzb2Z0d2FyZS1yZXNpbGllbmNlLCB3b3Jrc2hvcDcsIHNpcmFjb24yMDIyCgpLZXkgZGF0ZXM6CgoyMDIwLTA5LTA4OiBTdGFydGluZyBvdXQsIHJzdHVkaW8tdHJhaW5pbmcsIHJlbnYKCi0gVmVyc2lvbiBDb250cm9sCiAgLSBTdG9yZWQgcHJvamVjdCBmaWxlcywgbm90ZWJvb2sgKFJtZCBhbmQgaHRtbCkgaW4gcHJpdmF0ZSBnaXQgcmVwb3NpdG9yeQogIC0gVXNlIHJlbnYgdG8gc3RvcmUgcGFja2FnZSBkZXBlbmRlbmNpZXMgaW4gc291cmNlIGNvbnRyb2wKLSBUcnVuay1iYXNlZCBEZXZlbG9wbWVudAogIC0gRGlyZWN0IGNvbW1pdHMgdG8gbWFzdGVyIChub3QgcmVjb21tZW5kZWQpCi0gU2hpZnRpbmcgTGVmdCBvbiBTZWN1cml0eQogIC0gU3RhcnQgZGV2ZWxvcG1lbnQgd2l0aCByZW52Ojp1cGRhdGUoKQoKMjAyMC0wOS0zMDogKEFzaWRlKSBGaXJzdCBidWcgZGlzY292ZXJlZCwgaHR0cHM6Ly9naXRodWIuY29tL3JzdHVkaW8vcmVudi9pc3N1ZXMvNTQ3ICEKCjIwMjAtMTAtMDY6IHNldHVwLXIgc2NyaXB0CgotIFZlcnNpb24gQ29udHJvbAogIC0gQXV0b21hdGUgc2V0dXAgb2YgbG9jYWwgUiBkZXZlbG9wbWVudCBlbnZpcm9ubWVudAoKMjAyMC0xMi0wMjogQWRvcHRpb24gb2Ygc3R5bGVyIGFuZCBsaW50cgoKLSBDb2RlIE1haW50YWluYWJpbGl0eQogIC0gQ29uc2lzdGVudCBmb3JtYXR0aW5nIChzdHlsZXIpCiAgLSBDb25zaXN0ZW50IGNvZGUgKGxpbnRyKQotIENvbnRpbnVvdXMgVGVzdGluZwogIC0gU3RhdGljIGNvZGUgYW5hbHlzaXMgKGxpbnRyKQoKMjAyMC0xMi0yNzogTWlncmF0aW9uIHRvIHJ0cmFpbmluZyBwYWNrYWdlCgotIENvbnRpbnVvdXMgSW50ZWdyYXRpb24KICAtIEJ1aWxkIFBhY2thZ2UKLSBDb250aW51b3VzIFRlc3RpbmcKICAtIFIgQ01EIGNoZWNrCi0gVmVyc2lvbiBDb250cm9sCiAgLSAuUnByb2ZpbGUKCjIwMjAtMTItMjk6IGJ1aWxkLXNpdGUgc2NyaXB0CgotIERlcGxveW1lbnQgQXV0b21hdGlvbgogIC0gYnVpbGQtc2l0ZTogc2hlbGwgc2NyaXB0IHRvIHB1Ymxpc2ggbm90ZWJvb2tzIHVzaW5nIGBybWFya2Rvd246OnJlbmRlcl9zaXRlKClgCiAgLSBNVlAgZm9yIHB1Ymxpc2hpbmcgbm90ZWJvb2tzIHVzaW5nIEdpdEh1YiBQYWdlcwoKMjAyMC0xMi0zMDogRmlyc3QgcmVsZWFzZTogcnRyYWluaW5nIDAuMC4xCgoyMDIwLTEyLTMwOiBHaXRIdWIgQWN0aW9ucwoKLSBDb250aW51b3VzIEludGVncmF0aW9uLCBDb250aW51b3VzIFRlc3RpbmcKICAtIFItQ01ELWNoZWNrCiAgLSBsaW50cgoKMjAyMC0xMi0zMDogbGludF9hbGwoKQoKLSBDb250aW51b3VzIEludGVncmF0aW9uLCBDb250aW51b3VzIFRlc3RpbmcKICAtIGxpbnQgYWxsIGZpbGVzIGxvY2FsbHkKICAtIGZpcnN0IHRlc3R0aGF0IHRlc3RzCiAgLSByb3h5Z2VuMiBkb2N1bWVudGF0aW9uCgoyMDIwLTEyLTMwOiBzdHlsZV9hbGwoKQoKLSBDb250aW51b3VzIEludGVncmF0aW9uLCBDb2RlIE1haW50YWluYWJpbGl0eQogIC0gcnVuIHN0eWxlciBvbiBhbGwgZmlsZXMgbG9jYWxseQoKMjAyMC0xMi0zMTogU3dpdGNoIEdpdEh1YiBBY3Rpb25zIHRvIGxpbnRfYWxsKCkKCi0gQ29udGludW91cyBJbnRlZ3JhdGlvbiwgQ29udGludW91cyBUZXN0aW5nCiAgLSBtYXRjaCBHaXRIdWIgYW5kIGxvY2FsIENJIGNoZWNrcwoKMjAyMS0wMS0wMTogY2koKSwgY2hlY2tfcmVudigpCgotIENvbnRpbnVvdXMgSW50ZWdyYXRpb24sIENvbnRpbnVvdXMgVGVzdGluZwogIC0gcnVuIGFsbCBDSSBjaGVja3MgbG9jYWxseQogIC0gZWxpbWluYXRlIHRvaWwKICAtIG1hdGNoIEdpdEh1YiBhbmQgbG9jYWwgQ0kgY2hlY2tzCgoyMDIxLTAxLTAxOiBNaWdyYXRpb24gdG8gcmRldiBwYWNrYWdlCgotIENvZGUgTWFpbnRhaW5hYmlsaXR5CiAgLSBNb3ZlZCBtb3N0IGZ1bmN0aW9ucyB0byBuZXcgcmRldiBwYWNrYWdlCiAgLSBDb25zaXN0ZW50IHRvb2xzIGFjcm9zcyBwcm9qZWN0cwoKMjAyMS0wMS0wMjogTXVsdGktcGxhdGZvcm0gUiBDTUQgY2hlY2sKCi0gQ29udGludW91cyBJbnRlZ3JhdGlvbiwgQ29udGludW91cyBUZXN0aW5nCiAgLSBlbnN1cmUgcGFja2FnZSB3b3JrcyBvbiBXaW5kb3dzIGFuZCBtYWNPUwoKMjAyMS0wMS0wMzogRmlyc3QgdmVyc2lvbiBvZiBidWlsZF9hbmFseXNpc19zaXRlKCkKCi0gRGVwbG95bWVudCBBdXRvbWF0aW9uCiAgLSBBdXRvbWF0aWNhbGx5IGJ1aWxkIEdpdEh1YiBQYWdlcyBzaXRlIHdpdGggZnVuY3Rpb25zLCBub3RlYm9va3MKICAtIFN0aWxsIGEgc2hlbGwgc2NyaXB0CiAgLSBCZWdpbm5pbmcgb2Ygc3RhbmRhcmQgZGVwbG95bWVudCBhbmQgcmVsZWFzZSBwYXR0ZXJuOgogICAgLSBidW1wIHZlcnNpb24KICAgIC0gd3JpdGUgY29kZQogICAgLSB1cGRhdGUgTkVXUy5tZAogICAgLSAiR2l0SHViIFJlbGVhc2UiCiAgICAtIGJ1aWxkX3NpdGUKCjIwMjEtMDEtMDk6IEFuYWx5c2lzIFBhY2thZ2UgTGF5b3V0CgotIENvZGUgTWFpbnRhaW5hYmlsaXR5CiAgLSBDb25zaXN0ZW50IHBhY2thZ2UgbGF5b3V0IGFjcm9zcyBwcm9qZWN0cwogIC0gU3VwcG9ydGVkIGZ1dHVyZSBhdXRvbWF0aW9uIGZvciBjcmVhdGluZyBwYWNrYWdlcwoKMjAyMS0wMS0xMjogTmF0aXZlIFIgdmVyc2lvbiBvZiBidWlsZF9hbmFseXNpc19zaXRlKCkKCjIwMjEtMDEtMTY6IE1pZ3JhdGVkIGJ1aWxkX2FuYWx5c2lzX3NpdGUoKSBmcm9tIHJ0cmFpbmluZyB0byByZGV2CgotIENvZGUgTWFpbnRhaW5hYmlsaXR5CiAgLSBDcm9zcy1wbGF0Zm9ybSBzdXBwb3J0CiAgLSBNb3ZlcyBhbGwgYXV0b21hdGlvbiB0byBSIENvbnNvbGUKLSBEZXBsb3ltZW50IEF1dG9tYXRpb24KICAtIEF1dG9tYXRlZCBidWlsZHMgYWNyb3NzIGFsbCBwcm9qZWN0cwoKMjAyMS0wOS0yOTogRm9ybWFsIFIgQW5hbHlzaXMgUGFja2FnZSBMYXlvdXQsIERvY3VtZW50ZWQgcmVsZWFzZSBwcm9jZXNzCgotIENvZGUgTWFpbnRhaW5hYmlsaXR5CiAgLSBDb25zaXN0ZW50IHBhY2thZ2UgbGF5b3V0IGFjcm9zcyBwcm9qZWN0cwogIC0gU3VwcG9ydGVkIGZ1dHVyZSBhdXRvbWF0aW9uIGZvciBjcmVhdGluZyBwYWNrYWdlcwotIERlcGxveW1lbnQgQXV0b21hdGlvbgogIC0gU3VwcG9ydGVkIGZ1dHVyZSBhdXRvbWF0aW9uIGZvciBjcmVhdGluZyByZWxlYXNlcwoKMjAyMS0xMi0wNDogRG9jdW1lbnRlZCBwYWNrYWdlIGNyZWF0aW9uIHByb2Nlc3MKCi0gQ29kZSBNYWludGFpbmFiaWxpdHkKICAtIENvbnNpc3RlbnQgcGFja2FnZSBsYXlvdXQgYWNyb3NzIHByb2plY3RzCiAgLSBTdXBwb3J0ZWQgZnV0dXJlIGF1dG9tYXRpb24gZm9yIGNyZWF0aW5nIHBhY2thZ2VzCgoyMDIxLTEyLTIzOiB0aGVtZV9xdW8oKTogYSBwZXJzb25hbGl6ZWQgdGhlbWUgdG8gdmlzdWFsbHkgaWRlbnRpZnkgbXkgZ2dwbG90cy4KCjIwMjItMDEtMDE6IEF1dG9tYXRlIHBhY2thZ2UgY29uZmlndXJhdGlvbiB3aXRoIHVzZV9hbmFseXNpc19wYWNrYWdlKCkKCi0gQ29kZSBNYWludGFpbmFiaWxpdHkKICAtIENvbnNpc3RlbnQgcGFja2FnZSBsYXlvdXQgYWNyb3NzIHByb2plY3RzCgoyMDIyLTAxLTEwOiBDcmVhdGUgcGFja2FnZSBhdXRvbWF0aW9uIChyZGV2IDAuNy4wKQoKLSBgY3JlYXRlX2dpdGh1Yl9yZXBvKClgOiBDcmVhdGUgbmV3IEdpdEh1YiByZXBvc2l0b3J5IGZvbGxvd2luZyByZGV2IGNvbnZlbnRpb25zIGluIHRoZSBhY3RpdmUKICB1c2VyJ3MgYWNjb3VudCBhbmQgY3JlYXRlIGEgYmFzaWMgcGFja2FnZQotIGB1c2VfcmRldl9wYWNrYWdlKClgOiBBZGQgcmRldiB0ZW1wbGF0ZXMgYW5kIHNldHRpbmdzIHdpdGhpbiB0aGUgYWN0aXZlIHBhY2thZ2UuIE5vcm1hbGx5IGludm9rZWQKICB3aGVuIGZpcnN0IHNldHRpbmcgdXAgYSBwYWNrYWdlLgotIEFkZGVkIGBidWlsZF9yZGV2X3NpdGUoKWAsIGEgd3JhcHBlciBmb3IgYHBrZ2Rvd246OmJ1aWxkX3NpdGUoKWAgb3B0aW1pemVkIGZvciByZGV2IHdvcmtmbG93IHRoYXQKICB1cGRhdGVzIGBSRUFETUUubWRgIGFuZCBwZXJmb3JtcyBhIGNsZWFuIGJ1aWxkIHVzaW5nIHBrZ2Rvd24KLSBBZGRlZCAnQW5hbHlzaXMgTm90ZWJvb2snIFIgbWFya2Rvd24gdGVtcGxhdGUgZm9yIFJTdHVkaW8gKEZpbGUgPiBOZXcgRmlsZSA+IFJtYXJrZG93biA+IEZyb20KICBUZW1wbGF0ZSkKLSBNaWdyYXRlZCBnZ3Bsb3QyIHRoZW1lcy9zdHlsZXMgKGB0aGVtZV9xdW8oKWAsIGB2aXJpZGlzX3F1bygpYCkgdG8gbmV3IHBhY2thZ2UsCiAgYGphYmVubmluZ2hvZmYvamJwbG90YAoKLSBDb2RlIE1haW50YWluYWJpbGl0eQogIC0gQ3Jvc3MtcGxhdGZvcm0gc3VwcG9ydAogIC0gTW92ZXMgYWxsIGF1dG9tYXRpb24gdG8gUiBDb25zb2xlCi0gRGVwbG95bWVudCBBdXRvbWF0aW9uCiAgLSBBdXRvbWF0ZWQgYnVpbGRzIGFjcm9zcyBhbGwgcHJvamVjdHMKCjIwMjItMDEtMTA6IEF1dG9tYXRlIG5vdGVib29rIGxpc3RpbmdzIGluIFJFQURNRQoKLSBEZXBsb3ltZW50IEF1dG9tYXRpb24KCjIwMjItMDEtMTc6IFJlbGVhc2UgYXV0b21hdGlvbiAocmRldiAwLjguMCkKCi0gYHN0YWdlX3JlbGVhc2UoKWA6IE9wZW4gYSBHaXRIdWIgcHVsbCByZXF1ZXN0IGZvciBhIG5ldyByZWxlYXNlIGZyb20gTkVXUy5tZAotIGBtZXJnZV9yZWxlYXNlKClgOiBNZXJnZSBhIHN0YWdlZCBwdWxsIHJlcXVlc3QgYW5kIGNyZWF0ZSBhIG5ldyBHaXRIdWIgcmVsZWFzZQoKLSBEZXBsb3ltZW50IEF1dG9tYXRpb24KCjIwMjItMDEtMTk6IE1vcmUgd29ya2Zsb3cgYXV0b21hdGlvbgoKLSBBZGRlZCBgbmV3X2JyYW5jaCgpYDogQ3JlYXRlIGEgbmV3IGZlYXR1cmUgYnJhbmNoLCBhbmQgKG9wdGlvbmFsbHkpIGJ1bXAgdGhlIHZlcnNpb24gaW4KICBERVNDUklQVElPTgoKMjAyMi0wMS0yMSAtIDIwMjItMDItMDY6IGFkZGluZyB0ZXN0IGNvdmVyYWdlCgotIENvbnRpbnVvdXMgVGVzdGluZwogIC0gQmlnZ2VzdCBjaGFsbGVuZ2UgeWV0CiAgLSBTaWduaWZpY2FudGx5IGltcHJvdmVkIGNvZGUgcXVhbGl0eQogIC0gIlVuaXQiIHRlc3RpbmcKICAtIEp1c3QgdGVzdAogIC0gVGVzdCBwcm9ncmFtIGZsb3cKICAtIERvbid0IHRlc3Qgb3RoZXIgcGVvcGxlJ3MgY29kZQogIC0gTW9jayBleHRlcm5hbCBmdW5jdGlvbnMKICAtIEZpeCBidWdzIGJ5IHdyaXRpbmcgYSB0ZXN0CiAgLSBDb2RlIGNvdmVyYWdlLCBhbmQgY29kZSBjb3ZlcmFnZSBtZXRyaWNzCiAgLSBUZXN0IERyaXZlbiBEZXZlbG9wbWVudAogIC0gVGVzdHMgR2l2ZSBZb3UgQ29uZmlkZW5jZSAodG8gUmVmYWN0b3IpCgooU2hvdyBwbG90IG9mIGluY3JlYXNpbmcgY29kZSBjb3ZlcmFnZSBmcm9tIGNvZGVjb3YuaW8pCgoyMDIyLTAxLTI0OiB3cml0ZV9ldmFsKCkgaXMgYSByZWFsbHkgYmFkIGlkZWEKCmBgYHIKIycgV3JpdGUgYW5kIGV2YWx1YXRlIGFuIGV4cHJlc3Npb24KIycKIycgYHdyaXRlX2V2YWwoc3RyaW5nKWAgaXMgYSBzaW1wbGUgd3JhcHBlciB0aGF0IHByaW50cyBgc3RyaW5nYCB0byB0aGUgY29uc29sZSB1c2luZwojJyAgIFtgd3JpdGVMaW5lcygpYF1bYmFzZTo6d3JpdGVMaW5lc10sIHRoZW4gZXhlY3V0ZXMgdGhlIGV4cHJlc3Npb24gdXNpbmcgW2BwYXJzZSgpYF1bYmFzZTo6cGFyc2VdCiMnICAgYW5kIFtgZXZhbCgpYF1bYmFzZTo6ZXZhbF0uCiMnCiMnIEBwYXJhbSBzdHJpbmcgQW4gZXhwcmVzc2lvbiB0byBiZSBwcmludGVkIHRvIHRoZSBjb25zb2xlIGFuZCBldmFsdWF0ZWQKIycKIycgQHJldHVybiBUaGUgcmV0dXJuIHZhbHVlIGZyb20gdGhlIGV2YWx1YXRlZCBleHByZXNzaW9uCiMnCiMnIEBleGFtcGxlcwojJyB3cml0ZV9ldmFsKCJwaSIpCiMnCiMnIHdyaXRlX2V2YWwoImV4cCgxKSIpCiMnIEBleHBvcnQKd3JpdGVfZXZhbCA8LSBmdW5jdGlvbihzdHJpbmcpIHsKICBpZiAoIWlzLmNoYXJhY3RlcihzdHJpbmcpKSBzdG9wKCJub3QgYSBjaGFyYWN0ZXIgdmVjdG9yIikKICBpZiAoc3RyaW5nID09ICIiKSBzdG9wKCJub3RoaW5nIHRvIGV2YWx1YXRlIikKICB3cml0ZUxpbmVzKHN0cmluZykKICBldmFsKHBhcnNlKHRleHQgPSBzdHJpbmcpKQp9CmBgYAoKMjAyMi0wMS0zMDogTWFudWFsIHRlc3Qgc2NyaXB0IGZvciBuZXcgcGFja2FnZSBzZXR1cAoKLSBDb250aW51b3VzIFRlc3RpbmcKICAtIE1hbnVhbCB0ZXN0cyBldm9sdmUgaW50byBwYXJ0aWFsbHkgb3IgZnVsbHkgYXV0b21hdGVkIHRlc3RzCgoyMDIyLTAyLTAyOiBBZGRlZCBgbG9jYWxfdGVtcHBrZygpYCB0ZXN0IGhlbHBlciBmdW5jdGlvbgoKLSBDb250aW51b3VzIFRlc3RpbmcKICAtIFRlc3QgaGVscGVycyAtIHRlc3RpbmcgdGVzdCBoZWxwZXJzIGhlbHBzIQoKMjAyMi0wMi0wNjogcmRldiAxLjAuMCAhCgotIFJlbGVhc2UgYXV0b21hdGlvbjogU3RhZ2UgYW5kIGNyZWF0ZSBHaXRIdWIgcmVsZWFzZXMsIGluY2x1ZGluZyBHaXRIdWIgcGFnZXMKLSBDb250aW51b3VzIEludGVncmF0aW9uOiBMb2NhbCBjb250aW51b3VzIGludGVncmF0aW9uIGNoZWNrcyBhbmQgZGVwZW5kZW5jeSBtYW5hZ2VtZW50Ci0gUGFja2FnZSBTZXR1cDogUGFja2FnZSBzZXR1cCB0YXNrcywgdHlwaWNhbGx5IHBlcmZvcm1lZCBvbmNlCgoyMDIyLTAyLTA2IC0gVG9kYXk6IENvbnRpbnVvdXMgSW1wcm92ZW1lbnQKCi0gSW1wcm92ZSBDSSB3b3JrZmxvdyB0byBjYXRjaCBtaXN0YWtlcwotIFNwZWxsIGNoZWNrcwotIEJyYW5jaCBwcm90ZWN0aW9uIGF1dG9tYXRpb24KLSBPcHRpb25zCi0gRGVwZW5kZW5jeSBtYW5hZ2VtZW50Ci0gUHJvZHVjdCBoZWFsdGgKCiMjIFJlbGVhc2VzCgpQbG90IHJlbGVhc2VzIG92ZXIgdGltZTogdG90YWwgR2l0SHViIHJlbGVhc2VzIHBlciBwZXJpb2QgKGZvciBhbGwgcmVwb3NpdG9yaWVzKSB0byBzaG93IGNoYW5nZXMgaW4KcmVsZWFzZSBmcmVxdWVuY3kuCgojIyBUaGVtZXMKClJlZHVjaW5nIHRvaWwuIEZvcm1pbmcgaGFiaXRzLCB3aGljaCBiZWNvbWUgcmVwZWF0ZWQgdGFza3MsIHdoaWNoIGJlY29tZSBhdXRvbWF0aW9uLiBJZiBpdCdzCmF1dG9tYXRlZCwgaXQgZ2V0cyBkb25lLgoKRnVuY3Rpb25hbCBwcm9ncmFtbWluZyAocHVycnIpIHZzIHByb2NlZHVyYWwgcHJvZ3JhbW1pbmcuIEZ1bmN0aW9uYWwgcHJvZ3JhbW1pbmcgaXMgaGFyZGVyIHRvIGxlYXJuLApidXQgc2FmZXIuCgpSIGRpYWxlY3RzOiBiYXNlIFIgaXMgZm9yIGZ1bmN0aW9ucywgdGlkeXZlcnNlIFIgaXMgZm9yIG5vdGVib29rcy4KCiJDbGVhbiIgY29kZTogY29kZSBzaG91bGQgYmUgd3JpdHRlbiBmb3IgZnV0dXJlIGh1bWFucywgaW5jbHVkaW5nIHlvdSEK</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("siracon-outline.Rmd");
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

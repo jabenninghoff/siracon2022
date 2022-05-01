@@ -19,8 +19,12 @@ navbar:
     analysis:
       text: Analysis
       menu:
+      - text: ACA Travel Analysis
+        href: aca-travel.html
       - text: SiRAcon 2022 Setup Log
         href: setup-log.html
+      - text: SiRAcon Presentation Outline
+        href: siracon-outline.html
     github:
       icon: fab fa-github fa-lg
       href: https://github.com/jabenninghoff/siracon2022/
