@@ -10,6 +10,10 @@ License: MIT + file LICENSE
 URL: https://jabenninghoff.github.io/siracon2022,
     https://github.com/jabenninghoff/siracon2022
 BugReports: https://github.com/jabenninghoff/siracon2022/issues
+Imports:
+    gh,
+    lubridate,
+    purrr
 Suggests: 
     anyflights,
     desc,
@@ -20,9 +24,7 @@ Suggests:
     ggplot2,
     jbplot,
     knitr,
-    lubridate,
     pkgdown,
-    purrr,
     rdev,
     rmarkdown,
     spelling,
