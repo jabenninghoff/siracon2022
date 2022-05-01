@@ -98,7 +98,6 @@ filtered_gitlogs <- my_gitlogs |>
 Plot monthly commits by repository.
 
 ```{r plot_gitlogs}
-# TODO: add labels
 filtered_gitlogs |>
   mutate(time = floor_date(time, unit = "month")) |>
   group_by(time, repo) |>
@@ -106,6 +105,8 @@ filtered_gitlogs |>
   ggplot(aes(x = time, y = commits, color = repo)) +
   geom_point() +
   geom_line() +
+  labs(title = "Monthly commits by repository") +
+  labs(x = "", y = "", color = "repository") +
   theme_quo()
 ```
 
@@ -113,7 +114,7 @@ filtered_gitlogs |>
 
 Create a timeline using groups showing the history of the repositories:
 
-- training: rstudio-training, rtraining, "Working with R"
+- training: rstudio-training, rtraining
 - development: rdev, jbplot
 - notebooks: software-resilience, workshop7, siracon2022
 
@@ -146,11 +147,13 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
 - Trunk-based Development
   - Direct commits to master (not recommended)
 - Shifting Left on Security
-  - Start development with renv::update()
+  - Start development with `renv::update()`
 
 2020-09-30: (Aside) First bug discovered, https://github.com/rstudio/renv/issues/547 !
 
-2020-10-06: setup-r script
+2020-09-11: Published ["Working with R"](https://www.information-safety.org/2020/09/11/working-with-r/)
+
+2020-10-06: `setup-r` script
 
 - Version Control
   - Automate setup of local R development environment
@@ -186,24 +189,24 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
   - R-CMD-check
   - lintr
 
-2020-12-30: lint_all()
+2020-12-30: `lint_all()`
 
 - Continuous Integration, Continuous Testing
   - lint all files locally
   - first testthat tests
   - roxygen2 documentation
 
-2020-12-30: style_all()
+2020-12-30: `style_all()`
 
 - Continuous Integration, Code Maintainability
   - run styler on all files locally
 
-2020-12-31: Switch GitHub Actions to lint_all()
+2020-12-31: Switch GitHub Actions to `lint_all()`
 
 - Continuous Integration, Continuous Testing
   - match GitHub and local CI checks
 
-2021-01-01: ci(), check_renv()
+2021-01-01: `ci()`, `check_renv()`
 
 - Continuous Integration, Continuous Testing
   - run all CI checks locally
@@ -221,7 +224,7 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
 - Continuous Integration, Continuous Testing
   - ensure package works on Windows and macOS
 
-2021-01-03: First version of build_analysis_site()
+2021-01-03: First version of `build_analysis_site()`
 
 - Deployment Automation
   - Automatically build GitHub Pages site with functions, notebooks
@@ -239,9 +242,9 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
   - Consistent package layout across projects
   - Supported future automation for creating packages
 
-2021-01-12: Native R version of build_analysis_site()
+2021-01-12: Native R version of `build_analysis_site()`
 
-2021-01-16: Migrated build_analysis_site() from rtraining to rdev
+2021-01-16: Migrated `build_analysis_site()` from rtraining to rdev
 
 - Code Maintainability
   - Cross-platform support
@@ -263,9 +266,9 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
   - Consistent package layout across projects
   - Supported future automation for creating packages
 
-2021-12-23: theme_quo(): a personalized theme to visually identify my ggplots.
+2021-12-23: `theme_quo()`: a personalized theme to visually identify my ggplots.
 
-2022-01-01: Automate package configuration with use_analysis_package()
+2022-01-01: Automate package configuration with `use_analysis_package()`
 
 - Code Maintainability
   - Consistent package layout across projects
@@ -322,7 +325,7 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
 
 (Show plot of increasing code coverage from codecov.io)
 
-2022-01-24: write_eval() is a really bad idea
+2022-01-24: write_eval() is a really bad idea:
 
 ```r
 #' Write and evaluate an expression
@@ -406,20 +409,21 @@ monthly_releases <- filtered_releases |>
   group_by(time) |>
   summarize(releases = n(), .groups = "drop")
 
-# TODO: add labels
 monthly_releases |>
   ggplot(aes(x = time, y = releases)) +
   geom_point() +
   geom_line() +
-  geom_vline(xintercept = ymd_h("2022-01-18 0", tz = Sys.timezone()), linetype = "dotted") +
+  geom_vline(xintercept = ymd_h("2022-01-01 0", tz = Sys.timezone()), linetype = "dotted") +
+  coord_cartesian(ylim = c(0, NA)) +
+  labs(title = "Monthly GitHub releases") +
+  labs(x = "", y = "") +
   theme_quo()
 ```
 
-Also plot releases per commit, which will fall between 0 and 1.  The dotted line marks the
-implementation of release automation.
+Also plot releases per commit, which will fall between 0 and 1. The dotted lines mark adoption of
+GitHub and implementation of release automation.
 
 ```{r plot_rpc}
-# TODO: add labels
 filtered_gitlogs |>
   mutate(time = floor_date(time, unit = "month")) |>
   group_by(time) |>
@@ -430,7 +434,10 @@ filtered_gitlogs |>
   ggplot(aes(x = time, y = rpc)) +
   geom_point() +
   geom_line() +
-  geom_vline(xintercept = ymd_h("2022-01-18 0", tz = Sys.timezone()), linetype = "dotted") +
+  geom_vline(xintercept = ymd_h("2020-12-01 0", tz = Sys.timezone()), linetype = "dotted") +
+  geom_vline(xintercept = ymd_h("2022-01-01 0", tz = Sys.timezone()), linetype = "dotted") +
+  labs(title = "GitHub releases per commit") +
+  labs(x = "", y = "") +
   theme_quo()
 ```
 
