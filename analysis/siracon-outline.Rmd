@@ -21,6 +21,8 @@ library(purrr)
 library(dplyr)
 library(lubridate)
 library(ggplot2)
+library(vistime)
+library(scales)
 library(jbplot)
 ```
 
@@ -40,12 +42,10 @@ learned R and software engineering by implementing the DORA DevOps technical pra
 
 <https://www.devops-research.com/research.html>
 
-# Timeline
-
 Create a timeline of my journey using [vistime](https://shosaco.github.io/vistime/) or
 [timevis](https://daattali.com/shiny/timevis-demo/).
 
-# Data
+# Outline
 
 Use GitHub data to show how the DORA metrics changed over time as I developed and used
 [rdev](https://jabenninghoff.github.io/rdev/).
@@ -59,11 +59,15 @@ technical practices.
 Import git logs from my repositories:
 
 ```{r git_logs}
+# TODO: add data to package using methods from https://r-pkgs.org/data.html
 my_gitlogs <- map_dfr(
-  # nolint start: line_length_linter
-  c("jbplot", "rdev", "rstudio-training", "rtraining", "siracon2022", "software-resilience", "workshop7"),
-  ~ mutate(git_log(repo = paste0("~/GitHub/", .x), max = .Machine$integer.max), repo = .x, .before = "commit")
-  # nolint end
+  c(
+    "jbplot", "rdev", "rstudio-training", "rtraining", "siracon2022", "software-resilience",
+    "workshop7"
+  ),
+  ~ mutate(git_log(repo = paste0("~/GitHub/", .x), max = .Machine$integer.max),
+    repo = .x, .before = "commit"
+  )
 ) |>
   arrange(time)
 ```
@@ -73,21 +77,23 @@ visualization.
 
 ```{r filtered_gitlogs}
 filtered_gitlogs <- my_gitlogs |>
+  # set filter to two days after last relevant commit
   filter(!(repo == "rstudio-training" & time > ymd_h("2020-12-29 0"))) |>
-  filter(!(repo == "software-resilience" & time > ymd_h("2021-02-22 0"))) |>
-  filter(!(repo == "rtraining" & time > ymd_h("2021-10-08 0"))) |>
-  filter(!(repo == "workshop7" & time > ymd_h("2021-12-07 0"))) |>
-  filter(!(repo == "jbplot" & time > ymd_h("2022-02-07 0"))) |>
+  filter(!(repo == "software-resilience" & time > ymd_h("2021-02-23 0"))) |>
+  filter(!(repo == "rtraining" & time > ymd_h("2021-10-09 0"))) |>
+  filter(!(repo == "workshop7" & time > ymd_h("2021-12-08 0"))) |>
+  filter(!(repo == "jbplot" & time > ymd_h("2022-02-08 0"))) |>
+  # oldest first
   mutate(repo = factor(repo, levels = c(
-    # nolint start: line_length_linter
-    "rstudio-training", "software-resilience", "rtraining", "rdev", "workshop7", "jbplot", "siracon2022"
-    # nolint end
+    "rstudio-training", "software-resilience", "rtraining", "rdev", "workshop7", "jbplot",
+    "siracon2022"
   )))
 ```
 
 Plot monthly commits by repository.
 
 ```{r plot_gitlogs}
+# TODO: add labels
 filtered_gitlogs |>
   mutate(time = floor_date(time, unit = "month")) |>
   group_by(time, repo) |>
@@ -106,7 +112,26 @@ Create a timeline using groups showing the history of the repositories:
 - development: rdev, jbplot
 - notebooks: software-resilience, workshop7, siracon2022
 
-Key dates:
+```{r repo_timeline}
+repo_timeline <- filtered_gitlogs |>
+  select(repo, time) |>
+  mutate(time = floor_date(time, unit = "day")) |>
+  group_by(repo) |>
+  summarize(start = min(time), end = max(time)) |>
+  arrange(start) |>
+  mutate(group = case_when(
+    grepl("training", repo) ~ "training",
+    repo %in% c("rdev", "jbplot") ~ "development",
+    TRUE ~ "notebooks"
+  )) |>
+  mutate(color = hue_pal()(7)[row_number()])
+
+repo_timeline
+gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") +
+  theme_quo()
+```
+
+## Key dates
 
 2020-09-08: Starting out, rstudio-training, renv
 
