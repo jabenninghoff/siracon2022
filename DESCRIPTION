@@ -30,6 +30,7 @@ Suggests:
     scales,
     spelling,
     testthat (>= 3.0.0),
+    tidyr,
     vistime,
     withr
 Remotes: 
