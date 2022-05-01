@@ -54,7 +54,7 @@ Use GitHub data to show how the DORA metrics changed over time as I developed an
 
 ## git log
 
-Idea: use `gert::git_log()` tables across all my public and personal (private) R repositories over
+Idea: use gert::git_log() tables across all my public and personal (private) R repositories over
 time to create an annotated timeline and visualization of my work, and implementation of the DORA
 technical practices.
 
@@ -174,7 +174,7 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
 2020-12-29: build-site script
 
 - Deployment Automation
-  - build-site: shell script to publish notebooks using `rmarkdown::render_site()`
+  - build-site: shell script to publish notebooks using rmarkdown::render_site()
   - MVP for publishing notebooks using GitHub Pages
 
 2020-12-30: First release: rtraining 0.0.1
@@ -271,16 +271,15 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
 
 2022-01-10: Create package automation (rdev 0.7.0)
 
-- `create_github_repo()`: Create new GitHub repository following rdev conventions in the active
-  user's account and create a basic package
-- `use_rdev_package()`: Add rdev templates and settings within the active package. Normally invoked
+- create_github_repo(): Create new GitHub repository following rdev conventions in the active user's
+  account and create a basic package
+- use_rdev_package(): Add rdev templates and settings within the active package. Normally invoked
   when first setting up a package.
-- Added `build_rdev_site()`, a wrapper for `pkgdown::build_site()` optimized for rdev workflow that
-  updates `README.md` and performs a clean build using pkgdown
+- Added build_rdev_site(), a wrapper for pkgdown::build_site() optimized for rdev workflow that
+  updates README.md and performs a clean build using pkgdown
 - Added 'Analysis Notebook' R markdown template for RStudio (File > New File > Rmarkdown > From
   Template)
-- Migrated ggplot2 themes/styles (`theme_quo()`, `viridis_quo()`) to new package,
-  `jabenninghoff/jbplot`
+- Migrated ggplot2 themes/styles (theme_quo(), viridis_quo()) to new package, jabenninghoff/jbplot
 
 - Code Maintainability
   - Cross-platform support
@@ -294,15 +293,14 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
 
 2022-01-17: Release automation (rdev 0.8.0)
 
-- `stage_release()`: Open a GitHub pull request for a new release from NEWS.md
-- `merge_release()`: Merge a staged pull request and create a new GitHub release
+- stage_release(): Open a GitHub pull request for a new release from NEWS.md
+- merge_release(): Merge a staged pull request and create a new GitHub release
 
 - Deployment Automation
 
 2022-01-19: More workflow automation
 
-- Added `new_branch()`: Create a new feature branch, and (optionally) bump the version in
-  DESCRIPTION
+- Added new_branch(): Create a new feature branch, and (optionally) bump the version in DESCRIPTION
 
 2022-01-21 - 2022-02-06: adding test coverage
 
@@ -352,7 +350,7 @@ write_eval <- function(string) {
 - Continuous Testing
   - Manual tests evolve into partially or fully automated tests
 
-2022-02-02: Added `local_temppkg()` test helper function
+2022-02-02: Added local_temppkg() test helper function
 
 - Continuous Testing
   - Test helpers - testing test helpers helps!
