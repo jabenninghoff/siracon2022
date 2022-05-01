@@ -1,3 +1,9 @@
+# siracon2022 0.3.0
+
+* Added `gh_releases()`: Get a list of GitHub releases using `gh::gh()`
+
+* Updated SiRAcon Presentation Outline
+
 # siracon2022 0.2.0
 
 * Added ACA Travel Analysis: Analysis of flights between MSP and LIT when I was working as a
