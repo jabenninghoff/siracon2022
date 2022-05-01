@@ -62,7 +62,7 @@ Import git logs from my repositories:
 my_gitlogs <- map_dfr(
   # nolint start: line_length_linter
   c("jbplot", "rdev", "rstudio-training", "rtraining", "siracon2022", "software-resilience", "workshop7"),
-  ~ mutate(git_log(repo = paste0("../../", .x), max = .Machine$integer.max), repo = .x, .before = "commit")
+  ~ mutate(git_log(repo = paste0("~/GitHub/", .x), max = .Machine$integer.max), repo = .x, .before = "commit")
   # nolint end
 ) |>
   arrange(time)
