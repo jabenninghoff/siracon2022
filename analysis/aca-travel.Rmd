@@ -11,8 +11,8 @@ output:
 
 Analysis of flights between MSP and LIT when I was working as a Security Architect for the implementation of Medicaid modernization for the Affordable Care Act in Arkansas in 2013 and 2014.
 
-Used as an example notebook for my SiRAcon 2022 presentation, "Making R work for you
-(with automation!)".
+Used as an example notebook for my SiRAcon 2022 presentation, "Making R work for you (with
+automation!)".
 
 # Questions/TODO
 
