@@ -143,7 +143,7 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
 
 Plot key events on a `timevis()` timeline:
 
-```{r key_events}
+```{r key_events, fig.width = 10, fig.height = 15}
 key_events <- read_csv("data/key-events.csv", col_types = cols(
   id = col_integer(),
   start = col_date(format = ""),
@@ -474,3 +474,40 @@ but safer.
 R dialects: base R is for functions, tidyverse R is for notebooks.
 
 "Clean" code: code should be written for future humans, including you!
+
+# Story
+
+Use the timeline and plots to tell the story of continuous improvement. Each section filters on
+group 1 and the other focus area. Integrate themes into story.
+
+1. Introduction: background and motivation, use Event group as the talk overview. Exclude SiRAcon
+   2020 from future timelines. "R Development Timeline".
+1. Version Control: put everything (except artifacts) into version control for reproducibility and
+   history.
+1. Trunk-based Development: linear development avoids code conflicts.
+1. Shift Left on Security: maintenance first ensures you get it done.
+1. Continuous Integration: build and test on each commit to catch mistakes early.
+1. Deployment Automation: automate your development workflow to spend more time writing.
+1. Code Maintainability: consistent and clean code is easier to understand.
+1. Continuous Testing: (the biggest challenge) formally specifying what you are building and how it
+   is *supposed* to work defends against the dangers of hidden assumptions.
+1. Results: "Monthly commits by repository", "Monthly GitHub releases", "GitHub releases per
+   commit". Improvement on technical practices also means less rework, less deployment pain, less
+   burnout, and greater job satisfaction.
+1. Closing: complete key events timeline.
+
+## Introduction
+
+Background and motivation.
+
+```{r intro, fig.width = 8.6, fig.height = 4}
+# TODO: move new_branch() to deployment automation, write_eval to code maintainability
+# TODO: add events for each section in overall timeline
+key_events |>
+  filter(group == 1) |>
+  timevis(groups = filter(dora_groups, id == 1))
+```
+
+## Version Control
+
+Put everything (except artifacts) into version control for reproducibility and history.
