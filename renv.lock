@@ -711,7 +711,7 @@
       "RemoteSha": "370ad9c1e0f23683d7340ced4c790ffb4513b96c",
       "RemoteHost": "api.github.com",
       "Remotes": "jabenninghoff/rdev",
-      "Hash": "644cb24bca097169f9640e21ca21c80f",
+      "Hash": "9a50e6a7d81db34923be634bdd429d0d",
       "Requirements": [
         "ggplot2"
       ]
@@ -1161,7 +1161,7 @@
       "RemoteSha": "b923310fd773e968fe4db4570d651af062ce79c4",
       "RemoteHost": "api.github.com",
       "Remotes": "r-lib/lintr",
-      "Hash": "4d97e8bc7a71a0d8a693b018288f0145",
+      "Hash": "fe449f1c2150173447303e657d5d261b",
       "Requirements": [
         "desc",
         "devtools",
@@ -1553,6 +1553,22 @@
         "purrr",
         "rlang",
         "vctrs"
+      ]
+    },
+    "timevis": {
+      "Package": "timevis",
+      "Version": "2.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "89b92c61f3afb4720dcba9767e7c512b",
+      "Requirements": [
+        "htmltools",
+        "htmlwidgets",
+        "jsonlite",
+        "lubridate",
+        "magrittr",
+        "rmarkdown",
+        "shiny"
       ]
     },
     "tinytex": {
