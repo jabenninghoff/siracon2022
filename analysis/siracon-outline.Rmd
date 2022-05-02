@@ -17,6 +17,7 @@ Outline of my 2022 SiRAcon 2022 presentation, "Making R work for you (with autom
 
 ```{r setup, message = FALSE, warning = FALSE}
 library(siracon2022)
+library(readr)
 library(gert)
 library(gh)
 library(purrr)
@@ -26,6 +27,7 @@ library(lubridate)
 library(ggplot2)
 library(scales)
 library(vistime)
+library(timevis)
 library(jbplot)
 ```
 
@@ -137,7 +139,27 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
   theme_quo()
 ```
 
-## Key dates
+## Key events
+
+Plot key events on a `timevis()` timeline:
+
+```{r key_events}
+key_events <- read_csv("data/key-events.csv", col_types = cols(
+  id = col_integer(),
+  start = col_date(format = ""),
+  end = col_date(format = ""),
+  content = col_character(),
+  group = col_integer(),
+  group_content = col_character()
+))
+
+dora_groups <- key_events |>
+  select(id = group, content = group_content) |>
+  unique()
+
+key_events |>
+  timevis(groups = dora_groups)
+```
 
 2020-09-08: Starting out, rstudio-training, renv
 
@@ -149,9 +171,9 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
 - Shifting Left on Security
   - Start development with `renv::update()`
 
-2020-09-30: (Aside) First bug discovered, https://github.com/rstudio/renv/issues/547 !
-
 2020-09-11: Published ["Working with R"](https://www.information-safety.org/2020/09/11/working-with-r/)
+
+2020-09-30: (Aside) First bug discovered, https://github.com/rstudio/renv/issues/547 !
 
 2020-10-06: `setup-r` script
 
