@@ -460,7 +460,7 @@ filtered_gitlogs |>
   geom_line() +
   geom_vline(xintercept = ymd_h("2020-12-01 0", tz = Sys.timezone()), linetype = "dotted") +
   geom_vline(xintercept = ymd_h("2022-01-01 0", tz = Sys.timezone()), linetype = "dotted") +
-  labs(title = "GitHub releases per commit") +
+  labs(title = "GitHub releases per commit by month") +
   labs(x = "", y = "") +
   theme_quo()
 ```
