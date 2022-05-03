@@ -145,17 +145,19 @@ Plot key events on a `timevis()` timeline:
 
 ```{r key_events, fig.width = 10, fig.height = 15}
 key_events <- read_csv("data/key-events.csv", col_types = cols(
-  id = col_integer(),
   start = col_date(format = ""),
   end = col_date(format = ""),
   content = col_character(),
   group = col_integer(),
-  group_content = col_character()
-))
+  group_content = col_character(),
+  intro = col_logical()
+)) |>
+  mutate(id = row_number(), .before = "start")
 
 dora_groups <- key_events |>
   select(id = group, content = group_content) |>
-  unique()
+  unique() |>
+  arrange(id)
 
 key_events |>
   timevis(groups = dora_groups)

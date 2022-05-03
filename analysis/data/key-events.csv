@@ -1,51 +1,59 @@
-﻿id,start,end,content,group,group_content
-1,2020-08-05,,SiRAcon 2020,1,Event
-2,2020-09-08,,rstudio-training,1,Event
-3,2020-09-08,,project in git,2,Version Control
-4,2020-09-08,,depenencies in git,2,Version Control
-5,2020-09-08,,commit to master,3,Trunk-based Development
-6,2020-09-08,,start with renv::update(),4,Shift Left on Security
-7,2020-09-11,,"""Working with R""",1,Event
-8,2020-09-30,,first bug discovered,1,Event
-9,2020-10-06,,setup-r script,2,Version Control
-10,2020-12-02,,styler,5,Code Maintainability
-11,2020-12-02,,lintr,6,Continuous Testing
-12,2020-12-27,,rtraining package,1,Event
-13,2020-12-27,,.Rprofile in git,2,Version Control
-14,2020-12-27,,R CMD check,6,Continuous Testing
-15,2020-12-27,,R CMD INSTALL,7,Continuous Integration
-16,2020-12-29,,publish to GitHub pages,1,Event
-17,2020-12-29,,build-site script,8,Deployment Automation
-18,2020-12-30,,rtraining 0.0.1,1,Event
-19,2020-12-30,,style_all,5,Code Maintainability
-20,2020-12-30,,lint_all(),6,Continuous Testing
-21,2021-01-01,,GitHub Actions,7,Continuous Integration
-22,2021-01-01,,ci(),7,Continuous Integration
-23,2021-01-01,,check_renv(),4,Shift Left on Security
-24,2021-01-01,,rdev package,5,Code Maintainability
-25,2021-01-02,,multi-platform checks,7,Continuous Integration
-26,2021-01-09,,Analysis Package Layout,5,Code Maintainability
-27,2021-01-12,,build_analysis_site(),8,Deployment Automation
-28,2021-01-16,,migrate to rdev,5,Code Maintainability
-29,2021-09-29,,docs: Package Layout,5,Code Maintainability
-30,2021-09-29,,docs: release process,8,Deployment Automation
-31,2021-12-04,,docs: create package,5,Code Maintainability
-32,2021-12-23,,theme_quo(),1,Event
-33,2022-01-01,,use_analysis_package(),5,Code Maintainability
-34,2022-01-10,,package automation,1,Event
-35,2022-01-10,,create_github_repo(),5,Code Maintainability
-36,2022-01-10,,use_rdev_package(),5,Code Maintainability
-37,2022-01-10,,build_rdev_site(),8,Deployment Automation
-38,2022-01-10,,notebook template,5,Code Maintainability
-39,2022-01-10,,dynamic notebook list,8,Deployment Automation
-40,2022-01-17,,release automation,1,Event
-41,2022-01-17,,stage_release(),8,Deployment Automation
-42,2022-01-17,,merge_release(),8,Deployment Automation
-43,2022-01-19,,new_branch(),1,Event
-44,2022-01-21,,adding test coverage,6,Continuous Testing
-45,2022-01-24,,write_eval(),1,Event
-46,2022-01-30,,manual test script,6,Continuous Testing
-47,2022-02-02,,local_temppkg(),6,Continuous Testing
-48,2022-02-06,,rdev 1.0.0 !,1,Event
-49,2022-02-06,,complete test coverage,6,Continuous Testing
-50,2022-02-07,2022-04-30,continous improvement,1,Event
+﻿start,end,content,group,group_content,intro
+2020-08-05,,SiRAcon 2020,1,Event,TRUE
+2020-09-08,,rstudio-training,1,Event,FALSE
+2020-09-08,,project in git,2,Version Control,FALSE
+2020-09-08,,depenencies in git,2,Version Control,FALSE
+2020-09-08,,commit to master,3,Trunk-based Development,FALSE
+2020-09-08,,start with renv::update(),4,Shift Left on Security,FALSE
+2020-09-11,,"""Working with R""",1,Event,TRUE
+2020-09-30,,first bug discovered,1,Event,FALSE
+2020-09-30,,upstream issues,7,Code Maintainability,FALSE
+2020-10-06,,setup-r script,2,Version Control,FALSE
+2020-12-02,,style.tidyverse.org,1,Event,FALSE
+2020-12-02,,styler,7,Code Maintainability,FALSE
+2020-12-02,,lintr,8,Continuous Testing,FALSE
+2020-12-27,,rtraining package,1,Event,FALSE
+2020-12-27,,merge to main,3,Trunk-based Development,FALSE
+2020-12-27,,.Rprofile in git,2,Version Control,FALSE
+2020-12-27,,R CMD check,8,Continuous Testing,FALSE
+2020-12-27,,R CMD INSTALL,5,Continuous Integration,FALSE
+2020-12-29,,publish to GitHub pages,1,Event,FALSE
+2020-12-29,,build-site script,6,Deployment Automation,FALSE
+2020-12-30,,rtraining 0.0.1,1,Event,FALSE
+2020-12-30,,style_all,7,Code Maintainability,FALSE
+2020-12-30,,lint_all(),8,Continuous Testing,FALSE
+2021-01-01,,GitHub Actions,5,Continuous Integration,FALSE
+2021-01-01,,ci(),5,Continuous Integration,FALSE
+2021-01-01,,check_renv(),4,Shift Left on Security,FALSE
+2021-01-01,,rdev package,7,Code Maintainability,FALSE
+2021-01-02,,multi-platform checks,5,Continuous Integration,FALSE
+2021-01-09,,Analysis Package Layout,7,Code Maintainability,FALSE
+2021-01-12,,build_analysis_site(),6,Deployment Automation,FALSE
+2021-01-16,,migrate to rdev,7,Code Maintainability,FALSE
+2021-09-29,,notes to automation,1,Event,FALSE
+2021-09-29,,docs: Package Layout,7,Code Maintainability,FALSE
+2021-09-29,,docs: release process,6,Deployment Automation,FALSE
+2021-12-04,,docs: create package,7,Code Maintainability,FALSE
+2021-12-23,,theme_quo(),1,Event,FALSE
+2022-01-01,,use_analysis_package(),7,Code Maintainability,FALSE
+2022-01-10,,package automation,1,Event,FALSE
+2022-01-10,,create_github_repo(),7,Code Maintainability,FALSE
+2022-01-10,,use_rdev_package(),7,Code Maintainability,FALSE
+2022-01-10,,build_rdev_site(),6,Deployment Automation,FALSE
+2022-01-10,,notebook template,7,Code Maintainability,FALSE
+2022-01-10,,dynamic notebook list,6,Deployment Automation,FALSE
+2022-01-17,,release automation,1,Event,FALSE
+2022-01-17,,shorter branches,3,Trunk-based Development,FALSE
+2022-01-17,,stage_release(),6,Deployment Automation,FALSE
+2022-01-17,,merge_release(),6,Deployment Automation,FALSE
+2022-01-19,,new_branch(),1,Event,FALSE
+2022-01-21,,adding test coverage,8,Continuous Testing,FALSE
+2022-01-24,,write_eval(),1,Event,FALSE
+2022-01-24,,write_eval(),7,Code Maintainability,FALSE
+2022-01-30,,manual test script,8,Continuous Testing,FALSE
+2022-02-02,,local_temppkg(),8,Continuous Testing,FALSE
+2022-02-06,,rdev 1.0.0 !,1,Event,FALSE
+2022-02-06,,complete test coverage,8,Continuous Testing,FALSE
+2022-02-06,,complete test coverage,4,Shift Left on Security,FALSE
+2022-02-06,,complete test coverage,5,Continuous Integration,FALSE
+2022-02-07,2022-04-30,continous improvement,1,Event,FALSE
