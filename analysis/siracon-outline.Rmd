@@ -477,6 +477,25 @@ R dialects: base R is for functions, tidyverse R is for notebooks.
 
 "Clean" code: code should be written for future humans, including you!
 
+## The Future
+
+Mutation Testing: [Wikipedia](https://en.wikipedia.org/wiki/Mutation_testing)
+
+R packages:
+
+- [mutant](https://github.com/sckott/mutant)
+- [autotest](https://github.com/ropensci-review-tools/autotest/)
+
+Papers:
+
+- [Does mutation testing improve testing practices?](https://homes.cs.washington.edu/~rjust/publ/mutation_testing_practices_icse_2021.pdf)
+- [Practical Mutation Testing at Scale](https://homes.cs.washington.edu/~rjust/publ/practical_mutation_testing_tr_2021.pdf])
+
+Formal Methods:
+
+- [Planning with flare](https://increment.com/planning/formal-specifications-and-planning/)
+- [Hillel Wayne](https://hillelwayne.com)
+
 # Story
 
 Use the timeline and plots to tell the story of continuous improvement. Each section filters on
