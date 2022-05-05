@@ -145,14 +145,15 @@ Plot key events on a `timevis()` timeline:
 
 ```{r key_events, fig.width = 10, fig.height = 15}
 key_events <- read_csv("data/key-events.csv", col_types = cols(
+  id = col_integer(),
   start = col_date(format = ""),
   end = col_date(format = ""),
   content = col_character(),
   group = col_integer(),
   group_content = col_character(),
-  intro = col_logical()
-)) |>
-  mutate(id = row_number(), .before = "start")
+  intro = col_logical(),
+  milestone = col_logical()
+))
 
 dora_groups <- key_events |>
   select(id = group, content = group_content) |>
@@ -521,14 +522,88 @@ group 1 and the other focus area. Integrate themes into story.
 
 Background and motivation.
 
-```{r intro, fig.width = 8.6, fig.height = 4}
-# TODO: move new_branch() to deployment automation, write_eval to code maintainability
-# TODO: add events for each section in overall timeline
+```{r intro, fig.width = 8.6, fig.height = 3.5}
 key_events |>
   filter(group == 1) |>
-  timevis(groups = filter(dora_groups, id == 1))
+  timevis(groups = filter(dora_groups, id == 1), showZoom = FALSE)
 ```
 
 ## Version Control
 
 Put everything (except artifacts) into version control for reproducibility and history.
+
+```{r version_control, fig.width = 8.6, fig.height = 2.5}
+key_events |>
+  filter(!intro) |>
+  filter(milestone | group == 2) |>
+  timevis(groups = filter(dora_groups, id %in% c(1, 2)), showZoom = FALSE)
+```
+
+## Trunk-based Development
+
+Linear development avoids code conflicts.
+
+```{r trunk_based, fig.width = 8.6, fig.height = 2.5}
+key_events |>
+  filter(!intro) |>
+  filter(milestone | group == 3 | id == 44) |>
+  timevis(groups = filter(dora_groups, id %in% c(1, 3)), showZoom = FALSE)
+```
+
+## Shift Left on Security
+
+Maintenance first ensures you get it done.
+
+```{r shift_left, fig.width = 8.6, fig.height = 2.5}
+key_events |>
+  filter(!intro) |>
+  filter(milestone | group == 4) |>
+  timevis(groups = filter(dora_groups, id %in% c(1, 4)), showZoom = FALSE)
+```
+
+## Continuous Integration
+
+Build and test on each commit to catch mistakes early.
+
+```{r ci, fig.width = 8.6, fig.height = 3.5}
+key_events |>
+  filter(!intro) |>
+  filter(milestone | group == 5) |>
+  timevis(groups = filter(dora_groups, id %in% c(1, 5)), showZoom = FALSE)
+```
+
+## Deployment Automation
+
+Automate your development workflow to spend more time writing.
+
+```{r deployments, fig.width = 8.6, fig.height = 4.5}
+key_events |>
+  filter(!intro) |>
+  filter(milestone | group == 6 | id == 32) |>
+  timevis(groups = filter(dora_groups, id %in% c(1, 6)), showZoom = FALSE)
+```
+
+## Code Maintainability
+
+Consistent and clean code is easier to understand.
+
+```{r code_maint, fig.width = 8.6, fig.height = 4}
+key_events |>
+  filter(!intro) |>
+  filter(milestone | group == 7 | id == 32) |>
+  timevis(groups = filter(dora_groups, id %in% c(1, 7)), showZoom = FALSE)
+```
+
+## Continuous Testing
+
+The biggest challenge: formally specifying what you are building and how it is *supposed* to work
+defends against the dangers of hidden assumptions.
+
+```{r testing, fig.width = 8.6, fig.height = 3.5}
+key_events |>
+  filter(!intro) |>
+  filter(milestone | group == 8 | id == 32) |>
+  timevis(groups = filter(dora_groups, id %in% c(1, 8)), showZoom = FALSE)
+```
+
+End of (out)line.
