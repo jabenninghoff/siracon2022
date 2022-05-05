@@ -26,11 +26,13 @@ Suggests:
     knitr,
     pkgdown,
     rdev,
+    readr,
     rmarkdown,
     scales,
     spelling,
     testthat (>= 3.0.0),
     tidyr,
+    timevis,
     vistime,
     withr
 Remotes: 
