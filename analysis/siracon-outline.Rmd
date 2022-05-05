@@ -496,6 +496,8 @@ Formal Methods:
 
 - [Planning with flare](https://increment.com/planning/formal-specifications-and-planning/)
 - [Hillel Wayne](https://hillelwayne.com)
+- [Learn TLA+](https://learntla.com/introduction/)
+- [Alloy Documentation](https://alloy.readthedocs.io/en/latest/)
 
 # Story
 
