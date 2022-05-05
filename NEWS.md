@@ -1,3 +1,7 @@
+# siracon2022 0.3.1
+
+* Updated SiRAcon Presentation Outline
+
 # siracon2022 0.3.0
 
 * Added `gh_releases()`: Get a list of GitHub releases using `gh::gh()`
