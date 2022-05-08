@@ -141,7 +141,7 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
 
 ## Key events
 
-Plot key events on a `timevis()` timeline:
+Plot key events on a `timevis()` timeline. [Full page version](rendered/full-timeline.html).
 
 ```{r key_events, fig.width = 10, fig.height = 15}
 key_events <- read_csv("data/key-events.csv", col_types = cols(
@@ -160,8 +160,17 @@ dora_groups <- key_events |>
   unique() |>
   arrange(id)
 
+render_timevis <- function(data, groups, file, showZoom = FALSE) { # nolint: object_name_linter
+  # save using width of laptop screen
+  timevis::timevis(data, groups = groups, showZoom = showZoom, width = 1400) |>
+    htmlwidgets::saveWidget(file, selfcontained = FALSE, libdir = "lib")
+
+  # return widget without width
+  timevis::timevis(data, groups = groups, showZoom = showZoom)
+}
+
 key_events |>
-  timevis(groups = dora_groups)
+  render_timevis(groups = dora_groups, file = "rendered/full-timeline.html", showZoom = TRUE)
 ```
 
 2020-09-08: Starting out, rstudio-training, renv
@@ -466,18 +475,6 @@ filtered_gitlogs |>
   theme_quo()
 ```
 
-## Themes
-
-Reducing toil. Forming habits, which become repeated tasks, which become automation. If it's
-automated, it gets done.
-
-Functional programming (purrr) vs procedural programming. Functional programming is harder to learn,
-but safer.
-
-R dialects: base R is for functions, tidyverse R is for notebooks.
-
-"Clean" code: code should be written for future humans, including you!
-
 ## The Future
 
 Mutation Testing: [Wikipedia](https://en.wikipedia.org/wiki/Mutation_testing)
@@ -520,92 +517,180 @@ group 1 and the other focus area. Integrate themes into story.
    burnout, and greater job satisfaction.
 1. Closing: complete key events timeline.
 
+Full rdev package list:
+
+- `desc`
+- `devtools`
+- `fs`
+- `gert`
+- `gh`
+- `lintr`
+- `pkgdown`
+- `purrr`
+- `rcmdcheck`
+- `remotes`
+- `rmarkdown`
+- `styler`
+- `tibble`
+- `renv`
+- `rlang`
+- `usethis`
+- `withr`
+- `xml2`
+- `yaml`
+- `markdown`
+- `miniUI`
+- `testthat`
+- `mockery`
+- `knitr`
+- `covr`
+- `DT`
+- `stringi`
+- `spelling`
+
 ## Introduction
 
-Background and motivation.
+Background and motivation. [Full page version](rendered/intro.html).
 
 ```{r intro, fig.width = 8.6, fig.height = 3.5}
 key_events |>
   filter(group == 1) |>
-  timevis(groups = filter(dora_groups, id == 1), showZoom = FALSE)
+  render_timevis(groups = filter(dora_groups, id == 1), file = "rendered/intro.html")
 ```
 
 ## Version Control
 
 Put everything (except artifacts) into version control for reproducibility and history.
+[Full page version](rendered/version-control.html).
+
+*Use of [Homebrew](https://brew.sh), and `brew bundle`.*
+
+Packages:
+
+- `renv`: dependency management
 
 ```{r version_control, fig.width = 8.6, fig.height = 2.5}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 2) |>
-  timevis(groups = filter(dora_groups, id %in% c(1, 2)), showZoom = FALSE)
+  render_timevis(groups = filter(dora_groups, id %in% c(1, 2)), "rendered/version-control.html")
 ```
 
 ## Trunk-based Development
 
-Linear development avoids code conflicts.
+Linear development avoids code conflicts. [Full page version](rendered/trunk-based.html).
 
 ```{r trunk_based, fig.width = 8.6, fig.height = 2.5}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 3 | id == 44) |>
-  timevis(groups = filter(dora_groups, id %in% c(1, 3)), showZoom = FALSE)
+  render_timevis(groups = filter(dora_groups, id %in% c(1, 3)), file = "rendered/trunk-based.html")
 ```
 
 ## Shift Left on Security
 
-Maintenance first ensures you get it done.
+Maintenance first ensures you get it done. [Full page version](rendered/shift-left.html).
+
+*Reference last year's talk, recording available in member's section.*
+
+Packages:
+
+- `renv`
 
 ```{r shift_left, fig.width = 8.6, fig.height = 2.5}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 4) |>
-  timevis(groups = filter(dora_groups, id %in% c(1, 4)), showZoom = FALSE)
+  render_timevis(groups = filter(dora_groups, id %in% c(1, 4)), file = "rendered/shift-left.html")
 ```
 
 ## Continuous Integration
 
-Build and test on each commit to catch mistakes early.
+Build and test on each commit to catch mistakes early. [Full page version](rendered/ci.html).
+
+Packages:
+
+- `devtools`
+- `usethis`
+- [r-lib/actions](https://github.com/r-lib/actions)
 
 ```{r ci, fig.width = 8.6, fig.height = 3.5}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 5) |>
-  timevis(groups = filter(dora_groups, id %in% c(1, 5)), showZoom = FALSE)
+  render_timevis(groups = filter(dora_groups, id %in% c(1, 5)), file = "rendered/ci.html")
 ```
 
 ## Deployment Automation
 
 Automate your development workflow to spend more time writing.
+[Full page version](rendered/deployments.html).
+
+*Reducing toil. Forming habits, which become repeated tasks, which become automation. If it's
+automated, it gets done.*
+
+Packages:
+
+- `pkgdown`, `rmarkdown`: `build_analysis_site()`
+- `gert`, `gh`: git, GitHub automation
+- `devtools`
 
 ```{r deployments, fig.width = 8.6, fig.height = 4.5}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 6 | id == 32) |>
-  timevis(groups = filter(dora_groups, id %in% c(1, 6)), showZoom = FALSE)
+  render_timevis(groups = filter(dora_groups, id %in% c(1, 6)), file = "rendered/deployments.html")
 ```
 
 ## Code Maintainability
 
-Consistent and clean code is easier to understand.
+Consistent and clean code is easier to understand. [Full page version](rendered/code-maint.html).
+
+*Functional programming (purrr) vs procedural programming. Functional programming is harder to
+learn, but safer.*
+
+*R dialects: base R is for functions, tidyverse R is for notebooks.*
+
+*"Clean" code: code should be written for future humans, including you!*
+
+Packages:
+
+- `styler`
+- `usethis`
+- `gh`
+- `desc`
+- `devtools`
+- `purrr`
 
 ```{r code_maint, fig.width = 8.6, fig.height = 4}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 7 | id == 32) |>
-  timevis(groups = filter(dora_groups, id %in% c(1, 7)), showZoom = FALSE)
+  render_timevis(groups = filter(dora_groups, id %in% c(1, 7)), file = "rendered/code-maint.html")
 ```
 
 ## Continuous Testing
 
 The biggest challenge: formally specifying what you are building and how it is *supposed* to work
-defends against the dangers of hidden assumptions.
+defends against the dangers of hidden assumptions. [Full page version](rendered/testing.html).
+
+Packages:
+
+- `lintr`: static code analysis
+- `rcmdcheck`
+- `testthat`
+- `devtools`
+- `covr`
+- `mockery`
+- `withr`
+- `rlang`
+- `spelling`
 
 ```{r testing, fig.width = 8.6, fig.height = 3.5}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 8 | id == 32) |>
-  timevis(groups = filter(dora_groups, id %in% c(1, 8)), showZoom = FALSE)
+  render_timevis(groups = filter(dora_groups, id %in% c(1, 8)), file = "rendered/testing.html")
 ```
 
 End of (out)line.
