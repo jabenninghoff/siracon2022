@@ -12,8 +12,10 @@ URL: https://jabenninghoff.github.io/siracon2022,
 BugReports: https://github.com/jabenninghoff/siracon2022/issues
 Imports:
     gh,
+    htmlwidgets,
     lubridate,
-    purrr
+    purrr,
+    timevis
 Suggests: 
     anyflights,
     desc,
@@ -32,7 +34,6 @@ Suggests:
     spelling,
     testthat (>= 3.0.0),
     tidyr,
-    timevis,
     vistime,
     withr
 Remotes: 

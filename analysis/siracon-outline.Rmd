@@ -160,15 +160,6 @@ dora_groups <- key_events |>
   unique() |>
   arrange(id)
 
-render_timevis <- function(data, groups, file, showZoom = FALSE) { # nolint: object_name_linter
-  # save using width of laptop screen
-  timevis::timevis(data, groups = groups, showZoom = showZoom, width = 1400) |>
-    htmlwidgets::saveWidget(file, selfcontained = FALSE, libdir = "lib")
-
-  # return widget without width
-  timevis::timevis(data, groups = groups, showZoom = showZoom)
-}
-
 key_events |>
   render_timevis(groups = dora_groups, file = "rendered/full-timeline.html", showZoom = TRUE)
 ```
