@@ -22,13 +22,13 @@ details.}
 buttons on the widget.}
 }
 \value{
-A timeline visualization \code{htmlwidgets} object
+A timeline visualization \code{htmlwidgets} object.
 }
 \description{
 Create a timeline visualization using \code{\link[timevis:timevis]{timevis::timevis()}} and save using
 \code{\link[htmlwidgets:saveWidget]{htmlwidgets::saveWidget()}}.
 }
 \details{
-\code{render_timevis()} saves the widget with a fixed width (1400, the width of my laptop screen) and
-returns an \code{htmlwidgets} object without a specified width.
+\code{render_timevis()} saves the widget with a fixed width (1400, the approximate width of my laptop
+screen) and returns an \code{htmlwidgets} object without a specified width.
 }
