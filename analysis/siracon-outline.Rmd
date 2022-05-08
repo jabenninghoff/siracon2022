@@ -676,7 +676,7 @@ R packages:
 Papers:
 
 - [Does mutation testing improve testing practices?](https://homes.cs.washington.edu/~rjust/publ/mutation_testing_practices_icse_2021.pdf)
-- [Practical Mutation Testing at Scale](https://homes.cs.washington.edu/~rjust/publ/practical_mutation_testing_tr_2021.pdf])
+- [Practical Mutation Testing at Scale](https://homes.cs.washington.edu/~rjust/publ/practical_mutation_testing_tr_2021.pdf)
 
 Formal Methods:
 
