@@ -436,12 +436,17 @@ release frequency. The dotted line marks the implementation of release automatio
 monthly_releases <- filtered_releases |>
   mutate(time = floor_date(time, unit = "month")) |>
   group_by(time) |>
-  summarize(releases = n(), .groups = "drop")
+  summarize(releases = n(), .groups = "drop") |>
+  add_row(time = ymd("2020-11-01"), releases = 0) |>
+  add_row(time = ymd("2020-10-01"), releases = 0) |>
+  add_row(time = ymd("2020-09-01"), releases = 0) |>
+  arrange(time)
 
 monthly_releases |>
   ggplot(aes(x = time, y = releases)) +
   geom_point() +
   geom_line() +
+  geom_vline(xintercept = ymd_h("2020-12-01 0", tz = Sys.timezone()), linetype = "dotted") +
   geom_vline(xintercept = ymd_h("2022-01-01 0", tz = Sys.timezone()), linetype = "dotted") +
   coord_cartesian(ylim = c(0, NA)) +
   labs(title = "Monthly GitHub releases") +
