@@ -110,6 +110,8 @@ filtered_gitlogs |>
   labs(title = "Monthly commits by repository") +
   labs(x = "", y = "", color = "repository") +
   theme_quo()
+
+ggsave("rendered/monthly-commits.png", width = 16 * 0.6, height = 9 * 0.6, bg = "white")
 ```
 
 ## Timeline
@@ -137,6 +139,8 @@ repo_timeline <- filtered_gitlogs |>
 repo_timeline
 gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") +
   theme_quo()
+
+ggsave("rendered/dev-timeline.png", width = 16 * 0.6, height = 9 * 0.6, bg = "white")
 ```
 
 ## Key events
@@ -443,6 +447,8 @@ monthly_releases |>
   labs(title = "Monthly GitHub releases") +
   labs(x = "", y = "") +
   theme_quo()
+
+ggsave("rendered/monthly-releases.png", width = 16 * 0.6, height = 9 * 0.6, bg = "white")
 ```
 
 Also plot releases per commit, which will fall between 0 and 1. The dotted lines mark adoption of
@@ -464,28 +470,9 @@ filtered_gitlogs |>
   labs(title = "GitHub releases per commit by month") +
   labs(x = "", y = "") +
   theme_quo()
+
+ggsave("rendered/releases-per-commit.png", width = 16 * 0.6, height = 9 * 0.6, bg = "white")
 ```
-
-## The Future
-
-Mutation Testing: [Wikipedia](https://en.wikipedia.org/wiki/Mutation_testing)
-
-R packages:
-
-- [mutant](https://github.com/sckott/mutant)
-- [autotest](https://github.com/ropensci-review-tools/autotest/)
-
-Papers:
-
-- [Does mutation testing improve testing practices?](https://homes.cs.washington.edu/~rjust/publ/mutation_testing_practices_icse_2021.pdf)
-- [Practical Mutation Testing at Scale](https://homes.cs.washington.edu/~rjust/publ/practical_mutation_testing_tr_2021.pdf])
-
-Formal Methods:
-
-- [Planning with flare](https://increment.com/planning/formal-specifications-and-planning/)
-- [Hillel Wayne](https://hillelwayne.com)
-- [Learn TLA+](https://learntla.com/introduction/)
-- [Alloy Documentation](https://alloy.readthedocs.io/en/latest/)
 
 # Story
 
@@ -516,28 +503,28 @@ Full rdev package list:
 - `gert`
 - `gh`
 - `lintr`
+- `markdown`
+- `miniUI`
 - `pkgdown`
 - `purrr`
 - `rcmdcheck`
 - `remotes`
+- `renv`
+- `rlang`
 - `rmarkdown`
 - `styler`
 - `tibble`
-- `renv`
-- `rlang`
 - `usethis`
 - `withr`
 - `xml2`
 - `yaml`
-- `markdown`
-- `miniUI`
-- `testthat`
-- `mockery`
-- `knitr`
 - `covr`
 - `DT`
-- `stringi`
+- `knitr`
+- `mockery`
 - `spelling`
+- `stringi`
+- `testthat`
 
 ## Introduction
 
@@ -676,6 +663,27 @@ Packages:
 - `withr`
 - `rlang`
 - `spelling`
+
+### Future Testing
+
+Mutation Testing: [Wikipedia](https://en.wikipedia.org/wiki/Mutation_testing)
+
+R packages:
+
+- [mutant](https://github.com/sckott/mutant)
+- [autotest](https://github.com/ropensci-review-tools/autotest/)
+
+Papers:
+
+- [Does mutation testing improve testing practices?](https://homes.cs.washington.edu/~rjust/publ/mutation_testing_practices_icse_2021.pdf)
+- [Practical Mutation Testing at Scale](https://homes.cs.washington.edu/~rjust/publ/practical_mutation_testing_tr_2021.pdf])
+
+Formal Methods:
+
+- [Planning with flare](https://increment.com/planning/formal-specifications-and-planning/)
+- [Hillel Wayne](https://hillelwayne.com)
+- [Learn TLA+](https://learntla.com/introduction/)
+- [Alloy Documentation](https://alloy.readthedocs.io/en/latest/)
 
 ```{r testing, fig.width = 8.6, fig.height = 3.5}
 key_events |>
