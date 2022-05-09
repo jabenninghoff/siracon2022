@@ -1,3 +1,12 @@
+# siracon2022 1.0.0
+
+Initial release for SiRAcon 2022.
+
+* Completed SiRAcon Presentation Outline
+
+* Added `render_timevis()`: Create a timeline visualization using `timevis::timevis()` and save
+  using `htmlwidgets::saveWidget()`
+
 # siracon2022 0.3.1
 
 * Updated SiRAcon Presentation Outline
