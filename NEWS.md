@@ -1,3 +1,7 @@
+# siracon2022 1.0.1
+
+* Updated SiRAcon Presentation Outline: added links to high resolution plots
+
 # siracon2022 1.0.0
 
 Initial release for SiRAcon 2022.
