@@ -711,7 +711,7 @@
       "RemoteSha": "370ad9c1e0f23683d7340ced4c790ffb4513b96c",
       "RemoteHost": "api.github.com",
       "Remotes": "jabenninghoff/rdev",
-      "Hash": "9a50e6a7d81db34923be634bdd429d0d",
+      "Hash": "644cb24bca097169f9640e21ca21c80f",
       "Requirements": [
         "ggplot2"
       ]
@@ -1152,16 +1152,16 @@
     },
     "rdev": {
       "Package": "rdev",
-      "Version": "1.4.2",
+      "Version": "1.4.3",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteUsername": "jabenninghoff",
       "RemoteRepo": "rdev",
       "RemoteRef": "main",
-      "RemoteSha": "94edc5056320c44c8f112741161feda792051afd",
+      "RemoteSha": "06e769daedaee042201a6c6b0b83bccfefdc439c",
       "RemoteHost": "api.github.com",
       "Remotes": "r-lib/lintr",
-      "Hash": "e5bc14d46e73669940255fe2ecd88681",
+      "Hash": "25ebe0b0fab347a25c19da6ab3af02ab",
       "Requirements": [
         "desc",
         "devtools",
