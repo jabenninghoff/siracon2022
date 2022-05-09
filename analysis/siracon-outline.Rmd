@@ -114,6 +114,8 @@ filtered_gitlogs |>
 ggsave("rendered/monthly-commits.png", width = 16 * 0.6, height = 9 * 0.6, bg = "white")
 ```
 
+[high resolution plot](rendered/monthly-commits.png)
+
 ## Timeline
 
 Create a timeline using groups showing the history of the repositories:
@@ -142,6 +144,8 @@ gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") 
 
 ggsave("rendered/dev-timeline.png", width = 16 * 0.6, height = 9 * 0.6, bg = "white")
 ```
+
+[high resolution plot](rendered/dev-timeline.png)
 
 ## Key events
 
@@ -456,6 +460,8 @@ monthly_releases |>
 ggsave("rendered/monthly-releases.png", width = 16 * 0.6, height = 9 * 0.6, bg = "white")
 ```
 
+[high resolution plot](rendered/monthly-releases.png)
+
 Also plot releases per commit, which will fall between 0 and 1. The dotted lines mark adoption of
 GitHub and implementation of release automation.
 
@@ -478,6 +484,8 @@ filtered_gitlogs |>
 
 ggsave("rendered/releases-per-commit.png", width = 16 * 0.6, height = 9 * 0.6, bg = "white")
 ```
+
+[high resolution plot](rendered/releases-per-commit.png)
 
 # Story
 
