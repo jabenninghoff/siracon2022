@@ -1,16 +1,19 @@
 ACA
+Benninghoff's
 CMD
 Changelog
 DevOps
 Homebrew
 MSP
 ORCID
+POSIXct
 README
 RStudio
 RemoteRef
 Rmarkdown
 Rmd
 Rprofile
+SHA
 SiRAcon
 TLA
 anyflights
@@ -26,6 +29,7 @@ gitignore
 https
 io
 jabenninghoff
+jabenninghoff's
 jbplot
 lintr
 macOS
