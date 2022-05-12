@@ -467,7 +467,8 @@ Also plot releases per commit, which will fall between 0 and 1. The dotted lines
 GitHub and implementation of release automation.
 
 ```{r plot_rpc}
-filtered_gitlogs |>
+gitlogs |>
+  filter(time < ymd_h("2022-05-01 0", tz = Sys.timezone())) |>
   mutate(time = floor_date(time, unit = "month")) |>
   group_by(time) |>
   summarize(commits = n()) |>
