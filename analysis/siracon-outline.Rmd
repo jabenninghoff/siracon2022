@@ -76,6 +76,8 @@ gitlogs <- map_dfr(
   )
 ) |>
   arrange(time)
+
+gitlogs_tz <- tz(gitlogs$time)
 ```
 
 Filter logs by repository, adding cutoff dates when active development ended for timeline
@@ -83,13 +85,13 @@ visualization. Drop commits past April 30 to remove partial months.
 
 ```{r filtered_gitlogs}
 filtered_gitlogs <- gitlogs |>
-  # set filter to midnight after last relevant commit, use local timezone like gert::git_log()
-  filter(!(repo == "rstudio-training" & time > ymd_h("2020-12-28 0", tz = Sys.timezone()))) |>
-  filter(!(repo == "software-resilience" & time > ymd_h("2021-02-22 0", tz = Sys.timezone()))) |>
-  filter(!(repo == "rtraining" & time > ymd_h("2021-10-08 0", tz = Sys.timezone()))) |>
-  filter(!(repo == "workshop7" & time > ymd_h("2021-12-07 0", tz = Sys.timezone()))) |>
-  filter(!(repo == "jbplot" & time > ymd_h("2022-02-07 0", tz = Sys.timezone()))) |>
-  filter(time < ymd_h("2022-05-01 0", tz = Sys.timezone())) |>
+  # set filter to midnight after last relevant commit, use same timezone as gitlogs
+  filter(!(repo == "rstudio-training" & time > ymd_h("2020-12-28 0", tz = gitlogs_tz))) |>
+  filter(!(repo == "software-resilience" & time > ymd_h("2021-02-22 0", tz = gitlogs_tz))) |>
+  filter(!(repo == "rtraining" & time > ymd_h("2021-10-08 0", tz = gitlogs_tz))) |>
+  filter(!(repo == "workshop7" & time > ymd_h("2021-12-07 0", tz = gitlogs_tz))) |>
+  filter(!(repo == "jbplot" & time > ymd_h("2022-02-07 0", tz = gitlogs_tz))) |>
+  filter(time < ymd_h("2022-05-01 0", tz = gitlogs_tz)) |>
   # oldest first
   mutate(repo = factor(repo, levels = c(
     "rstudio-training", "software-resilience", "rtraining", "rdev", "workshop7", "jbplot",
@@ -430,8 +432,8 @@ Filter releases past April 30 to remove partial months.
 
 ```{r filtered_releases}
 filtered_releases <- releases |>
-  mutate(time = with_tz(time, tzone = Sys.timezone())) |>
-  filter(time < ymd_h("2022-05-01 0", tz = Sys.timezone()))
+  mutate(time = with_tz(time, tzone = gitlogs_tz)) |>
+  filter(time < ymd_h("2022-05-01 0", tz = gitlogs_tz))
 ```
 
 Plot releases over time: total GitHub releases per period (for all repositories) to show changes in
@@ -451,8 +453,8 @@ monthly_releases |>
   ggplot(aes(x = time, y = releases)) +
   geom_point() +
   geom_line() +
-  geom_vline(xintercept = ymd_h("2020-12-01 0", tz = Sys.timezone()), linetype = "dotted") +
-  geom_vline(xintercept = ymd_h("2022-01-01 0", tz = Sys.timezone()), linetype = "dotted") +
+  geom_vline(xintercept = ymd_h("2020-12-01 0", tz = gitlogs_tz), linetype = "dotted") +
+  geom_vline(xintercept = ymd_h("2022-01-01 0", tz = gitlogs_tz), linetype = "dotted") +
   coord_cartesian(ylim = c(0, NA)) +
   labs(title = "Monthly GitHub releases") +
   labs(x = "", y = "") +
@@ -468,7 +470,7 @@ looks similar to the plot of all commits by month:
 
 ```{r monthly_commits}
 gitlogs |>
-  filter(time < ymd_h("2022-05-01 0", tz = Sys.timezone())) |>
+  filter(time < ymd_h("2022-05-01 0", tz = gitlogs_tz)) |>
   mutate(time = floor_date(time, unit = "month")) |>
   group_by(time) |>
   summarize(commits = n(), .groups = "drop") |>
@@ -476,8 +478,8 @@ gitlogs |>
   ggplot(aes(x = time, y = commits)) +
   geom_point() +
   geom_line() +
-  geom_vline(xintercept = ymd_h("2020-12-01 0", tz = Sys.timezone()), linetype = "dotted") +
-  geom_vline(xintercept = ymd_h("2022-01-01 0", tz = Sys.timezone()), linetype = "dotted") +
+  geom_vline(xintercept = ymd_h("2020-12-01 0", tz = gitlogs_tz), linetype = "dotted") +
+  geom_vline(xintercept = ymd_h("2022-01-01 0", tz = gitlogs_tz), linetype = "dotted") +
   coord_cartesian(ylim = c(0, NA)) +
   labs(title = "Monthly git commits") +
   labs(x = "", y = "") +
@@ -493,7 +495,7 @@ GitHub and implementation of release automation.
 
 ```{r plot_rpc}
 gitlogs |>
-  filter(time < ymd_h("2022-05-01 0", tz = Sys.timezone())) |>
+  filter(time < ymd_h("2022-05-01 0", tz = gitlogs_tz)) |>
   mutate(time = floor_date(time, unit = "month")) |>
   group_by(time) |>
   summarize(commits = n()) |>
@@ -503,8 +505,8 @@ gitlogs |>
   ggplot(aes(x = time, y = rpc)) +
   geom_point() +
   geom_line() +
-  geom_vline(xintercept = ymd_h("2020-12-01 0", tz = Sys.timezone()), linetype = "dotted") +
-  geom_vline(xintercept = ymd_h("2022-01-01 0", tz = Sys.timezone()), linetype = "dotted") +
+  geom_vline(xintercept = ymd_h("2020-12-01 0", tz = gitlogs_tz), linetype = "dotted") +
+  geom_vline(xintercept = ymd_h("2022-01-01 0", tz = gitlogs_tz), linetype = "dotted") +
   labs(title = "Monthly GitHub releases per commit") +
   labs(x = "", y = "") +
   theme_quo()
