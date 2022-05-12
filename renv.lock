@@ -711,7 +711,7 @@
       "RemoteSha": "370ad9c1e0f23683d7340ced4c790ffb4513b96c",
       "RemoteHost": "api.github.com",
       "Remotes": "jabenninghoff/rdev",
-      "Hash": "644cb24bca097169f9640e21ca21c80f",
+      "Hash": "9a50e6a7d81db34923be634bdd429d0d",
       "Requirements": [
         "ggplot2"
       ]
@@ -802,9 +802,9 @@
       "RemoteUsername": "r-lib",
       "RemoteRepo": "lintr",
       "RemoteRef": "master",
-      "RemoteSha": "4ca7e484bcbe538cc5a81338c0ec55a0ae084cb0",
+      "RemoteSha": "31b79cbafa0e341270716839512ff56eda85479d",
       "RemoteHost": "api.github.com",
-      "Hash": "4339eeb4004947c4db9265ade3cb90cb",
+      "Hash": "a4aa10095905aefc0757686208f6d24e",
       "Requirements": [
         "codetools",
         "crayon",
@@ -1161,7 +1161,7 @@
       "RemoteSha": "06e769daedaee042201a6c6b0b83bccfefdc439c",
       "RemoteHost": "api.github.com",
       "Remotes": "r-lib/lintr",
-      "Hash": "25ebe0b0fab347a25c19da6ab3af02ab",
+      "Hash": "f34d55b5d76e3eba19c7922ce2522b32",
       "Requirements": [
         "desc",
         "devtools",
@@ -1719,10 +1719,10 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.30",
+      "Version": "0.31",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "e83f48136b041845e50a6658feffb197",
+      "Hash": "a318c6f752b8dcfe9fb74d897418ab2b",
       "Requirements": []
     },
     "xml2": {
