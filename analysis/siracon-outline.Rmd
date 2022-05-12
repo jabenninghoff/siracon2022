@@ -63,19 +63,8 @@ technical practices.
 
 Import git logs from my repositories:
 
-```{r gitlogs}
-# TODO: add data to package using methods from https://r-pkgs.org/data.html
-# TODO: open issue on gert: git_log shows rebase & merge time, while "git log" shows original time
-gitlogs <- map_dfr(
-  c(
-    "jbplot", "rdev", "rstudio-training", "rtraining", "siracon2022", "software-resilience",
-    "workshop7"
-  ),
-  ~ mutate(git_log(repo = paste0("~/GitHub/", .x), max = .Machine$integer.max),
-    repo = .x, .before = "commit"
-  )
-) |>
-  arrange(time)
+```{r gitlogs_tz}
+# gitlogs is now included in siracon2022 for reproducibility, see data-raw/gitlogs and ?gitlogs
 
 gitlogs_tz <- tz(gitlogs$time)
 ```
@@ -91,6 +80,7 @@ filtered_gitlogs <- gitlogs |>
   filter(!(repo == "rtraining" & time > ymd_h("2021-10-08 0", tz = gitlogs_tz))) |>
   filter(!(repo == "workshop7" & time > ymd_h("2021-12-07 0", tz = gitlogs_tz))) |>
   filter(!(repo == "jbplot" & time > ymd_h("2022-02-07 0", tz = gitlogs_tz))) |>
+  # while this is now redundant (here and elsewhere), keeping it for clarity
   filter(time < ymd_h("2022-05-01 0", tz = gitlogs_tz)) |>
   # oldest first
   mutate(repo = factor(repo, levels = c(

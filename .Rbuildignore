@@ -9,6 +9,7 @@
 ^analysis/.*\.pdf$
 ^analysis/import$
 ^analysis/rendered$
+^data-raw$
 ^docs$
 ^LICENSE\.md$
 ^pkgdown$
