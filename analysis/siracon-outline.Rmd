@@ -101,7 +101,7 @@ filtered_gitlogs <- gitlogs |>
 
 Plot monthly commits by repository.
 
-```{r plot_gitlogs}
+```{r monthly_commits_repo}
 filtered_gitlogs |>
   mutate(time = floor_date(time, unit = "month")) |>
   group_by(time, repo) |>
@@ -113,10 +113,10 @@ filtered_gitlogs |>
   labs(x = "", y = "", color = "repository") +
   theme_quo()
 
-ggsave("rendered/monthly-commits.png", width = 16 * 0.6, height = 9 * 0.6, bg = "white")
+ggsave("rendered/monthly-commits-repo.png", width = 16 * 0.6, height = 9 * 0.6, bg = "white")
 ```
 
-[High resolution plot](rendered/monthly-commits.png)
+[High resolution plot](rendered/monthly-commits-repo.png)
 
 ## Timeline
 
@@ -145,14 +145,14 @@ repo_timeline
 gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") +
   theme_quo()
 
-ggsave("rendered/dev-timeline.png", width = 16 * 0.6, height = 9 * 0.6, bg = "white")
+ggsave("rendered/repo-timeline.png", width = 16 * 0.6, height = 9 * 0.6, bg = "white")
 ```
 
-[High resolution plot](rendered/dev-timeline.png)
+[High resolution plot](rendered/repo-timeline.png)
 
 ## Key events
 
-Plot key events on a `timevis()` timeline. [Full page version](rendered/full-timeline.html).
+Plot key events on a `timevis()` timeline. [Full page version](rendered/key-events.html).
 
 ```{r key_events, fig.width = 10, fig.height = 15}
 key_events <- read_csv("data/key-events.csv", col_types = cols(
@@ -172,7 +172,7 @@ dora_groups <- key_events |>
   arrange(id)
 
 key_events |>
-  render_timevis(groups = dora_groups, file = "rendered/full-timeline.html", showZoom = TRUE)
+  render_timevis(groups = dora_groups, file = "rendered/key-events.html", showZoom = TRUE)
 ```
 
 2020-09-08: Starting out, rstudio-training, renv
@@ -493,7 +493,7 @@ ggsave("rendered/monthly-commits.png", width = 16 * 0.6, height = 9 * 0.6, bg = 
 Also plot releases per commit, which will fall between 0 and 1. The dotted lines mark adoption of
 GitHub and implementation of release automation.
 
-```{r plot_rpc}
+```{r releases_per_commit}
 gitlogs |>
   filter(time < ymd_h("2022-05-01 0", tz = gitlogs_tz)) |>
   mutate(time = floor_date(time, unit = "month")) |>
