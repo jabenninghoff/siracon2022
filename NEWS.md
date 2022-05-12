@@ -1,3 +1,10 @@
+# siracon2022 1.0.2
+
+* Updated SiRAcon Presentation Outline: fixed error in releases per commit calculation, add monthly
+  commits plot
+
+* Added `gitlogs` data to package for reproducibility
+
 # siracon2022 1.0.1
 
 * Updated SiRAcon Presentation Outline: added links to high resolution plots
