@@ -63,10 +63,10 @@ technical practices.
 
 Import git logs from my repositories:
 
-```{r git_logs}
+```{r gitlogs}
 # TODO: add data to package using methods from https://r-pkgs.org/data.html
 # TODO: open issue on gert: git_log shows rebase & merge time, while "git log" shows original time
-my_gitlogs <- map_dfr(
+gitlogs <- map_dfr(
   c(
     "jbplot", "rdev", "rstudio-training", "rtraining", "siracon2022", "software-resilience",
     "workshop7"
@@ -82,7 +82,7 @@ Filter logs by repository, adding cutoff dates when active development ended for
 visualization. Drop commits past April 30 to remove partial months.
 
 ```{r filtered_gitlogs}
-filtered_gitlogs <- my_gitlogs |>
+filtered_gitlogs <- gitlogs |>
   # set filter to midnight after last relevant commit, use local timezone like gert::git_log()
   filter(!(repo == "rstudio-training" & time > ymd_h("2020-12-28 0", tz = Sys.timezone()))) |>
   filter(!(repo == "software-resilience" & time > ymd_h("2021-02-22 0", tz = Sys.timezone()))) |>
@@ -414,10 +414,10 @@ write_eval <- function(string) {
 
 Get releases from GitHub using `siracon2022::gh_releases()`:
 
-```{r my_releases}
+```{r releases}
 # cache results
-if (!exists("my_releases")) {
-  my_releases <- map_dfr(
+if (!exists("releases")) {
+  releases <- map_dfr(
     c("rtraining", "rdev", "workshop7", "jbplot", "siracon2022") %>% setNames(., .),
     gh_releases, "jabenninghoff",
     .id = "repo"
@@ -429,7 +429,7 @@ if (!exists("my_releases")) {
 Filter releases past April 30 to remove partial months.
 
 ```{r filtered_releases}
-filtered_releases <- my_releases |>
+filtered_releases <- releases |>
   mutate(time = with_tz(time, tzone = Sys.timezone())) |>
   filter(time < ymd_h("2022-05-01 0", tz = Sys.timezone()))
 ```
