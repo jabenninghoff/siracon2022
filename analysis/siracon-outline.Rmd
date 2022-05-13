@@ -322,6 +322,20 @@ key_events |>
 
 - Deployment Automation
 
+```r
+library(rdev)
+library(fs)
+library(dplyr)
+library(purrr)
+
+notebooks <- dir_ls("analysis", glob = "*.Rmd") |>
+  map_dfr(rmd_metadata) |>
+  mutate(bullet = paste0("- [", title, "](", url, ") (", date, "): ", description)) |>
+  pull(bullet)
+
+writeLines(notebooks)
+```
+
 2022-01-17: Release automation (rdev 0.8.0)
 
 - `stage_release()`: Open a GitHub pull request for a new release from NEWS.md
