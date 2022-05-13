@@ -36,6 +36,7 @@ Suggests:
     spelling,
     testthat (>= 3.0.0),
     tidyr,
+    usethis,
     vistime,
     withr
 Remotes: 
