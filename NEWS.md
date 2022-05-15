@@ -1,3 +1,9 @@
+# siracon2022 1.0.4
+
+* Updated `rdev::use_lintr()`
+
+* Fixed incomplete `gitlogs` data
+
 # siracon2022 1.0.3
 
 * Updated SiRAcon Presentation Outline: final updates
