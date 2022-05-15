@@ -6,7 +6,7 @@
 #'   (rstudio-training, software-resilience) from inception (September 8, 2020) to April 30, 2022,
 #'   retrieved using [gert::git_log()].
 #'
-#' @format A data frame with 1450 rows and 7 variables:
+#' @format A data frame with 1461 rows and 7 variables:
 #' \describe{
 #'   \item{repo}{GitHub or git repository name}
 #'   \item{commit}{SHA-1 hash}

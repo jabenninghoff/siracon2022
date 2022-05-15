@@ -5,7 +5,7 @@
 \alias{gitlogs}
 \title{Git logs for John Benninghoff's GitHub and private R repositories.}
 \format{
-A data frame with 1450 rows and 7 variables:
+A data frame with 1461 rows and 7 variables:
 \describe{
 \item{repo}{GitHub or git repository name}
 \item{commit}{SHA-1 hash}
