@@ -702,16 +702,16 @@
     },
     "jbplot": {
       "Package": "jbplot",
-      "Version": "1.1.5",
+      "Version": "1.1.6",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteUsername": "jabenninghoff",
       "RemoteRepo": "jbplot",
       "RemoteRef": "main",
-      "RemoteSha": "370ad9c1e0f23683d7340ced4c790ffb4513b96c",
+      "RemoteSha": "b9996ea07752549a519e8c75f325595cbc3cc311",
       "RemoteHost": "api.github.com",
       "Remotes": "jabenninghoff/rdev",
-      "Hash": "9a50e6a7d81db34923be634bdd429d0d",
+      "Hash": "32d2eeb0cd30b7c14aa88dec3460a43d",
       "Requirements": [
         "ggplot2"
       ]
@@ -802,9 +802,9 @@
       "RemoteUsername": "r-lib",
       "RemoteRepo": "lintr",
       "RemoteRef": "master",
-      "RemoteSha": "31b79cbafa0e341270716839512ff56eda85479d",
+      "RemoteSha": "535e9e7d4bdb04b363ab704b51e0cd156a3f7e13",
       "RemoteHost": "api.github.com",
-      "Hash": "a4aa10095905aefc0757686208f6d24e",
+      "Hash": "c71afc05fa1b6bf28daabd2e32c2750f",
       "Requirements": [
         "codetools",
         "crayon",
@@ -1152,16 +1152,16 @@
     },
     "rdev": {
       "Package": "rdev",
-      "Version": "1.4.3",
+      "Version": "1.4.4",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteUsername": "jabenninghoff",
       "RemoteRepo": "rdev",
       "RemoteRef": "main",
-      "RemoteSha": "06e769daedaee042201a6c6b0b83bccfefdc439c",
+      "RemoteSha": "24edc8460ef106c806c693580fc504a8065ba551",
       "RemoteHost": "api.github.com",
       "Remotes": "r-lib/lintr",
-      "Hash": "f34d55b5d76e3eba19c7922ce2522b32",
+      "Hash": "7b2df0b223c654d809a59297fcc36913",
       "Requirements": [
         "desc",
         "devtools",
@@ -1271,13 +1271,14 @@
     },
     "roxygen2": {
       "Package": "roxygen2",
-      "Version": "7.1.2",
+      "Version": "7.2.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "eb9849556c4250305106e82edae35b72",
+      "Hash": "b390c1d54fcd977cda48588e6172daba",
       "Requirements": [
         "R6",
         "brew",
+        "cli",
         "commonmark",
         "cpp11",
         "desc",
@@ -1288,6 +1289,7 @@
         "rlang",
         "stringi",
         "stringr",
+        "withr",
         "xml2"
       ]
     },
