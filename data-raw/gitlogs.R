@@ -9,7 +9,7 @@ gitlogs <- map_dfr(
     "jbplot", "rdev", "rstudio-training", "rtraining", "siracon2022", "software-resilience",
     "workshop7"
   ),
-  ~ mutate(git_log(repo = paste0("~/GitHub/", .x), max = .Machine$integer.max),
+  ~ mutate(git_log(repo = paste0("../", .x), max = .Machine$integer.max),
     repo = .x, .before = "commit"
   )
 ) |>
