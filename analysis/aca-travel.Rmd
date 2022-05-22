@@ -19,10 +19,12 @@ automation!)".
 - [ ] Questions/TODO list here
 
 ```{r setup, message = FALSE, warning = FALSE}
+# nolint start: unused_import_linter
 library(anyflights)
 library(dplyr)
 library(ggplot2)
 library(jbplot)
+# nolint end
 ```
 
 # anyflights
