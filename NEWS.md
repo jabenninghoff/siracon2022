@@ -1,3 +1,7 @@
+# siracon2022 1.0.5
+
+* Updated `rdev::use_lintr()`
+
 # siracon2022 1.0.4
 
 * Updated `rdev::use_lintr()`
