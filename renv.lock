@@ -154,6 +154,14 @@
         "codetools"
       ]
     },
+    "backports": {
+      "Package": "backports",
+      "Version": "1.4.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "c39fbec8a30d23e721980b8afb31984c",
+      "Requirements": []
+    },
     "base64enc": {
       "Package": "base64enc",
       "Version": "0.1-3",
@@ -711,7 +719,7 @@
       "RemoteSha": "b9996ea07752549a519e8c75f325595cbc3cc311",
       "RemoteHost": "api.github.com",
       "Remotes": "jabenninghoff/rdev",
-      "Hash": "32d2eeb0cd30b7c14aa88dec3460a43d",
+      "Hash": "64c5838c7b4a87b8aa2fde30fc1b6a88",
       "Requirements": [
         "ggplot2"
       ]
@@ -802,10 +810,11 @@
       "RemoteUsername": "r-lib",
       "RemoteRepo": "lintr",
       "RemoteRef": "master",
-      "RemoteSha": "535e9e7d4bdb04b363ab704b51e0cd156a3f7e13",
+      "RemoteSha": "c34819937c4c5341dfb71ce7dc759e0597bf409c",
       "RemoteHost": "api.github.com",
-      "Hash": "c71afc05fa1b6bf28daabd2e32c2750f",
+      "Hash": "2b05dac490839705bc52563564d414f2",
       "Requirements": [
+        "backports",
         "codetools",
         "crayon",
         "cyclocomp",
@@ -911,10 +920,10 @@
     },
     "openssl": {
       "Package": "openssl",
-      "Version": "2.0.0",
+      "Version": "2.0.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "cf4329aac12c2c44089974559c18e446",
+      "Hash": "edde731e84cf3d42aa9b7f04b8de5941",
       "Requirements": [
         "askpass"
       ]
@@ -1152,16 +1161,16 @@
     },
     "rdev": {
       "Package": "rdev",
-      "Version": "1.4.4",
+      "Version": "1.4.6",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteUsername": "jabenninghoff",
       "RemoteRepo": "rdev",
       "RemoteRef": "main",
-      "RemoteSha": "24edc8460ef106c806c693580fc504a8065ba551",
+      "RemoteSha": "e6ba5ae6224f39245a093b1cda43dea2048a09c2",
       "RemoteHost": "api.github.com",
       "Remotes": "r-lib/lintr",
-      "Hash": "7b2df0b223c654d809a59297fcc36913",
+      "Hash": "41c7f08f868a25d2cac2372b8022b4a4",
       "Requirements": [
         "desc",
         "devtools",
@@ -1575,10 +1584,10 @@
     },
     "tinytex": {
       "Package": "tinytex",
-      "Version": "0.38",
+      "Version": "0.39",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "759d047596ac173433985deddf313450",
+      "Hash": "29f67ab15405b390b90e56ff22198ead",
       "Requirements": [
         "xfun"
       ]
