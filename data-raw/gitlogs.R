@@ -1,4 +1,5 @@
-# TODO: open issue on gert: git_log shows rebase & merge time, while "git log" shows original time
+# TODO: git_log shows rebase & merge (commit) time, while "git log" shows original (author) time
+#   issue: https://github.com/r-lib/gert/issues/176
 library(purrr)
 library(dplyr)
 library(gert)

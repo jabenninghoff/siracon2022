@@ -130,7 +130,8 @@ repo_timeline <- filtered_gitlogs |>
   mutate(color = hue_pal()(7)[row_number()])
 
 repo_timeline
-# TODO: issue: gg_vistime doesn't render well when using scale_color_viridis_d()
+# TODO: gg_vistime doesn't render well when using scale_color_viridis_d()
+#   issue: https://github.com/shosaco/vistime/issues/30
 gg_vistime(repo_timeline, col.event = "repo", title = "R Development Timeline") +
   theme_quo()
 
