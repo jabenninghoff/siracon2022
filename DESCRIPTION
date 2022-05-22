@@ -29,6 +29,7 @@ Suggests:
     jbplot,
     knitr,
     pkgdown,
+    pkgload,
     rdev,
     readr,
     rmarkdown,
