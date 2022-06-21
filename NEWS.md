@@ -1,3 +1,9 @@
+# siracon2022 1.0.6
+
+* Replace development lintr with CRAN release 3.0.0
+
+* Updated `rdev::use_rdev_package()` and `rdev::use_spelling()`
+
 # siracon2022 1.0.5
 
 * Updated `rdev::use_lintr()`
