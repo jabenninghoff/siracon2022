@@ -18,7 +18,6 @@ Outline of my 2022 SiRAcon 2022 presentation, "Making R work for you (with autom
 ```{r setup, message = FALSE, warning = FALSE}
 library(siracon2022)
 library(readr)
-library(gh)
 library(purrr)
 library(dplyr)
 library(tidyr)
