@@ -710,16 +710,16 @@
     },
     "jbplot": {
       "Package": "jbplot",
-      "Version": "1.1.7",
+      "Version": "1.1.8",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteUsername": "jabenninghoff",
       "RemoteRepo": "jbplot",
       "RemoteRef": "main",
-      "RemoteSha": "050a0f77feb6360585228c173899174b3ea9a13c",
+      "RemoteSha": "fc34c0eba0d3eaf35376ac8f1cf61354fa2f1637",
       "RemoteHost": "api.github.com",
       "Remotes": "jabenninghoff/rdev",
-      "Hash": "86f8f1d3426a84bb486fdac0526e514a",
+      "Hash": "a6ad0ee68bb2a56a3d6ceb18a46ccc66",
       "Requirements": [
         "ggplot2"
       ]
@@ -1156,15 +1156,15 @@
     },
     "rdev": {
       "Package": "rdev",
-      "Version": "1.5.4",
+      "Version": "1.5.5",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteUsername": "jabenninghoff",
       "RemoteRepo": "rdev",
       "RemoteRef": "main",
-      "RemoteSha": "e6ea9b82fcfa4f9baf10db0d138f2c794b408084",
+      "RemoteSha": "8708f24fcf1cf14a9ea3f4eb80e0159e0376da14",
       "RemoteHost": "api.github.com",
-      "Hash": "cc0a76875171c906701c2b1573dcbc94",
+      "Hash": "d1e284d62693406988445e5d5c1e8469",
       "Requirements": [
         "cli",
         "desc",
