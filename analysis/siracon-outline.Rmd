@@ -34,7 +34,7 @@ library(jbplot)
 Use the [DORA Research Program](assets/dora_research_program.pdf) to frame the story of how I
 learned R and software engineering by implementing the DORA DevOps technical practices:
 
-- [Version Control](https://cloud.google.com/solutions/devops/devops-tech-version-control)
+- [Version Control](https://cloud.google.com/architecture/devops/devops-tech-version-control)
 - [Trunk-based Development](https://cloud.google.com/architecture/devops/devops-tech-trunk-based-development)
 - [Shifting Left on Security](https://cloud.google.com/architecture/devops/devops-tech-shifting-left-on-security)
 - [Continuous Integration](https://cloud.google.com/architecture/devops/devops-tech-continuous-integration)
