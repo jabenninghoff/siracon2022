@@ -11,7 +11,7 @@ Notebooks for my SiRAcon 2022 presentation, "Making R work for you (with automat
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://jabenninghoff.github.io/siracon2022}
+  \item \url{https://jabenninghoff.github.io/siracon2022/}
   \item \url{https://github.com/jabenninghoff/siracon2022}
   \item Report bugs at \url{https://github.com/jabenninghoff/siracon2022/issues}
 }
