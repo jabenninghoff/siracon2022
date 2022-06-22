@@ -7,7 +7,7 @@ Authors@R:
 Description: Notebooks for my SiRAcon 2022 presentation, "Making R work
     for you (with automation!)".
 License: MIT + file LICENSE
-URL: https://jabenninghoff.github.io/siracon2022,
+URL: https://jabenninghoff.github.io/siracon2022/,
     https://github.com/jabenninghoff/siracon2022
 BugReports: https://github.com/jabenninghoff/siracon2022/issues
 Depends: 
