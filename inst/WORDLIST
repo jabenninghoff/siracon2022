@@ -47,5 +47,6 @@ styler
 testthat
 tidyverse
 timevis
+visjs
 vistime
 www

@@ -9,9 +9,11 @@ render_timevis(data, groups, file, showZoom = FALSE)
 \arguments{
 \item{data}{A dataframe containing the timeline items. Each item on the
 timeline is represented by a row in the dataframe. \code{start} and
-\code{content} are required for each item, while several other variables
-are also supported. See the \strong{Data format} section below for more
-details.}
+\code{content} are the only two required columns.
+See the \strong{Data format} section below for more
+details. For a full list of all supported columns, see the Data Format section in the
+\href{https://visjs.github.io/vis-timeline/docs/timeline/#Data_Format}{official
+visjs Timeline documentation}.}
 
 \item{groups}{A dataframe containing the groups data (optional). See the
 \strong{Groups} section below for more details.}
