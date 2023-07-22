@@ -19,16 +19,13 @@ TLA
 anyflights
 autotest
 codecov
-devops
 eval
 fs
 ggplot
 ggplots
 github
 gitignore
-https
 io
-jabenninghoff
 jabenninghoff's
 jbplot
 lintr
@@ -49,4 +46,3 @@ tidyverse
 timevis
 visjs
 vistime
-www
