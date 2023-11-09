@@ -3,6 +3,8 @@ title: "ACA Travel Analysis"
 date: '2022-04-24'
 output:
   html_notebook:
+    theme:
+      version: 5
     toc: yes
     toc_float:
       collapsed: no
