@@ -3,6 +3,8 @@ title: "SiRAcon 2022 Setup Log"
 date: '2022-04-24'
 output:
   html_notebook:
+    theme:
+      version: 5
     toc: yes
     toc_float:
       collapsed: no
