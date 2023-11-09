@@ -2,6 +2,8 @@
 
 * Switch to Bootstrap 5
 
+* Updated installation instructions
+
 # siracon2022 1.0.11
 
 * Maintenance update
