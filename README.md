@@ -41,8 +41,8 @@ You can install the development version of siracon2022 from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("jabenninghoff/siracon2022")
+# install.packages("remotes")
+remotes::install_github("jabenninghoff/siracon2022")
 ```
 
 Or using renv:
