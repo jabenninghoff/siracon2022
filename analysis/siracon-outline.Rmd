@@ -25,7 +25,6 @@ library(lubridate)
 library(ggplot2)
 library(scales)
 library(vistime)
-library(timevis)
 library(jbplot)
 ```
 
@@ -422,11 +421,9 @@ Get releases from GitHub using `siracon2022::gh_releases()`:
 ```{r releases}
 # cache results
 if (!exists("releases")) {
-  releases <- map_dfr(
-    c("rtraining", "rdev", "workshop7", "jbplot", "siracon2022") %>% setNames(., .),
-    gh_releases, "jabenninghoff",
-    .id = "repo"
-  ) |>
+  repos <- c("rtraining", "rdev", "workshop7", "jbplot", "siracon2022")
+  repos <- setNames(repos, repos)
+  releases <- map_dfr(repos, gh_releases, "jabenninghoff", .id = "repo") |>
     arrange(time)
 }
 ```
