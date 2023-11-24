@@ -1,10 +1,16 @@
 ---
 title: "SiRAcon Presentation Outline"
+author: "John Benninghoff"
 date: '2022-04-24'
+file-modified: '2023-11-08'
+categories:
+order:
 output:
   html_notebook:
     theme:
       version: 5
+      preset: bootstrap
+    css: assets/extra.css
     toc: yes
     toc_float:
       collapsed: no
