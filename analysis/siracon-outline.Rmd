@@ -150,7 +150,7 @@ ggsave("rendered/repo-timeline.png", width = 16 * 0.6, height = 9 * 0.6, bg = "w
 
 Plot key events on a `timevis()` timeline. [Full page version](rendered/key-events.html).
 
-```{r key_events, fig.width = 10, fig.height = 15}
+```{r key_events, fig.width = 10, fig.height = 18}
 key_events <- read_csv("data/key-events.csv", col_types = cols(
   id = col_integer(),
   start = col_date(format = ""),
@@ -580,7 +580,7 @@ Full rdev package list:
 
 Background and motivation. [Full page version](rendered/intro.html).
 
-```{r intro, fig.width = 8.6, fig.height = 3.5}
+```{r intro, fig.width = 8.6, fig.height = 4}
 key_events |>
   filter(group == 1) |>
   render_timevis(groups = filter(dora_groups, id == 1), file = "rendered/intro.html")
@@ -597,7 +597,7 @@ Packages:
 
 - `renv`: dependency management
 
-```{r version_control, fig.width = 8.6, fig.height = 2.5}
+```{r version_control, fig.width = 8.6, fig.height = 3}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 2) |>
@@ -690,7 +690,7 @@ Packages:
 - `devtools`
 - `purrr`
 
-```{r code_maint, fig.width = 8.6, fig.height = 4}
+```{r code_maint, fig.width = 8.6, fig.height = 5}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 7 | id == 32) |>
