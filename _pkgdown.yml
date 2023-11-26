@@ -1,6 +1,8 @@
 url: https://jabenninghoff.github.io/siracon2022/
 template:
   bootstrap: 5
+  bslib:
+    preset: bootstrap
 navbar:
   structure:
     left:
