@@ -1,3 +1,7 @@
+# siracon2022 1.1.2
+
+* Maintenance update
+
 # siracon2022 1.1.1
 
 * Fix site rendering
