@@ -1435,14 +1435,14 @@
     },
     "rdev": {
       "Package": "rdev",
-      "Version": "1.9.7",
+      "Version": "1.9.8",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jabenninghoff",
       "RemoteRepo": "rdev",
       "RemoteRef": "main",
-      "RemoteSha": "cbb8cc0df2eb807b6f037f0b871d195c2f89259f",
+      "RemoteSha": "6a55cda22be06859b005a1fcdf67586cab0aaf2a",
       "Requirements": [
         "checkmate",
         "cli",
@@ -1476,7 +1476,7 @@
         "xml2",
         "yaml"
       ],
-      "Hash": "9ac34b34d99a21fb60676e5a67092e0b"
+      "Hash": "3c42415a448c3cb5be6f94057534d520"
     },
     "readr": {
       "Package": "readr",
@@ -2136,14 +2136,15 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.41",
+      "Version": "0.42",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
+        "grDevices",
         "stats",
         "tools"
       ],
-      "Hash": "460a5e0fe46a80ef87424ad216028014"
+      "Hash": "fd1349170df31f7a10bd98b0189e85af"
     },
     "xml2": {
       "Package": "xml2",
