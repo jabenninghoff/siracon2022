@@ -1,3 +1,7 @@
+# siracon2022 1.1.6
+
+* Maintenance update
+
 # siracon2022 1.1.5
 
 * Maintenance update
