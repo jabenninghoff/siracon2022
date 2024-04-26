@@ -1,5 +1,9 @@
 # siracon2022 1.1.6
 
+* Updated for R 4.4.0
+
+# siracon2022 1.1.6
+
 * Maintenance update
 
 # siracon2022 1.1.5
