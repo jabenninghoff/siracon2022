@@ -10,11 +10,16 @@ navbar:
     - tutorials
     - news
     - analysis
-    right: github
+    right:
+    - search
+    - github
+    - lightswitch
   components:
     reference:
       text: Reference
       href: reference/index.html
+    search:
+      search: []
     news:
       text: Changelog
       href: news/index.html
@@ -30,4 +35,4 @@ navbar:
     github:
       icon: fab fa-github fa-lg
       href: https://github.com/jabenninghoff/siracon2022/
-      aria-label: github
+      aria-label: GitHub

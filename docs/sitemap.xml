@@ -1,39 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://jabenninghoff.github.io/siracon2022/404.html</loc>
-  </url>
-  <url>
-    <loc>https://jabenninghoff.github.io/siracon2022/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://jabenninghoff.github.io/siracon2022/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://jabenninghoff.github.io/siracon2022/TODO.html</loc>
-  </url>
-  <url>
-    <loc>https://jabenninghoff.github.io/siracon2022/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://jabenninghoff.github.io/siracon2022/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jabenninghoff.github.io/siracon2022/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jabenninghoff.github.io/siracon2022/reference/gh_releases.html</loc>
-  </url>
-  <url>
-    <loc>https://jabenninghoff.github.io/siracon2022/reference/gitlogs.html</loc>
-  </url>
-  <url>
-    <loc>https://jabenninghoff.github.io/siracon2022/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jabenninghoff.github.io/siracon2022/reference/render_timevis.html</loc>
-  </url>
-  <url>
-    <loc>https://jabenninghoff.github.io/siracon2022/reference/siracon2022-package.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://jabenninghoff.github.io/siracon2022/404.html</loc></url>
+<url><loc>https://jabenninghoff.github.io/siracon2022/LICENSE-text.html</loc></url>
+<url><loc>https://jabenninghoff.github.io/siracon2022/LICENSE.html</loc></url>
+<url><loc>https://jabenninghoff.github.io/siracon2022/TODO.html</loc></url>
+<url><loc>https://jabenninghoff.github.io/siracon2022/authors.html</loc></url>
+<url><loc>https://jabenninghoff.github.io/siracon2022/index.html</loc></url>
+<url><loc>https://jabenninghoff.github.io/siracon2022/news/index.html</loc></url>
+<url><loc>https://jabenninghoff.github.io/siracon2022/reference/gh_releases.html</loc></url>
+<url><loc>https://jabenninghoff.github.io/siracon2022/reference/gitlogs.html</loc></url>
+<url><loc>https://jabenninghoff.github.io/siracon2022/reference/index.html</loc></url>
+<url><loc>https://jabenninghoff.github.io/siracon2022/reference/render_timevis.html</loc></url>
+<url><loc>https://jabenninghoff.github.io/siracon2022/reference/siracon2022-package.html</loc></url>
 </urlset>
+
