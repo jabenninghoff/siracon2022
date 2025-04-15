@@ -129,12 +129,14 @@ repo_timeline <- filtered_gitlogs |>
   group_by(repo) |>
   summarize(start = min(time), end = max(time)) |>
   arrange(start) |>
-  mutate(group = case_when(
-    grepl("training", repo, fixed = TRUE) ~ "training",
-    repo %in% c("rdev", "jbplot") ~ "development",
-    TRUE ~ "notebooks"
-  )) |>
-  mutate(color = hue_pal()(7)[row_number()])
+  mutate(
+    group = case_when(
+      grepl("training", repo, fixed = TRUE) ~ "training",
+      repo %in% c("rdev", "jbplot") ~ "development",
+      TRUE ~ "notebooks"
+    ),
+    color = hue_pal()(7)[row_number()]
+  )
 
 repo_timeline
 # TODO: gg_vistime doesn't render well when using scale_color_viridis_d()
@@ -168,8 +170,7 @@ dora_groups <- key_events |>
   unique() |>
   arrange(id)
 
-key_events |>
-  render_timevis(groups = dora_groups, file = "rendered/key-events.html", showZoom = TRUE)
+render_timevis(key_events, groups = dora_groups, file = "rendered/key-events.html", showZoom = TRUE)
 ```
 
 2020-09-08: Starting out, rstudio-training, renv
