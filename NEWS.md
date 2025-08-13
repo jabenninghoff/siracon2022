@@ -1,3 +1,7 @@
+# siracon2022 1.1.9
+
+* Corrected GitHub language stats
+
 # siracon2022 1.1.8
 
 * Updated for R 4.5.0
