@@ -19,7 +19,6 @@ TLA
 anyflights
 autotest
 codecov
-eval
 fs
 ggplot
 ggplots
@@ -34,7 +33,6 @@ pkgdown
 purrr
 rdev
 renv
-reproducibility
 roxygen
 rstudio
 rtraining
