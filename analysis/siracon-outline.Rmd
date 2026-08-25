@@ -97,7 +97,7 @@ filtered_gitlogs <- gitlogs |>
 
 Plot monthly commits by repository.
 
-```{r monthly_commits_repo}
+```{r monthly_commits_repo, fig.alt = "a multi-color line plot showing monthly commits by repository over time."}
 filtered_gitlogs |>
   mutate(time = floor_date(time, unit = "month")) |>
   group_by(time, repo) |>
@@ -122,7 +122,7 @@ Create a timeline using groups showing the history of the repositories:
 - development: rdev, jbplot
 - notebooks: software-resilience, workshop7, siracon2022
 
-```{r repo_timeline}
+```{r repo_timeline, fig.alt = "three parallel timelines showing when different repositories were actively developed."}
 repo_timeline <- filtered_gitlogs |>
   select(repo, time) |>
   mutate(time = floor_date(time, unit = "day")) |>
@@ -153,7 +153,7 @@ ggsave("rendered/repo-timeline.png", width = 16 * 0.6, height = 9 * 0.6, bg = "w
 
 Plot key events on a `timevis()` timeline. [Full page version](rendered/key-events.html).
 
-```{r key_events, fig.width = 10, fig.height = 18}
+```{r key_events, fig.width = 10, fig.height = 18, fig.alt = "a timevis() timeline of key events from my SiRAcon 2022 presentation."}
 key_events <- read_csv("data/key-events.csv", col_types = cols(
   id = col_integer(),
   start = col_date(format = ""),
@@ -449,7 +449,7 @@ filtered_releases <- releases |>
 Plot releases over time: total GitHub releases per period (for all repositories) to show changes in
 release frequency. The dotted line marks the implementation of release automation.
 
-```{r monthly_releases}
+```{r monthly_releases, fig.alt = "a line plot showing monthly GitHub releases over time, trending higher."}
 monthly_releases <- filtered_releases |>
   mutate(time = floor_date(time, unit = "month")) |>
   group_by(time) |>
@@ -478,7 +478,7 @@ ggsave("rendered/monthly-releases.png", width = 16 * 0.6, height = 9 * 0.6, bg =
 However, the number of releases per month might just represent how much work is being done, and
 looks similar to the plot of all commits by month:
 
-```{r monthly_commits}
+```{r monthly_commits, fig.alt = "a line plot showing monthly git commits over time, trending higher."}
 gitlogs |>
   filter(time < ymd_h("2022-05-01 0", tz = gitlogs_tz)) |>
   mutate(time = floor_date(time, unit = "month")) |>
@@ -503,7 +503,7 @@ ggsave("rendered/monthly-commits.png", width = 16 * 0.6, height = 9 * 0.6, bg = 
 Also plot releases per commit, which will fall between 0 and 1. The dotted lines mark adoption of
 GitHub and implementation of release automation.
 
-```{r releases_per_commit}
+```{r releases_per_commit, fig.alt = "a line plot showing monthly GitHub releases per commit over time, clearly trending higher."}
 gitlogs |>
   filter(time < ymd_h("2022-05-01 0", tz = gitlogs_tz)) |>
   mutate(time = floor_date(time, unit = "month")) |>
@@ -582,7 +582,7 @@ Full rdev package list:
 
 Background and motivation. [Full page version](rendered/intro.html).
 
-```{r intro, fig.width = 8.6, fig.height = 4}
+```{r intro, fig.width = 8.6, fig.height = 4, fig.alt = "a timevis() timeline of key events from my SiRAcon 2022 presentation (Introduction)."}
 key_events |>
   filter(group == 1) |>
   render_timevis(groups = filter(dora_groups, id == 1), file = "rendered/intro.html")
@@ -599,7 +599,7 @@ Packages:
 
 - `renv`: dependency management
 
-```{r version_control, fig.width = 8.6, fig.height = 3}
+```{r version_control, fig.width = 8.6, fig.height = 3, fig.alt = "a timevis() timeline of key events from my SiRAcon 2022 presentation (Version Control)."}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 2) |>
@@ -610,7 +610,7 @@ key_events |>
 
 Linear development avoids code conflicts. [Full page version](rendered/trunk-based.html).
 
-```{r trunk_based, fig.width = 8.6, fig.height = 2.5}
+```{r trunk_based, fig.width = 8.6, fig.height = 2.5, fig.alt = "a timevis() timeline of key events from my SiRAcon 2022 presentation (Trunk-based Development)."}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 3 | id == 44) |>
@@ -627,7 +627,7 @@ Packages:
 
 - `renv`
 
-```{r shift_left, fig.width = 8.6, fig.height = 2.5}
+```{r shift_left, fig.width = 8.6, fig.height = 2.5, fig.alt = "a timevis() timeline of key events from my SiRAcon 2022 presentation (Shift Left on Security)."}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 4) |>
@@ -644,7 +644,7 @@ Packages:
 - `usethis`
 - [r-lib/actions](https://github.com/r-lib/actions)
 
-```{r ci, fig.width = 8.6, fig.height = 3.5}
+```{r ci, fig.width = 8.6, fig.height = 3.5, fig.alt = "a timevis() timeline of key events from my SiRAcon 2022 presentation (Continuous Integration)."}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 5) |>
@@ -665,7 +665,7 @@ Packages:
 - `gert`, `gh`: git, GitHub automation
 - `devtools`
 
-```{r deployments, fig.width = 8.6, fig.height = 4.5}
+```{r deployments, fig.width = 8.6, fig.height = 4.5, fig.alt = "a timevis() timeline of key events from my SiRAcon 2022 presentation (Deployment Automation)."}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 6 | id == 32) |>
@@ -692,7 +692,7 @@ Packages:
 - `devtools`
 - `purrr`
 
-```{r code_maint, fig.width = 8.6, fig.height = 5}
+```{r code_maint, fig.width = 8.6, fig.height = 5, fig.alt = "a timevis() timeline of key events from my SiRAcon 2022 presentation (Code Maintainability)."}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 7 | id == 32) |>
@@ -737,7 +737,7 @@ Formal Methods:
 - [Learn TLA+](https://learntla.com/)
 - [Alloy Documentation](https://alloy.readthedocs.io/en/latest/)
 
-```{r testing, fig.width = 8.6, fig.height = 3.5}
+```{r testing, fig.width = 8.6, fig.height = 3.5, fig.alt = "a timevis() timeline of key events from my SiRAcon 2022 presentation (Testing)."}
 key_events |>
   filter(!intro) |>
   filter(milestone | group == 8 | id == 32) |>

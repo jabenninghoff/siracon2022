@@ -2,6 +2,8 @@
 
 * Initial upkeep using `rdev::use_upkeep_issue()`
 
+* Added [fig.alt](https://posit.co/blog/knitr-fig-alt) text to visualizations
+
 # siracon2022 1.1.9
 
 * Corrected GitHub language stats
