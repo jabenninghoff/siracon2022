@@ -1,3 +1,7 @@
+# siracon2022 1.1.10
+
+* Initial upkeep using `rdev::use_upkeep_issue()`
+
 # siracon2022 1.1.9
 
 * Corrected GitHub language stats
