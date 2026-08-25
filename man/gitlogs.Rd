@@ -29,6 +29,6 @@ Git commit logs for jabenninghoff's public GitHub R
 \href{https://github.com/jabenninghoff?tab=repositories&q=&type=source&language=r&sort=}{Repositories}
 (jbplot, rdev, rtraining, siracon2022, workshop7) and private git repositories
 (rstudio-training, software-resilience) from inception (September 8, 2020) to April 30, 2022,
-retrieved using \code{\link[gert:git_commit]{gert::git_log()}}.
+retrieved using \code{\link[gert:git_log]{gert::git_log()}}.
 }
 \keyword{datasets}
