@@ -1,6 +1,8 @@
 ^_pkgdown\.yml$
+^\.claude$
 ^\.github$
 ^\.lintr$
+^\.positai$
 ^\.Rproj\.user$
 ^analysis/.*-figure$
 ^analysis/.*\.docx$
