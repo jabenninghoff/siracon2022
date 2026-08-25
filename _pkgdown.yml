@@ -1,6 +1,7 @@
 url: https://jabenninghoff.github.io/siracon2022/
 template:
   bootstrap: 5
+llm-docs: no
 navbar:
   structure:
     left:
