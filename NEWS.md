@@ -1,3 +1,7 @@
+# siracon2022 1.1.11
+
+* Update R-CMD-check to run on macOS only
+
 # siracon2022 1.1.10
 
 * Initial upkeep using `rdev::use_upkeep_issue()`
