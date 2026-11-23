@@ -1,3 +1,7 @@
+# siracon2022 1.1.12
+
+* Maintenance update
+
 # siracon2022 1.1.11
 
 * Update R-CMD-check to run on macOS only
